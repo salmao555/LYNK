@@ -1,6 +1,7 @@
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
+import { GraduationCap, Building2, Landmark } from 'lucide-react'
 
 function Signup() {
   const { role } = useParams()
@@ -19,19 +20,43 @@ function Signup() {
     navigate('/bienvenue')
   }
 
+  const roleConfig = {
+    etudiant: {
+      icon: GraduationCap,
+      label: 'Étudiant',
+      badgeClass: 'bg-brand-orange/10 text-brand-orange',
+      title: 'Trouvez votre stage idéal',
+    },
+    entreprise: {
+      icon: Building2,
+      label: 'Entreprise',
+      badgeClass: 'bg-slate-100 text-slate-600',
+      title: 'Recrutez vos futurs talents',
+    },
+    universite: {
+      icon: Landmark,
+      label: 'Établissement',
+      badgeClass: 'bg-brand-navy/10 text-brand-navy',
+      title: 'Gérez les stages de vos étudiants',
+    },
+  }
+
+  const config = roleConfig[role] || roleConfig.etudiant
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="bg-white rounded-3xl p-10 w-full max-w-md border border-slate-200">
-        <p className="text-2xl font-bold text-[#F2643B] text-center mb-8">Lynk</p>
+      <div className="bg-white rounded-3xl p-10 w-full max-w-md border border-slate-200 shadow-sm">
+        <p className="text-2xl font-bold text-brand-orange text-center mb-8">Lynk</p>
 
         <div className="text-center mb-6">
-          <span className={`inline-block text-sm px-4 py-1.5 rounded-full font-medium mb-3 ${
-            estEtudiant ? 'bg-[#F2643B]/10 text-[#F2643B]' : estUniversite ? 'bg-slate-200 text-slate-700' : 'bg-slate-100 text-slate-600'
-          }`}>
-            {estEtudiant ? '🎓 Étudiant' : estUniversite ? '🏛️ Établissement' : '🏢 Entreprise'}
-          </span>
-          <h1 className="text-xl font-bold text-slate-900">
-            {estEtudiant ? 'Trouvez votre stage idéal' : estUniversite ? 'Gérez les stages de vos étudiants' : 'Recrutez vos futurs talents'}
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <config.icon className="h-4 w-4 text-slate-400" aria-hidden="true" />
+            <span className={`inline-block text-xs font-semibold tracking-wider px-3 py-1.5 rounded-full ${config.badgeClass}`}>
+              {config.label}
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-slate-900 text-balance">
+            {config.title}
           </h1>
         </div>
 
@@ -61,20 +86,14 @@ function Signup() {
               estEtudiant ? 'Nom complet' : estUniversite ? "Nom de l'établissement" : "Nom de l'entreprise"
             }
             required
-            className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30"
+            className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-slate-200 transition-all"
           />
-          <input type="email" placeholder="Email" required className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30" />
-          <input type="password" placeholder="Mot de passe" required className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30" />
+          <input type="email" placeholder="Email" required className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-slate-200 transition-all" />
+          <input type="password" placeholder="Mot de passe" required className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-slate-200 transition-all" />
 
           <button
             type="submit"
-            className={`font-semibold py-3 rounded-full transition-colors mt-2 text-white ${
-              estEtudiant
-                ? 'bg-[#F2643B] hover:bg-[#E8492E]'
-                : estUniversite
-                  ? 'bg-[#0a1038] hover:bg-[#151b4d]'
-                  : 'bg-slate-900 hover:bg-black'
-            }`}
+            className="font-semibold py-3 rounded-full transition-colors mt-2 text-white bg-brand-orange hover:bg-brand-orange-dark"
           >
             Créer mon compte
           </button>
@@ -82,7 +101,7 @@ function Signup() {
 
         <p className="text-center text-sm text-slate-500 mt-6">
           Déjà un compte ?{' '}
-          <Link to="/login" className="text-[#F2643B] font-medium">Se connecter</Link>
+          <Link to={`/login/${role}`} className="text-brand-orange font-medium hover:text-brand-orange-dark transition-colors">Se connecter</Link>
         </p>
       </div>
     </div>

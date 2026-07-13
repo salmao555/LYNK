@@ -11,7 +11,7 @@ function StatsBar() {
       <div className="grid grid-cols-4 gap-8 text-center">
         {stats.map((stat) => (
           <div key={stat.label}>
-            <p className="text-3xl font-bold text-[#F2643B]">{stat.value}</p>
+            <p className="text-3xl font-bold text-brand-navy">{stat.value}</p>
             <p className="text-slate-500 text-sm mt-1">{stat.label}</p>
           </div>
         ))}
@@ -21,5 +21,3 @@ function StatsBar() {
 }
 
 export default StatsBar
-
-

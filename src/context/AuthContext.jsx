@@ -4,7 +4,7 @@ const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
-  // user sera soit null (pas connecté), soit { role: 'etudiant' | 'entreprise', nom: '...' }
+  // user sera soit null (pas connecté), soit { role: 'etudiant' | 'entreprise' | 'universite', nom: '...' }
 
   const login = (role, nom) => {
     setUser({ role, nom })

@@ -1,27 +1,29 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { FileText, Target, Compass, Megaphone, Building2, BarChart3, ClipboardList, Users, TrendingUp } from 'lucide-react'
 
 function Welcome() {
   const { user } = useAuth()
   const estEtudiant = user?.role === 'etudiant'
+  const estEtablissement = user?.role === 'universite'
 
   const cartesEtudiant = [
     {
-      icone: '📄',
+      icone: FileText,
       titre: 'Complète ton profil',
       texte: 'Importe ton CV pour que l\'IA remplisse ton profil automatiquement.',
       lien: '/mon-cv',
       cta: 'Compléter mon CV',
     },
     {
-      icone: '🎯',
+      icone: Target,
       titre: 'Découvre tes offres',
       texte: 'Consulte les stages déjà triés selon ton profil et ton domaine.',
       lien: '/offres',
       cta: 'Voir mes offres',
     },
     {
-      icone: '🧭',
+      icone: Compass,
       titre: 'Mon Guide IA',
       texte: 'Évalue ton CV, génère une roadmap, entraîne-toi à l\'entretien.',
       lien: '/mon-guide',
@@ -31,21 +33,21 @@ function Welcome() {
 
   const cartesEntreprise = [
     {
-      icone: '📢',
+      icone: Megaphone,
       titre: 'Publie ta première offre',
       texte: 'Décris le poste, les compétences recherchées, et reçois des candidatures ciblées.',
       lien: '/entreprise/publier',
       cta: 'Publier une offre',
     },
     {
-      icone: '🏢',
+      icone: Building2,
       titre: 'Complète ton profil entreprise',
       texte: 'Ajoute ton logo, ta description et ta culture pour attirer les meilleurs profils.',
       lien: '/entreprise/profil',
       cta: 'Compléter le profil',
     },
     {
-      icone: '📊',
+      icone: BarChart3,
       titre: 'Ton tableau de bord',
       texte: 'Suis tes candidatures, ton pipeline et tes statistiques de recrutement.',
       lien: '/entreprise',
@@ -53,45 +55,74 @@ function Welcome() {
     },
   ]
 
-  const cartes = estEtudiant ? cartesEtudiant : cartesEntreprise
+  const cartesEtablissement = [
+    {
+      icone: ClipboardList,
+      titre: 'Gérer les conventions',
+      texte: 'Validez les conventions de stage et suivez leur progression.',
+      lien: '/etablissement/conventions',
+      cta: 'Voir les conventions',
+    },
+    {
+      icone: Users,
+      titre: 'Suivre les étudiants',
+      texte: 'Accédez à la liste des étudiants et suivez leurs recherches de stage.',
+      lien: '/etablissement/etudiants',
+      cta: 'Voir les étudiants',
+    },
+    {
+      icone: TrendingUp,
+      titre: 'Statistiques de l\'établissement',
+      texte: 'Consultez les statistiques de placement et les indicateurs de réussite.',
+      lien: '/etablissement/statistiques',
+      cta: 'Voir les statistiques',
+    },
+  ]
+
+  const cartes = estEtudiant ? cartesEtudiant : estEtablissement ? cartesEtablissement : cartesEntreprise
 
   return (
-    <div className="min-h-[calc(100vh-73px)] bg-slate-50 px-16 py-16">
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <span className={`inline-block text-sm px-4 py-1.5 rounded-full font-medium mb-4 ${
-          estEtudiant ? 'bg-[#F2643B]/10 text-[#F2643B]' : 'bg-slate-100 text-slate-600'
-        }`}>
-          {estEtudiant ? '🎓 Espace étudiant' : '🏢 Espace entreprise'}
-        </span>
+    <div className="min-h-[calc(100vh-73px)] bg-slate-50 px-8 py-16">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <span className={`inline-block text-sm px-4 py-1.5 rounded-full font-medium mb-4 ${
+            estEtudiant ? 'bg-brand-orange/10 text-brand-orange' : estEtablissement ? 'bg-brand-navy/10 text-brand-navy' : 'bg-slate-100 text-slate-600'
+          }`}>
+            {estEtudiant ? 'Espace étudiant' : estEtablissement ? 'Espace établissement' : 'Espace entreprise'}
+          </span>
 
-        <h1 className="text-3xl font-bold text-slate-900 mb-3">
-          BIENVENUE {user?.nom} 
-        </h1>
-        <p className="text-slate-500 text-lg">
-          {estEtudiant
-            ? "Voici comment démarrer ta recherche de stage sur Lynk."
-            : "Voici comment démarrer ton recrutement sur Lynk."}
-        </p>
-      </div>
+          <h1 className="text-4xl font-bold text-slate-900 mb-3 text-balance">
+            Bienvenue, {user?.nom || 'utilisateur'}
+          </h1>
+          <p className="text-slate-600 text-lg text-pretty">
+            {estEtudiant
+              ? "Voici comment démarrer ta recherche de stage sur Lynk."
+              : estEtablissement
+              ? "Voici comment gérer les stages de votre établissement sur Lynk."
+              : "Voici comment démarrer ton recrutement sur Lynk."}
+          </p>
+        </div>
 
-      <div className="max-w-4xl mx-auto grid grid-cols-3 gap-5">
-        {cartes.map((carte) => (
-          <div key={carte.titre} className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col">
-            <span className="text-2xl mb-4">{carte.icone}</span>
-            <h3 className="font-bold text-slate-900 mb-2">{carte.titre}</h3>
-            <p className="text-slate-500 text-sm mb-6 flex-1">{carte.texte}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {cartes.map((carte) => (
             <Link
+              key={carte.titre}
               to={carte.lien}
-              className={`text-center text-sm font-medium py-2.5 rounded-full transition-colors ${
-                estEtudiant
-                  ? 'bg-[#F2643B] text-white hover:bg-[#E8492E]'
-                  : 'bg-slate-900 text-white hover:bg-black'
-              }`}
+              className="group flex flex-col bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
-              {carte.cta} →
+              <div className="h-12 w-12 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center mb-6">
+                <carte.icone className="h-6 w-6" aria-hidden="true" />
+              </div>
+              
+              <h3 className="font-bold text-slate-900 mb-3 text-lg">{carte.titre}</h3>
+              <p className="text-slate-600 text-sm mb-6 flex-1 leading-relaxed text-pretty">{carte.texte}</p>
+              
+              <span className="inline-block text-center py-3 px-4 rounded-xl font-semibold bg-brand-navy text-white group-hover:bg-brand-orange transition-colors">
+                {carte.cta}
+              </span>
             </Link>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
