@@ -16,7 +16,7 @@ function FilterSidebar() {
             <button
               key={s}
               className={`text-left px-3 py-1.5 rounded-lg text-sm ${
-                i === 0 ? 'bg-orange-50 text-[#F2643B] font-medium' : 'text-slate-600 hover:bg-slate-50'
+                i === 0 ? 'bg-brand-primary/10 text-brand-primary font-medium' : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
               {s}
@@ -32,7 +32,7 @@ function FilterSidebar() {
             <button
               key={d}
               className={`text-left px-3 py-1.5 rounded-lg text-sm ${
-                i === 0 ? 'bg-orange-50 text-[#F2643B] font-medium' : 'text-slate-600 hover:bg-slate-50'
+                i === 0 ? 'bg-brand-primary/10 text-brand-primary font-medium' : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
               {d}
@@ -48,7 +48,7 @@ function FilterSidebar() {
             <button
               key={m}
               className={`text-left px-3 py-1.5 rounded-lg text-sm ${
-                i === 0 ? 'bg-orange-50 text-[#F2643B] font-medium' : 'text-slate-600 hover:bg-slate-50'
+                i === 0 ? 'bg-brand-primary/10 text-brand-primary font-medium' : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
               {m}

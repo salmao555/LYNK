@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Logos from './components/Logos'
@@ -21,7 +21,12 @@ import Messages from './pages/Messages'
 import EtablissementConventions from './pages/EtablissementConventions'
 import EtablissementEtudiants from './pages/EtablissementEtudiants'
 import EtablissementStatistiques from './pages/EtablissementStatistiques'
-
+import OnboardingUpload from './pages/etudiant/OnboardingUpload'
+import OnboardingVerification from './pages/etudiant/OnboardingVerification'
+import OnboardingConfirmation from './pages/etudiant/OnboardingConfirmation'
+import MagicLinkVerify from './pages/etudiant/MagicLinkVerify'
+import EtudiantDashboard from './pages/etudiant/EtudiantDashboard'
+import { useAuth } from './context/AuthContext'
 
 function LandingPage() {
   return (
@@ -46,6 +51,14 @@ function PageAvecNavbar({ children }) {
   )
 }
 
+function EtudiantRoute({ children }) {
+  const { user } = useAuth()
+  if (!user || user.role !== 'etudiant' || !user.verified) {
+    return <Navigate to="/etudiant/onboarding" replace />
+  }
+  return children
+}
+
 function App() {
   return (
     <>
@@ -53,6 +66,20 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login/:role" element={<Login />} />
         <Route path="/signup/:role" element={<Signup />} />
+
+        {/* Flow onboarding étudiant — passwordless via CV */}
+        <Route path="/etudiant/onboarding" element={<OnboardingUpload />} />
+        <Route path="/etudiant/onboarding/verification" element={<OnboardingVerification />} />
+        <Route path="/etudiant/onboarding/confirmation" element={<OnboardingConfirmation />} />
+        <Route path="/etudiant/auth/verify/:token" element={<MagicLinkVerify />} />
+        <Route
+          path="/etudiant"
+          element={
+            <EtudiantRoute>
+              <PageAvecNavbar><EtudiantDashboard /></PageAvecNavbar>
+            </EtudiantRoute>
+          }
+        />
 
         <Route path="/bienvenue" element={<PageAvecNavbar><Welcome /></PageAvecNavbar>} />
 

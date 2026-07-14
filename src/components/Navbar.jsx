@@ -7,6 +7,7 @@ function Navbar() {
   const location = useLocation()
 
   const liensEtudiant = [
+    { label: 'Accueil', to: '/etudiant' },
     { label: 'Offres', to: '/offres' },
     { label: 'Mon CV', to: '/mon-cv' },
     { label: 'Mon Guide', to: '/mon-guide' },
@@ -74,7 +75,7 @@ function Navbar() {
             </button>
           </>
         ) : (
-          <Link to="/login" className="text-sm font-medium text-slate-700 hover:text-slate-900">
+          <Link to="/login/etudiant" className="text-sm font-medium text-slate-700 hover:text-slate-900">
             Se connecter
           </Link>
         )}

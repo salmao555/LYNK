@@ -23,7 +23,7 @@ const LEFT_CONTENT = {
     ),
     text: "Notre algorithme calcule un score de compatibilité entre votre profil et chaque offre.",
     cta: "Je cherche un stage",
-    to: "/login/etudiant",
+    to: "/etudiant/onboarding",
   },
   etablissements: {
     badge: "Établissements",
@@ -67,7 +67,7 @@ export default function Hero() {
   return (
     <div className="grid md:grid-cols-2 min-h-[600px] font-sans">
       {/* Colonne gauche : toggle Étudiants / Établissements */}
-      <section className="flex flex-col justify-center gap-6 px-10 py-16 md:py-0 bg-[#4703d1] text-white">
+      <section className="flex flex-col justify-center gap-6 px-10 py-16 md:py-0 bg-[#331894] text-white">
         <Toggle active={leftView} onChange={setLeftView} />
         <h1 className="font-display text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
           {content.title}

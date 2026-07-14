@@ -35,7 +35,7 @@ function Testimonials() {
       <div className="grid grid-cols-3 gap-6 text-left">
         {testimonials.map((t) => (
           <div key={t.name} className="bg-white border border-slate-200 rounded-2xl p-6">
-            <p className="text-[#F2643B] mb-4">★★★★★</p>
+            <p className="text-brand-primary mb-4">★★★★★</p>
             <p className="text-slate-700 text-sm leading-relaxed mb-6">
               "{t.text}"
             </p>

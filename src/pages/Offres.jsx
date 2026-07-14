@@ -22,7 +22,7 @@ function Offres() {
           <button
             onClick={() => setVue('grille')}
             className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-              vue === 'grille' ? 'bg-[#F2643B] text-white' : 'text-slate-500'
+              vue === 'grille' ? 'bg-brand-primary text-white' : 'text-slate-500'
             }`}
           >
             Grille
@@ -30,7 +30,7 @@ function Offres() {
           <button
             onClick={() => setVue('swipe')}
             className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-              vue === 'swipe' ? 'bg-[#F2643B] text-white' : 'text-slate-500'
+              vue === 'swipe' ? 'bg-brand-primary text-white' : 'text-slate-500'
             }`}
           >
             Swipe
@@ -74,7 +74,7 @@ function Offres() {
                 >
                   ✕
                 </button>
-                <button className="w-14 h-14 rounded-full bg-[#F2643B] text-white flex items-center justify-center text-xl hover:bg-[#E8492E]">
+                <button className="w-14 h-14 rounded-full bg-brand-primary text-white flex items-center justify-center text-xl hover:bg-brand-primary-dark">
                   ✓
                 </button>
                 <button

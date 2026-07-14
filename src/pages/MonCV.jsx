@@ -1,42 +1,72 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useAuth } from '../context/AuthContext'
 
 function MonCV() {
+  const { user, updateProfile, calculateProfileScore } = useAuth()
   const [ongletActif, setOngletActif] = useState('Profil')
 
-  const [prenom, setPrenom] = useState('Théo')
-  const [nom, setNom] = useState('Dumont')
-  const [email, setEmail] = useState('theo.dumont@gmail.com')
-  const [telephone, setTelephone] = useState('+33 6 12 34 56 78')
-  const [titre, setTitre] = useState('Master Design Numérique · ENSAD Paris')
-  const [apropos, setApropos] = useState(
-    "Passionné par le design d'expérience utilisateur et l'accessibilité numérique. Disponible pour un stage de 6 mois dès mars 2025."
-  )
+  const [prenom, setPrenom] = useState('')
+  const [nom, setNom] = useState('')
+  const [email, setEmail] = useState('')
+  const [telephone, setTelephone] = useState('')
+  const [titre, setTitre] = useState('')
+  const [apropos, setApropos] = useState('')
+
+  useEffect(() => {
+    if (user?.profile) {
+      const p = user.profile
+      setPrenom(p.prenom || '')
+      setNom(p.nom || '')
+      setEmail(p.email || '')
+      setTelephone(p.telephone || '')
+      setTitre(p.niveau || '')
+      setApropos(p.ecole || '')
+    } else if (!user) {
+      setPrenom('Théo')
+      setNom('Dumont')
+      setEmail('theo.dumont@gmail.com')
+      setTelephone('+33 6 12 34 56 78')
+      setTitre('Master Design Numérique · ENSAD Paris')
+      setApropos("Passionné par le design d'expérience utilisateur et l'accessibilité numérique. Disponible pour un stage de 6 mois dès mars 2025.")
+    }
+  }, [user])
+
+  const score = user?.profile
+    ? calculateProfileScore({ ...user.profile, prenom, nom, email, telephone, niveau: titre, ecole: apropos })
+    : 100
+
+  const handleSave = () => {
+    if (user?.profile) {
+      updateProfile({ prenom, nom, email, telephone, niveau: titre, ecole: apropos })
+    }
+  }
 
   const onglets = ['Profil', 'Formation', 'Expérience', 'Compétences', 'Langues', 'Certifications']
+  const inputFocus = 'focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary'
 
   return (
-    <div className="px-16 py-8">
-      {/* En-tête de page */}
+    <div className="px-16 py-8 bg-slate-200 min-h-[calc(100vh-73px)]">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Mon CV</h1>
+        <h1 className="font-display text-2xl font-bold text-slate-900">Mon CV</h1>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-full text-sm text-slate-600 hover:bg-slate-50">
+          <button className="flex items-center gap-2 border border-slate-200 bg-white px-4 py-2 rounded-full text-sm text-slate-600 hover:bg-slate-50">
             ⬇ CV PDF
           </button>
-          <button className="bg-[#F2643B] text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-[#E8492E]">
+          <button
+            onClick={handleSave}
+            className="bg-brand-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-brand-primary-dark transition-colors"
+          >
             Sauvegarder
           </button>
         </div>
       </div>
 
       <div className="flex gap-6">
-        {/* Colonne gauche */}
         <div className="flex-1">
-          {/* Carte résumé de profil */}
           <div className="bg-white border border-slate-200 rounded-2xl p-6 mb-5 flex justify-between items-start">
             <div className="flex gap-4">
-              <div className="w-16 h-16 rounded-full bg-[#F2643B] text-white text-xl font-medium flex items-center justify-center">
-                {prenom[0]}{nom[0]}
+              <div className="w-16 h-16 rounded-full bg-brand-primary text-white text-xl font-medium flex items-center justify-center">
+                {(prenom[0] || '?')}{(nom[0] || '?')}
               </div>
               <div>
                 <h2 className="text-lg font-bold text-slate-900">{prenom} {nom}</h2>
@@ -53,19 +83,17 @@ function MonCV() {
             </div>
 
             <div className="text-right">
-              <p className="text-2xl font-bold text-[#F2643B]">100%</p>
+              <p className="text-2xl font-bold text-brand-primary">{score}%</p>
               <p className="text-slate-400 text-xs">Profil complété</p>
             </div>
           </div>
 
-          {/* Zone d'import */}
-          <div className="border-2 border-dashed border-[#F2643B]/30 rounded-2xl py-10 mb-5 text-center bg-[#F2643B]/5">
+          <div className="border-2 border-dashed border-brand-primary/30 rounded-2xl py-10 mb-5 text-center bg-brand-primary/5">
             <p className="text-2xl mb-2">⬆</p>
-            <p className="text-[#F2643B] font-semibold mb-1">Importer mon CV (PDF / DOCX)</p>
+            <p className="text-brand-primary font-semibold mb-1">Importer mon CV (PDF / DOCX)</p>
             <p className="text-slate-400 text-sm">L'IA extrait automatiquement toutes tes informations · Glisse ou clique</p>
           </div>
 
-          {/* Onglets */}
           <div className="flex gap-2 mb-6 flex-wrap">
             {onglets.map((onglet) => (
               <button
@@ -73,7 +101,7 @@ function MonCV() {
                 onClick={() => setOngletActif(onglet)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   ongletActif === onglet
-                    ? 'bg-slate-900 text-white'
+                    ? 'bg-brand-primary text-white'
                     : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
@@ -82,7 +110,6 @@ function MonCV() {
             ))}
           </div>
 
-          {/* Contenu de l'onglet Profil */}
           {ongletActif === 'Profil' && (
             <div className="bg-white border border-slate-200 rounded-2xl p-6">
               <p className="text-xs font-semibold text-slate-400 tracking-wide mb-4">
@@ -95,7 +122,7 @@ function MonCV() {
                   <input
                     value={prenom}
                     onChange={(e) => setPrenom(e.target.value)}
-                    className="w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30"
+                    className={`w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none border border-slate-200 ${inputFocus}`}
                   />
                 </div>
                 <div>
@@ -103,7 +130,7 @@ function MonCV() {
                   <input
                     value={nom}
                     onChange={(e) => setNom(e.target.value)}
-                    className="w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30"
+                    className={`w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none border border-slate-200 ${inputFocus}`}
                   />
                 </div>
               </div>
@@ -114,7 +141,7 @@ function MonCV() {
                   <input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30"
+                    className={`w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none border border-slate-200 ${inputFocus}`}
                   />
                 </div>
                 <div>
@@ -122,7 +149,7 @@ function MonCV() {
                   <input
                     value={telephone}
                     onChange={(e) => setTelephone(e.target.value)}
-                    className="w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30"
+                    className={`w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none border border-slate-200 ${inputFocus}`}
                   />
                 </div>
               </div>
@@ -132,7 +159,7 @@ function MonCV() {
                 <input
                   value={titre}
                   onChange={(e) => setTitre(e.target.value)}
-                  className="w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30"
+                  className={`w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none border border-slate-200 ${inputFocus}`}
                 />
               </div>
 
@@ -142,14 +169,13 @@ function MonCV() {
                   value={apropos}
                   onChange={(e) => setApropos(e.target.value)}
                   rows={3}
-                  className="w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#F2643B]/30 resize-none"
+                  className={`w-full bg-slate-50 rounded-lg px-4 py-2.5 text-sm outline-none border border-slate-200 resize-none ${inputFocus}`}
                 />
               </div>
             </div>
           )}
         </div>
 
-        {/* Colonne droite — Aperçu en direct */}
         <div className="w-96 shrink-0">
           <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden sticky top-24">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100">
@@ -159,19 +185,23 @@ function MonCV() {
               <p className="text-xs text-slate-400 ml-2">Aperçu CV en temps réel</p>
             </div>
 
-            <div className="bg-teal-600 text-white px-5 py-5">
+            <div className="bg-brand-primary text-white px-5 py-5">
               <p className="font-bold">{prenom} {nom}</p>
-              <p className="text-teal-100 text-sm">{titre}</p>
-              <p className="text-teal-100 text-xs mt-1">{email} · {telephone}</p>
+              <p className="text-white/80 text-sm">{titre}</p>
+              <p className="text-white/70 text-xs mt-1">{email} · {telephone}</p>
             </div>
 
             <div className="px-5 py-5 text-sm">
-              <p className="text-xs font-semibold text-teal-600 tracking-wide mb-1">À PROPOS</p>
+              <p className="text-xs font-semibold text-brand-primary tracking-wide mb-1">À PROPOS</p>
               <p className="text-slate-600 text-xs mb-4">{apropos}</p>
 
-              <p className="text-xs font-semibold text-teal-600 tracking-wide mb-1">FORMATION</p>
-              <p className="text-slate-700 text-xs">ENSAD Paris — Master Design Numérique</p>
-              <p className="text-slate-400 text-xs mb-3">2023 — présent</p>
+              {user?.profile?.experience?.[0] && (
+                <>
+                  <p className="text-xs font-semibold text-brand-primary tracking-wide mb-1">EXPÉRIENCE</p>
+                  <p className="text-slate-700 text-xs">{user.profile.experience[0].titre}</p>
+                  <p className="text-slate-400 text-xs mb-3">{user.profile.experience[0].entreprise}</p>
+                </>
+              )}
             </div>
           </div>
         </div>
