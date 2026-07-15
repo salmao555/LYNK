@@ -36,7 +36,7 @@ function Signup() {
     universite: {
       icon: Landmark,
       label: 'Établissement',
-      badgeClass: 'bg-brand-navy/10 text-brand-navy',
+      badgeClass: 'bg-brand-primary/10 text-brand-primary',
       title: 'Gérez les stages de vos étudiants',
     },
   }

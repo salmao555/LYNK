@@ -50,14 +50,14 @@ function MonGuide() {
             key={feature.id}
             className="flex flex-col bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <div className="h-12 w-12 rounded-xl bg-brand-navy/10 text-brand-navy flex items-center justify-center mb-6">
+            <div className="h-12 w-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-6">
               <feature.icon className="h-6 w-6" aria-hidden="true" />
             </div>
 
             <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
             <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-1 text-pretty">{feature.description}</p>
 
-            <button className="w-full py-3 rounded-full text-sm font-medium bg-brand-navy hover:bg-brand-navy-light text-white transition-colors">
+            <button className="w-full py-3 rounded-full text-sm font-medium bg-brand-primary hover:bg-brand-primary-light text-white transition-colors">
               {feature.button}
             </button>
           </div>

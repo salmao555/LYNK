@@ -55,8 +55,8 @@ function EntreprisePublier() {
             {/* Informations générales */}
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center">
-                  <Briefcase className="h-5 w-5 text-brand-navy" aria-hidden="true" />
+                <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                  <Briefcase className="h-5 w-5 text-brand-primary" aria-hidden="true" />
                 </div>
                 <h2 className="text-lg font-semibold text-slate-900">Informations générales</h2>
               </div>
@@ -241,7 +241,7 @@ function EntreprisePublier() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <div className="bg-brand-navy rounded-2xl p-6 text-white">
+            <div className="bg-brand-primary rounded-2xl p-6 text-white">
               <h3 className="font-semibold mb-4">Conseils pour attirer les meilleurs profils</h3>
               <ul className="space-y-3 text-sm text-white/80">
                 <li className="flex items-start gap-2">

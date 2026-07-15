@@ -1,22 +1,9 @@
 import { createContext, useContext, useState, useCallback } from 'react'
+import { registerStudentApi, verifyMagicLinkApi } from '../services/authApi'
 
 const AuthContext = createContext()
 
 const STORAGE_KEY = 'lynk_user'
-const PENDING_KEY = 'lynk_pending_users'
-const MAGIC_PREFIX = 'lynk_magic_'
-
-function loadPendingUsers() {
-  try {
-    return JSON.parse(localStorage.getItem(PENDING_KEY) || '{}')
-  } catch {
-    return {}
-  }
-}
-
-function savePendingUsers(data) {
-  localStorage.setItem(PENDING_KEY, JSON.stringify(data))
-}
 
 export function calculateProfileScore(profile) {
   if (!profile) return 0
@@ -62,54 +49,35 @@ export function AuthProvider({ children }) {
   }, [persistUser])
 
   const registerStudent = useCallback(async (profile) => {
-    const pending = loadPendingUsers()
-    const token = crypto.randomUUID()
-    pending[profile.email] = {
-      profile,
-      token,
-      verified: false,
-      createdAt: Date.now(),
+    await registerStudentApi(profile)
+    return true
+  }, [])
+
+  const verifyMagicLink = useCallback(async (token) => {
+    try {
+      const data = await verifyMagicLinkApi(token)
+      const { access, refresh, user: apiUser } = data
+
+      localStorage.setItem('lynk_access_token', access)
+      localStorage.setItem('lynk_refresh_token', refresh)
+
+      const profile = apiUser.profile || {}
+      const nom = `${profile.prenom || ''} ${profile.nom || ''}`.trim()
+      const score = calculateProfileScore(profile)
+
+      persistUser({
+        role: apiUser.role,
+        nom,
+        email: apiUser.email,
+        verified: apiUser.email_verified,
+        profile,
+        profileScore: score,
+      })
+
+      return true
+    } catch {
+      return null
     }
-    savePendingUsers(pending)
-    localStorage.setItem(`${MAGIC_PREFIX}${token}`, profile.email)
-    return token
-  }, [])
-
-  const sendMagicLink = useCallback(async (email) => {
-    await new Promise((r) => setTimeout(r, 800))
-    const pending = loadPendingUsers()
-    const entry = pending[email]
-    if (!entry) throw new Error('Compte introuvable.')
-    localStorage.setItem(`${MAGIC_PREFIX}${entry.token}`, email)
-    return entry.token
-  }, [])
-
-  const verifyMagicLink = useCallback((token) => {
-    const email = localStorage.getItem(`${MAGIC_PREFIX}${token}`)
-    if (!email) return null
-
-    const pending = loadPendingUsers()
-    const entry = pending[email]
-    if (!entry) return null
-
-    pending[email] = { ...entry, verified: true }
-    savePendingUsers(pending)
-    localStorage.removeItem(`${MAGIC_PREFIX}${token}`)
-
-    const { profile } = entry
-    const nom = `${profile.prenom} ${profile.nom}`.trim()
-    const score = calculateProfileScore(profile)
-
-    persistUser({
-      role: 'etudiant',
-      nom,
-      email: profile.email,
-      verified: true,
-      profile,
-      profileScore: score,
-    })
-
-    return { nom, email, profile, profileScore: score }
   }, [persistUser])
 
   const updateProfile = useCallback((updates) => {
@@ -133,7 +101,6 @@ export function AuthProvider({ children }) {
       login,
       logout,
       registerStudent,
-      sendMagicLink,
       verifyMagicLink,
       updateProfile,
       calculateProfileScore,

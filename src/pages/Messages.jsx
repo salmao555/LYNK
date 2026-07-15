@@ -73,7 +73,7 @@ function Messages() {
               onClick={() => setSelectedConversation(conv.id)}
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-brand-navy flex items-center justify-center text-white font-semibold">
+                <div className="w-12 h-12 rounded-full bg-brand-primary flex items-center justify-center text-white font-semibold">
                   {conv.avatar}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -101,7 +101,7 @@ function Messages() {
             {/* Chat Header */}
             <div className="p-6 border-b border-slate-200 bg-white">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-white font-semibold">
+                <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-semibold">
                   {conversations.find(c => c.id === selectedConversation)?.avatar}
                 </div>
                 <div>

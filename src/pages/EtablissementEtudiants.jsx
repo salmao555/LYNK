@@ -83,8 +83,8 @@ function EtablissementEtudiants() {
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center">
-              <Users className="h-5 w-5 text-brand-navy" aria-hidden="true" />
+            <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+              <Users className="h-5 w-5 text-brand-primary" aria-hidden="true" />
             </div>
             <span className="text-2xl font-bold text-slate-900">156</span>
           </div>

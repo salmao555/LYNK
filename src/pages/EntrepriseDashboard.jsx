@@ -106,8 +106,8 @@ function EntrepriseDashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 rounded-xl bg-brand-navy/10 flex items-center justify-center">
-              <BarChart3 className="h-6 w-6 text-brand-navy" aria-hidden="true" />
+            <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+              <BarChart3 className="h-6 w-6 text-brand-primary" aria-hidden="true" />
             </div>
             <span className="text-sm font-medium text-emerald-600">+12%</span>
           </div>
@@ -139,8 +139,8 @@ function EntrepriseDashboard() {
 
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 rounded-xl bg-brand-navy/10 flex items-center justify-center">
-              <Briefcase className="h-6 w-6 text-brand-navy" aria-hidden="true" />
+            <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+              <Briefcase className="h-6 w-6 text-brand-primary" aria-hidden="true" />
             </div>
             <span className="text-sm font-medium text-emerald-600">+2</span>
           </div>
@@ -154,8 +154,8 @@ function EntrepriseDashboard() {
         <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center">
-                <Briefcase className="h-5 w-5 text-brand-navy" aria-hidden="true" />
+              <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                <Briefcase className="h-5 w-5 text-brand-primary" aria-hidden="true" />
               </div>
               <h2 className="text-lg font-semibold text-slate-900">Offres récentes</h2>
             </div>

@@ -44,12 +44,12 @@ function Navbar() {
                 key={lien.to}
                 to={lien.to}
                 className={`hover:text-slate-900 transition-colors relative ${
-                  isActive(lien.to) ? 'text-brand-orange font-semibold' : ''
+                  isActive(lien.to) ? 'text-brand-primary font-semibold' : ''
                 }`}
               >
                 {lien.label}
                 {isActive(lien.to) && (
-                  <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-brand-orange rounded-full" />
+                  <span className="absolute -bottom-5 left-0 right-0 h-0.5 bg-brand-primary rounded-full" />
                 )}
               </Link>
             ))}

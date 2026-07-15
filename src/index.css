@@ -4,16 +4,16 @@
   --font-display: "Sora", sans-serif;
   --font-sans: "DM Sans", sans-serif;
 
-  --color-brand-primary: #331894;
-  --color-brand-primary-light: #5B2BC4;
-  --color-brand-primary-dark: #27017d;
-  --color-brand-primary-muted: #3318941a;
+  --color-brand-primary: #F4623A;
+  --color-brand-primary-light: #F4623A;
+  --color-brand-primary-dark: #D9522E;
+  --color-brand-primary-muted: rgba(244, 98, 58, 0.1);
 
-  --color-brand-orange: #331894;
-  --color-brand-orange-dark: #27017d;
+  --color-brand-orange: #F4623A;
+  --color-brand-orange-dark: #D9522E;
 
-  --color-brand-navy: #0a1038;
-  --color-brand-navy-light: #1a2060;
+  --color-brand-secondary: #14B8A6;
+  --color-brand-secondary-dark: #0D9488;
 
   --color-cream: #FAF7F2;
 }

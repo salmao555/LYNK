@@ -57,7 +57,7 @@ function Chatbot() {
       isMinimized ? 'w-80' : 'w-96 h-[500px]'
     }`}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-brand-navy">
+      <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-brand-primary">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center">
             <MessageSquare className="h-5 w-5 text-brand-orange" aria-hidden="true" />

@@ -35,7 +35,7 @@ function EntrepriseProfil() {
         {!isEditing ? (
           <button
             onClick={() => setIsEditing(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-brand-navy hover:bg-brand-navy-light text-white font-semibold rounded-full transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary hover:bg-brand-primary-light text-white font-semibold rounded-full transition-colors"
           >
             Modifier
           </button>
@@ -63,7 +63,7 @@ function EntrepriseProfil() {
         <div className="lg:col-span-1">
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
             {/* Cover */}
-            <div className="h-32 bg-gradient-to-r from-brand-navy to-brand-navy-light relative">
+            <div className="h-32 bg-gradient-to-r from-brand-primary to-brand-primary-light relative">
               {isEditing && (
                 <button className="absolute bottom-2 right-2 p-2 bg-white/20 hover:bg-white/30 rounded-lg text-white transition-colors">
                   <Camera className="h-4 w-4" aria-hidden="true" />
@@ -75,7 +75,7 @@ function EntrepriseProfil() {
             <div className="px-6 pb-6">
               <div className="relative -mt-12 mb-4">
                 <div className="w-24 h-24 rounded-2xl bg-white border-4 border-white shadow-lg flex items-center justify-center">
-                  <Building2 className="h-12 w-12 text-brand-navy" aria-hidden="true" />
+                  <Building2 className="h-12 w-12 text-brand-primary" aria-hidden="true" />
                 </div>
                 {isEditing && (
                   <button className="absolute bottom-0 right-0 p-2 bg-brand-orange hover:bg-brand-orange-dark rounded-lg text-white transition-colors">

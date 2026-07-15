@@ -29,10 +29,10 @@ function HowItWorks() {
       <div className="grid grid-cols-3 gap-10 text-left">
         {steps.map((step, index) => (
           <div key={step.title} className="relative">
-            <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#693EFE] text-white text-xl mb-5">
+            <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-brand-primary text-white text-xl mb-5">
               {step.icon}
             </div>
-            <span className="absolute top-0 right-0 text-6xl font-bold text-slate-400 -z-10">
+            <span className="absolute top-0 right-0 text-6xl font-bold text-slate-200 -z-10">
               {index + 1}
             </span>
             <h3 className="text-lg font-semibold text-slate-900 mb-2">

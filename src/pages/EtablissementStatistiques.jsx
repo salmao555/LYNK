@@ -88,8 +88,8 @@ function EtablissementStatistiques() {
 
         <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 rounded-xl bg-brand-navy/10 flex items-center justify-center">
-              <Users className="h-6 w-6 text-brand-navy" aria-hidden="true" />
+            <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+              <Users className="h-6 w-6 text-brand-primary" aria-hidden="true" />
             </div>
             <div className={`flex items-center gap-1 text-sm font-medium ${
               stats.students.trend === 'up' ? 'text-emerald-600' : 'text-red-600'
@@ -151,8 +151,8 @@ function EtablissementStatistiques() {
         {/* Par Filière */}
         <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center">
-              <GraduationCap className="h-5 w-5 text-brand-navy" aria-hidden="true" />
+            <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+              <GraduationCap className="h-5 w-5 text-brand-primary" aria-hidden="true" />
             </div>
             <h2 className="text-lg font-semibold text-slate-900">Taux de placement par filière</h2>
           </div>
@@ -165,7 +165,7 @@ function EtablissementStatistiques() {
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2">
                   <div
-                    className="bg-brand-navy rounded-full h-2 transition-all"
+                    className="bg-brand-primary rounded-full h-2 transition-all"
                     style={{ width: `${filiere.taux}%` }}
                   />
                 </div>
@@ -222,7 +222,7 @@ function EtablissementStatistiques() {
                 <div key={data.mois} className="flex-1 flex flex-col items-center gap-2">
                   <div className="flex items-end gap-1 h-full">
                     <div
-                      className="w-8 bg-brand-navy rounded-t transition-all"
+                      className="w-8 bg-brand-primary rounded-t transition-all"
                       style={{ height: `${placesHeight}px` }}
                       title={`${data.places} places`}
                     />
@@ -239,7 +239,7 @@ function EtablissementStatistiques() {
           </div>
           <div className="flex items-center justify-center gap-6 mt-4">
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded bg-brand-navy" />
+              <div className="w-3 h-3 rounded bg-brand-primary" />
               <span className="text-xs text-slate-600">Stages validés</span>
             </div>
             <div className="flex items-center gap-2">

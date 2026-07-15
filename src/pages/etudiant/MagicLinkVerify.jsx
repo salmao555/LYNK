@@ -12,13 +12,16 @@ export default function MagicLinkVerify() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    const result = verifyMagicLink(token)
-    if (result) {
-      reset()
-      navigate('/etudiant', { replace: true })
-    } else {
-      setError('Ce lien est invalide ou a expiré.')
+    async function run() {
+      const result = await verifyMagicLink(token)
+      if (result) {
+        reset()
+        navigate('/etudiant', { replace: true })
+      } else {
+        setError("Ce lien est invalide ou a expire.")
+      }
     }
+    run()
   }, [token, verifyMagicLink, navigate, reset])
 
   if (error) {

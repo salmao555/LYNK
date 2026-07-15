@@ -86,7 +86,7 @@ function Welcome() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <span className={`inline-block text-sm px-4 py-1.5 rounded-full font-medium mb-4 ${
-            estEtudiant ? 'bg-brand-orange/10 text-brand-orange' : estEtablissement ? 'bg-brand-navy/10 text-brand-navy' : 'bg-slate-100 text-slate-600'
+            estEtudiant ? 'bg-brand-orange/10 text-brand-orange' : estEtablissement ? 'bg-brand-primary/10 text-brand-primary' : 'bg-slate-100 text-slate-600'
           }`}>
             {estEtudiant ? 'Espace étudiant' : estEtablissement ? 'Espace établissement' : 'Espace entreprise'}
           </span>
@@ -117,7 +117,7 @@ function Welcome() {
               <h3 className="font-bold text-slate-900 mb-3 text-lg">{carte.titre}</h3>
               <p className="text-slate-600 text-sm mb-6 flex-1 leading-relaxed text-pretty">{carte.texte}</p>
               
-              <span className="inline-block text-center py-3 px-4 rounded-xl font-semibold bg-brand-navy text-white group-hover:bg-brand-orange transition-colors">
+              <span className="inline-block text-center py-3 px-4 rounded-xl font-semibold bg-brand-primary text-white group-hover:bg-brand-primary-dark transition-colors">
                 {carte.cta}
               </span>
             </Link>

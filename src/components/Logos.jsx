@@ -5,7 +5,7 @@ function Logos() {
   ]
 
   return (
-    <section className="bg-slate-50 px-16 py-14 text-center">
+    <section className="bg-slate-100 px-16 py-14 text-center">
       <p className="text-slate-400 text-sm font-medium tracking-wide mb-8">
         ILS NOUS FONT CONFIANCE
       </p>

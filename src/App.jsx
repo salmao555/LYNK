@@ -21,11 +21,14 @@ import Messages from './pages/Messages'
 import EtablissementConventions from './pages/EtablissementConventions'
 import EtablissementEtudiants from './pages/EtablissementEtudiants'
 import EtablissementStatistiques from './pages/EtablissementStatistiques'
-import OnboardingUpload from './pages/etudiant/OnboardingUpload'
-import OnboardingVerification from './pages/etudiant/OnboardingVerification'
-import OnboardingConfirmation from './pages/etudiant/OnboardingConfirmation'
-import MagicLinkVerify from './pages/etudiant/MagicLinkVerify'
-import EtudiantDashboard from './pages/etudiant/EtudiantDashboard'
+import AcademiqueChoix from './pages/AcademiqueChoix'
+import OnboardingCVUpload from './pages/onboarding/OnboardingCVUpload'
+import OnboardingPersonalInfo from './pages/onboarding/OnboardingPersonalInfo'
+import OnboardingExperience from './pages/onboarding/OnboardingExperience'
+import OnboardingProjectsSkills from './pages/onboarding/OnboardingProjectsSkills'
+import OnboardingPreferences from './pages/onboarding/OnboardingPreferences'
+import OnboardingMatchingPreview from './pages/onboarding/OnboardingMatchingPreview'
+import OnboardingAuth from './pages/onboarding/OnboardingAuth'
 import { useAuth } from './context/AuthContext'
 
 function LandingPage() {
@@ -54,7 +57,7 @@ function PageAvecNavbar({ children }) {
 function EtudiantRoute({ children }) {
   const { user } = useAuth()
   if (!user || user.role !== 'etudiant' || !user.verified) {
-    return <Navigate to="/etudiant/onboarding" replace />
+    return <Navigate to="/onboarding/cv-upload" replace />
   }
   return children
 }
@@ -64,22 +67,18 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/academique/choix" element={<AcademiqueChoix />} />
         <Route path="/login/:role" element={<Login />} />
         <Route path="/signup/:role" element={<Signup />} />
 
-        {/* Flow onboarding étudiant — passwordless via CV */}
-        <Route path="/etudiant/onboarding" element={<OnboardingUpload />} />
-        <Route path="/etudiant/onboarding/verification" element={<OnboardingVerification />} />
-        <Route path="/etudiant/onboarding/confirmation" element={<OnboardingConfirmation />} />
-        <Route path="/etudiant/auth/verify/:token" element={<MagicLinkVerify />} />
-        <Route
-          path="/etudiant"
-          element={
-            <EtudiantRoute>
-              <PageAvecNavbar><EtudiantDashboard /></PageAvecNavbar>
-            </EtudiantRoute>
-          }
-        />
+        {/* New onboarding flow - OAuth based */}
+        <Route path="/onboarding/cv-upload" element={<OnboardingCVUpload />} />
+        <Route path="/onboarding/personal-info" element={<OnboardingPersonalInfo />} />
+        <Route path="/onboarding/experience" element={<OnboardingExperience />} />
+        <Route path="/onboarding/projects-skills" element={<OnboardingProjectsSkills />} />
+        <Route path="/onboarding/preferences" element={<OnboardingPreferences />} />
+        <Route path="/onboarding/matching-preview" element={<OnboardingMatchingPreview />} />
+        <Route path="/onboarding/auth" element={<OnboardingAuth />} />
 
         <Route path="/bienvenue" element={<PageAvecNavbar><Welcome /></PageAvecNavbar>} />
 
