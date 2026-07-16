@@ -3,12 +3,12 @@ import { GraduationCap, Landmark, ArrowLeft } from 'lucide-react'
 
 function AcademiqueChoix() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
       {/* Subtle orange gradient - top-right corner */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header simple avec logo */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -30,7 +30,7 @@ function AcademiqueChoix() {
             {/* Carte Étudiant */}
             <Link
               to="/onboarding/cv-upload"
-              className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 flex flex-col items-center text-center cursor-pointer"
+              className="group bg-cream-white rounded-2xl border border-cream-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 flex flex-col items-center text-center cursor-pointer"
             >
               <div className="w-20 h-20 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors">
                 <GraduationCap className="h-10 w-10 text-brand-primary" aria-hidden="true" />
@@ -47,7 +47,7 @@ function AcademiqueChoix() {
             {/* Carte Établissement */}
             <Link
               to="/onboarding/etablissement/info"
-              className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 flex flex-col items-center text-center cursor-pointer"
+              className="group bg-cream-white rounded-2xl border border-cream-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 flex flex-col items-center text-center cursor-pointer"
             >
               <div className="w-20 h-20 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors">
                 <Landmark className="h-10 w-10 text-brand-primary" aria-hidden="true" />
@@ -66,7 +66,7 @@ function AcademiqueChoix() {
           <div className="mt-12 text-center">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-slate-600 transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-medium text-cream-white hover:text-slate-600 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Retour à l'accueil

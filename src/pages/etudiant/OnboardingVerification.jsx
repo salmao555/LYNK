@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext'
 import { emptyProfile } from '../../services/cvExtraction'
 
 const inputClass =
-  'w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none border border-slate-200 focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all'
+  'w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none border border-cream-white focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all'
 
 export default function OnboardingVerification() {
   const navigate = useNavigate()
@@ -70,7 +70,7 @@ export default function OnboardingVerification() {
 
   return (
     <OnboardingLayout step={2}>
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
+      <div className="bg-cream-white rounded-3xl border border-cream-white shadow-sm p-8 md:p-10">
         <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">
           Vérifiez que tout est correct
         </h1>
@@ -170,7 +170,7 @@ export default function OnboardingVerification() {
               <button
                 type="button"
                 onClick={addSkill}
-                className="shrink-0 px-4 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-600"
+                className="shrink-0 px-4 rounded-xl border border-cream-white hover:bg-cream text-slate-600"
               >
                 <Plus className="h-5 w-5" />
               </button>
@@ -181,7 +181,7 @@ export default function OnboardingVerification() {
             <label className="text-sm text-slate-600 block mb-3">Expériences précédentes</label>
             <div className="space-y-4">
               {profile.experience.map((exp, i) => (
-                <div key={i} className="rounded-xl border border-slate-200 p-4 space-y-3">
+                <div key={i} className="rounded-xl border border-cream-white p-4 space-y-3">
                   <input
                     value={exp.titre}
                     onChange={(e) => updateExperience(i, 'titre', e.target.value)}

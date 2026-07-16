@@ -91,9 +91,12 @@ function OnboardingEtablissementInfo() {
   const etablissementTypes = ['Université', 'École d\'ingénieur', 'École de commerce', 'Institut spécialisé', 'Autre']
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -104,7 +107,7 @@ function OnboardingEtablissementInfo() {
           <Stepper steps={etablissementSteps} currentStep={1} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Parlez-nous de votre établissement</h1>
             <p className="text-slate-500 mb-8">Ces informations apparaîtront sur votre profil, visible par les entreprises.</p>
 
@@ -120,7 +123,7 @@ function OnboardingEtablissementInfo() {
                   value={formData.etablissementName}
                   onChange={handleChange}
                   placeholder="Ex: Université Mohammed V"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
 
@@ -135,7 +138,7 @@ function OnboardingEtablissementInfo() {
                       <img
                         src={formData.logoPreview}
                         alt="Logo preview"
-                        className="w-20 h-20 rounded-full object-cover border-2 border-slate-200"
+                        className="w-20 h-20 rounded-full object-cover border-2 border-cream-white"
                       />
                       <button
                         onClick={handleRemoveLogo}
@@ -145,14 +148,14 @@ function OnboardingEtablissementInfo() {
                       </button>
                     </div>
                   ) : (
-                    <label className="w-20 h-20 rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center cursor-pointer hover:border-brand-primary hover:bg-slate-50 transition-all">
+                    <label className="w-20 h-20 rounded-full border-2 border-dashed border-cream-white flex items-center justify-center cursor-pointer hover:border-brand-primary hover:bg-cream transition-all">
                       <input
                         type="file"
                         accept="image/*"
                         onChange={handleLogoUpload}
                         className="hidden"
                       />
-                      <Upload className="h-8 w-8 text-slate-400" aria-hidden="true" />
+                      <Upload className="h-8 w-8 text-cream-white" aria-hidden="true" />
                     </label>
                   )}
                   <p className="text-sm text-slate-500">Format carré, max 5MB</p>
@@ -172,7 +175,7 @@ function OnboardingEtablissementInfo() {
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                         formData.etablissementType === type
                           ? 'bg-brand-primary text-white'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          : 'bg-cream-white text-slate-700 hover:bg-cream-white'
                       }`}
                     >
                       {type}
@@ -194,7 +197,7 @@ function OnboardingEtablissementInfo() {
                     onKeyDown={handleCityKeyDown}
                     placeholder="Ajouter une ville..."
                     list="moroccan-cities"
-                    className="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                    className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                   />
                   <datalist id="moroccan-cities">
                     {moroccanCities.map(city => (
@@ -237,7 +240,7 @@ function OnboardingEtablissementInfo() {
                   value={formData.website}
                   onChange={handleChange}
                   placeholder="https://www.votre-etablissement.ma"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
             </div>
@@ -246,7 +249,7 @@ function OnboardingEtablissementInfo() {
             <div className="mt-8 flex justify-between">
               <Link
                 to="/academique/choix"
-                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 Retour

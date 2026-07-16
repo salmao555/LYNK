@@ -11,7 +11,7 @@ function CTA() {
       </p>
       <Link
         to="/etudiant/onboarding"
-        className="inline-block bg-white text-brand-primary font-semibold px-8 py-3 rounded-full hover:bg-slate-50 transition-colors"
+        className="inline-block bg-cream-white text-brand-primary font-semibold px-8 py-3 rounded-full hover:bg-cream transition-colors"
       >
         Commencer gratuitement →
       </Link>

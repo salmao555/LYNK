@@ -30,7 +30,7 @@ function Signup() {
     entreprise: {
       icon: Building2,
       label: 'Entreprise',
-      badgeClass: 'bg-slate-100 text-slate-600',
+      badgeClass: 'bg-cream-white text-slate-600',
       title: 'Recrutez vos futurs talents',
     },
     universite: {
@@ -44,13 +44,13 @@ function Signup() {
   const config = roleConfig[role] || roleConfig.etudiant
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="bg-white rounded-3xl p-10 w-full max-w-md border border-slate-200 shadow-sm">
+    <div className="min-h-screen flex items-center justify-center bg-cream px-4">
+      <div className="bg-cream-white rounded-3xl p-10 w-full max-w-md border border-cream-white shadow-sm">
         <p className="text-2xl font-bold text-brand-orange text-center mb-8">Lynk</p>
 
         <div className="text-center mb-6">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <config.icon className="h-4 w-4 text-slate-400" aria-hidden="true" />
+            <config.icon className="h-4 w-4 text-cream-white" aria-hidden="true" />
             <span className={`inline-block text-xs font-semibold tracking-wider px-3 py-1.5 rounded-full ${config.badgeClass}`}>
               {config.label}
             </span>
@@ -61,20 +61,20 @@ function Signup() {
         </div>
 
         <div className="flex flex-col gap-3 mb-6">
-          <button type="button" className="flex items-center justify-center gap-2 border border-slate-200 rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
+          <button type="button" className="flex items-center justify-center gap-2 border border-cream-white rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-cream transition-colors">
             <span>💼</span> Continuer avec LinkedIn
           </button>
           {estEtudiant && (
-            <button type="button" className="flex items-center justify-center gap-2 border border-slate-200 rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
+            <button type="button" className="flex items-center justify-center gap-2 border border-cream-white rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-cream transition-colors">
               <span>🐙</span> Continuer avec GitHub
             </button>
           )}
         </div>
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex-1 h-px bg-slate-200"></div>
-          <span className="text-xs text-slate-400">ou par email</span>
-          <div className="flex-1 h-px bg-slate-200"></div>
+          <div className="flex-1 h-px bg-cream-white"></div>
+          <span className="text-xs text-cream-white">ou par email</span>
+          <div className="flex-1 h-px bg-cream-white"></div>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -86,10 +86,10 @@ function Signup() {
               estEtudiant ? 'Nom complet' : estUniversite ? "Nom de l'établissement" : "Nom de l'entreprise"
             }
             required
-            className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-slate-200 transition-all"
+            className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all"
           />
-          <input type="email" placeholder="Email" required className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-slate-200 transition-all" />
-          <input type="password" placeholder="Mot de passe" required className="w-full bg-slate-50 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-slate-200 transition-all" />
+          <input type="email" placeholder="Email" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all" />
+          <input type="password" placeholder="Mot de passe" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all" />
 
           <button
             type="submit"

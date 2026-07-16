@@ -48,7 +48,7 @@ function MonGuide() {
         {features.map((feature) => (
           <div
             key={feature.id}
-            className="flex flex-col bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            className="flex flex-col bg-cream-white border border-cream-white rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <div className="h-12 w-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-6">
               <feature.icon className="h-6 w-6" aria-hidden="true" />

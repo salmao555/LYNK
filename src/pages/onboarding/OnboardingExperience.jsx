@@ -54,9 +54,12 @@ function OnboardingExperience() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -67,17 +70,17 @@ function OnboardingExperience() {
           <Stepper steps={studentSteps} currentStep={3} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Expériences précédentes</h1>
             <p className="text-slate-500 mb-8">Ajoutez vos expériences professionnelles ou académiques.</p>
 
             <div className="space-y-6">
               {experiences.map((experience, index) => (
-                <div key={experience.id} className="border border-slate-200 rounded-xl p-6 relative">
+                <div key={experience.id} className="border border-cream-white rounded-xl p-6 relative">
                   {experiences.length > 1 && (
                     <button
                       onClick={() => removeExperience(experience.id)}
-                      className="absolute top-4 right-4 p-2 rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-600 transition-colors"
+                      className="absolute top-4 right-4 p-2 rounded-lg hover:bg-red-50 text-cream-white hover:text-red-600 transition-colors"
                       aria-label="Supprimer"
                     >
                       <Trash2 className="h-4 w-4" aria-hidden="true" />
@@ -99,7 +102,7 @@ function OnboardingExperience() {
                         value={experience.title}
                         onChange={(e) => updateExperience(experience.id, 'title', e.target.value)}
                         placeholder="Ex: Développeur Web"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                       />
                     </div>
                     <div>
@@ -109,7 +112,7 @@ function OnboardingExperience() {
                         value={experience.company}
                         onChange={(e) => updateExperience(experience.id, 'company', e.target.value)}
                         placeholder="Ex: TechCorp"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                       />
                     </div>
                   </div>
@@ -121,7 +124,7 @@ function OnboardingExperience() {
                         type="date"
                         value={experience.startDate}
                         onChange={(e) => updateExperience(experience.id, 'startDate', e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                       />
                     </div>
                     <div>
@@ -130,7 +133,7 @@ function OnboardingExperience() {
                         type="date"
                         value={experience.endDate}
                         onChange={(e) => updateExperience(experience.id, 'endDate', e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                       />
                     </div>
                   </div>
@@ -142,7 +145,7 @@ function OnboardingExperience() {
                       onChange={(e) => updateExperience(experience.id, 'description', e.target.value)}
                       placeholder="Décrivez vos responsabilités et réalisations..."
                       rows={3}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -150,7 +153,7 @@ function OnboardingExperience() {
 
               <button
                 onClick={addExperience}
-                className="flex items-center gap-2 w-full py-3 border-2 border-dashed border-slate-300 rounded-xl text-slate-600 hover:border-brand-primary hover:text-brand-primary transition-colors"
+                className="flex items-center gap-2 w-full py-3 border-2 border-dashed border-cream-white rounded-xl text-slate-600 hover:border-brand-primary hover:text-brand-primary transition-colors"
               >
                 <Plus className="h-4 w-4" aria-hidden="true" />
                 Ajouter une expérience
@@ -162,7 +165,7 @@ function OnboardingExperience() {
               <Link
                 to="/onboarding/personal-info"
                 onClick={handleNext}
-                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 Précédent

@@ -1,17 +1,17 @@
 function HowItWorks() {
   const steps = [
     {
-      icon: "🎓",
+      icon: "✎𓂃",
       title: "Créez votre profil",
       text: "Renseignez vos compétences, expériences et votre courte vidéo de présentation. Notre IA analyse vos points forts.",
     },
     {
-      icon: "✨",
+      icon: "꩜",
       title: "Découvrez vos matchs",
       text: "Recevez des offres triées par compatibilité. Chaque carte affiche un score calculé selon votre profil.",
     },
     {
-      icon: "⚡",
+      icon: "ᯓ➤",
       title: "Postulez en 1 clic",
       text: "Candidatez directement depuis la plateforme. Suivez vos candidatures et échangez avec les recruteurs.",
     },
@@ -19,7 +19,7 @@ function HowItWorks() {
 
   return (
     <section className="px-16 py-20 text-center">
-      <p className="text-slate-400 text-sm font-medium tracking-wide mb-3">
+      <p className="text-cream-white text-sm font-medium tracking-wide mb-3">
         COMMENT ÇA MARCHE
       </p>
       <h2 className="text-4xl font-bold text-slate-900 mb-16">
@@ -32,7 +32,7 @@ function HowItWorks() {
             <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-brand-primary text-white text-xl mb-5">
               {step.icon}
             </div>
-            <span className="absolute top-0 right-0 text-6xl font-bold text-slate-200 -z-10">
+            <span className="absolute top-0 right-0 text-6xl font-bold text-cream-white -z-10">
               {index + 1}
             </span>
             <h3 className="text-lg font-semibold text-slate-900 mb-2">

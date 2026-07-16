@@ -82,11 +82,11 @@ function Welcome() {
   const cartes = estEtudiant ? cartesEtudiant : estEtablissement ? cartesEtablissement : cartesEntreprise
 
   return (
-    <div className="min-h-[calc(100vh-73px)] bg-slate-50 px-8 py-16">
+    <div className="min-h-[calc(100vh-73px)] bg-cream px-8 py-16">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <span className={`inline-block text-sm px-4 py-1.5 rounded-full font-medium mb-4 ${
-            estEtudiant ? 'bg-brand-orange/10 text-brand-orange' : estEtablissement ? 'bg-brand-primary/10 text-brand-primary' : 'bg-slate-100 text-slate-600'
+            estEtudiant ? 'bg-brand-orange/10 text-brand-orange' : estEtablissement ? 'bg-brand-primary/10 text-brand-primary' : 'bg-cream-white text-slate-600'
           }`}>
             {estEtudiant ? 'Espace étudiant' : estEtablissement ? 'Espace établissement' : 'Espace entreprise'}
           </span>
@@ -108,7 +108,7 @@ function Welcome() {
             <Link
               key={carte.titre}
               to={carte.lien}
-              className="group flex flex-col bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col bg-cream-white rounded-2xl p-8 border border-cream-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
               <div className="h-12 w-12 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center mb-6">
                 <carte.icone className="h-6 w-6" aria-hidden="true" />

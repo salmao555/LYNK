@@ -57,7 +57,7 @@ function UploadZone({ onFileSelect, file, onRemove }) {
             </div>
             <button
               onClick={onRemove}
-              className="ml-auto text-slate-400 hover:text-red-500 transition-colors"
+              className="ml-auto text-cream-white hover:text-red-500 transition-colors"
               aria-label="Supprimer le fichier"
             >
               ×
@@ -73,10 +73,10 @@ function UploadZone({ onFileSelect, file, onRemove }) {
           className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${
             isDragging
               ? 'border-brand-primary bg-brand-primary/5'
-              : 'border-slate-300 hover:border-brand-primary hover:bg-slate-50'
+              : 'border-cream-white hover:border-brand-primary hover:bg-cream'
           }`}
         >
-          <Upload className="h-12 w-12 mx-auto mb-4 text-slate-400" aria-hidden="true" />
+          <Upload className="h-12 w-12 mx-auto mb-4 text-cream-white" aria-hidden="true" />
           <p className="text-slate-700 mb-2">
             Glissez-déposez votre fichier ici
           </p>
@@ -87,11 +87,11 @@ function UploadZone({ onFileSelect, file, onRemove }) {
               e.stopPropagation()
               handleBrowseClick()
             }}
-            className="px-6 py-2 rounded-full border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 transition-colors"
+            className="px-6 py-2 rounded-full border border-cream-white text-slate-700 font-medium hover:bg-cream transition-colors"
           >
             Sélectionner un fichier
           </button>
-          <p className="text-xs text-slate-400 mt-4">PDF ou DOCX, max 10 MB</p>
+          <p className="text-xs text-cream-white mt-4">PDF ou DOCX, max 10 MB</p>
         </div>
       )}
     </div>
@@ -137,12 +137,12 @@ function OnboardingCVUpload() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
       {/* Subtle orange gradient - top-right corner */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
 
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -162,9 +162,9 @@ function OnboardingCVUpload() {
           {/* Accordion Options */}
           <div className="space-y-4">
             {/* Option A - Upload CV (expanded by default) */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm overflow-hidden">
               <div
-                className="flex items-center justify-between p-6 cursor-pointer hover:bg-slate-50 transition-colors"
+                className="flex items-center justify-between p-6 cursor-pointer hover:bg-cream transition-colors"
                 onClick={() => setExpandedOption('cv')}
               >
                 <div className="flex items-center gap-3">
@@ -174,9 +174,9 @@ function OnboardingCVUpload() {
                   <h3 className="font-semibold text-slate-900">Uploader mon CV</h3>
                 </div>
                 {expandedOption === 'cv' ? (
-                  <ChevronUp className="h-5 w-5 text-slate-400" aria-hidden="true" />
+                  <ChevronUp className="h-5 w-5 text-cream-white" aria-hidden="true" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-slate-400" aria-hidden="true" />
+                  <ChevronDown className="h-5 w-5 text-cream-white" aria-hidden="true" />
                 )}
               </div>
 
@@ -195,16 +195,16 @@ function OnboardingCVUpload() {
             </div>
 
             {/* Option B - LinkedIn (collapsed by default) */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm overflow-hidden">
               <div
-                className="flex items-center justify-between p-6 cursor-pointer hover:bg-slate-50 transition-colors"
+                className="flex items-center justify-between p-6 cursor-pointer hover:bg-cream transition-colors"
                 onClick={() => setExpandedOption('linkedin')}
               >
                 <h3 className="font-semibold text-slate-900">Ajouter depuis LinkedIn</h3>
                 {expandedOption === 'linkedin' ? (
-                  <ChevronUp className="h-5 w-5 text-slate-400" aria-hidden="true" />
+                  <ChevronUp className="h-5 w-5 text-cream-white" aria-hidden="true" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-slate-400" aria-hidden="true" />
+                  <ChevronDown className="h-5 w-5 text-cream-white" aria-hidden="true" />
                 )}
               </div>
 
@@ -247,7 +247,7 @@ function OnboardingCVUpload() {
           <div className="mt-8 text-center">
             <Link
               to="/onboarding/personal-info"
-              className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-600 transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-cream-white hover:text-slate-600 transition-colors"
             >
               Je préfère remplir manuellement
             </Link>

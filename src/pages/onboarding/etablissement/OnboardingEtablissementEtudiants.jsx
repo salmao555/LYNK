@@ -96,9 +96,12 @@ function OnboardingEtablissementEtudiants() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -109,7 +112,7 @@ function OnboardingEtablissementEtudiants() {
           <Stepper steps={etablissementSteps} currentStep={3} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Ajoutez vos étudiants</h1>
             <p className="text-slate-500 mb-8">Deux façons de faire, vous pouvez utiliser les deux. Cette étape est optionnelle — vous pourrez compléter plus tard depuis votre dashboard.</p>
 
@@ -134,7 +137,7 @@ function OnboardingEtablissementEtudiants() {
 
                 <button
                   onClick={handleDownloadTemplate}
-                  className="w-full mb-4 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 transition-colors text-sm font-medium text-slate-700"
+                  className="w-full mb-4 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-cream-white bg-cream-white hover:bg-cream transition-colors text-sm font-medium text-slate-700"
                 >
                   <Download className="h-4 w-4" aria-hidden="true" />
                   Télécharger le modèle
@@ -142,7 +145,7 @@ function OnboardingEtablissementEtudiants() {
 
                 <div
                   className={`border-2 border-dashed rounded-xl p-6 text-center transition-all ${
-                    isDragging ? 'border-brand-primary bg-brand-primary/5' : 'border-slate-300 hover:border-slate-400'
+                    isDragging ? 'border-brand-primary bg-brand-primary/5' : 'border-cream-white hover:border-cream-white'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -159,16 +162,16 @@ function OnboardingEtablissementEtudiants() {
                     htmlFor="csv-upload"
                     className="cursor-pointer flex flex-col items-center"
                   >
-                    <Upload className="h-8 w-8 text-slate-400 mb-2" aria-hidden="true" />
+                    <Upload className="h-8 w-8 text-cream-white mb-2" aria-hidden="true" />
                     <p className="text-sm text-slate-600 mb-1">
                       {formData.studentImport.csvFile ? 'Fichier chargé' : 'Glissez-déposez ou cliquez pour uploader'}
                     </p>
-                    <p className="text-xs text-slate-400">Format CSV uniquement</p>
+                    <p className="text-xs text-cream-white">Format CSV uniquement</p>
                   </label>
                 </div>
 
                 {csvPreview !== null && (
-                  <div className="mt-4 p-3 bg-white rounded-lg border border-slate-200">
+                  <div className="mt-4 p-3 bg-cream-white rounded-lg border border-cream-white">
                     <div className="flex items-center gap-2">
                       <FileText className="h-4 w-4 text-brand-primary" aria-hidden="true" />
                       <span className="text-sm font-medium text-slate-700">
@@ -180,9 +183,9 @@ function OnboardingEtablissementEtudiants() {
               </div>
 
               {/* Block B: Email Domain */}
-              <div className="border-2 border-slate-200 rounded-2xl p-6 bg-slate-50">
+              <div className="border-2 border-cream-white rounded-2xl p-6 bg-cream">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-slate-200 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-cream-white flex items-center justify-center">
                     <Mail className="h-6 w-6 text-slate-600" aria-hidden="true" />
                   </div>
                   <div>
@@ -200,7 +203,7 @@ function OnboardingEtablissementEtudiants() {
                     Domaine de vos emails étudiants
                   </label>
                   <div className="flex items-center">
-                    <span className="px-4 py-3 bg-slate-200 border border-slate-300 rounded-l-xl text-slate-600 text-sm">
+                    <span className="px-4 py-3 bg-cream-white border border-cream-white rounded-l-xl text-slate-600 text-sm">
                       @
                     </span>
                     <input
@@ -208,7 +211,7 @@ function OnboardingEtablissementEtudiants() {
                       value={formData.studentImport.emailDomain}
                       onChange={handleEmailDomainChange}
                       placeholder="emi.ac.ma"
-                      className="flex-1 px-4 py-3 border border-l-0 border-slate-300 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                      className="flex-1 px-4 py-3 border border-l-0 border-cream-white rounded-r-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                     />
                   </div>
                   <p className="text-xs text-slate-500 mt-2">
@@ -222,7 +225,7 @@ function OnboardingEtablissementEtudiants() {
             <div className="mt-8 flex justify-between">
               <Link
                 to="/onboarding/etablissement/filieres"
-                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 Précédent

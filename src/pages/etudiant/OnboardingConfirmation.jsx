@@ -26,7 +26,7 @@ export default function OnboardingConfirmation() {
 
   return (
     <OnboardingLayout step={3}>
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10 text-center">
+      <div className="bg-cream-white rounded-3xl border border-cream-white shadow-sm p-8 md:p-10 text-center">
         <div className="w-16 h-16 rounded-full bg-brand-primary/10 flex items-center justify-center mx-auto mb-6">
           <Mail className="h-8 w-8 text-brand-primary" />
         </div>
@@ -40,7 +40,7 @@ export default function OnboardingConfirmation() {
         </p>
         <p className="font-semibold text-brand-primary text-lg mb-6">{email}</p>
 
-        <div className="bg-slate-50 rounded-2xl p-5 mb-8 text-left">
+        <div className="bg-cream rounded-2xl p-5 mb-8 text-left">
           <p className="text-sm text-slate-600 leading-relaxed">
             Cliquez sur le lien dans l'email pour accéder à votre espace étudiant.
             Pas de mot de passe à créer — connexion 100% sécurisée par magic link.
@@ -58,7 +58,7 @@ export default function OnboardingConfirmation() {
           type="button"
           onClick={handleResend}
           disabled={resending || !pendingEmail}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-medium transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-cream-white text-slate-600 hover:bg-cream text-sm font-medium transition-colors disabled:opacity-50"
         >
           {resending ? (
             <>
@@ -70,7 +70,7 @@ export default function OnboardingConfirmation() {
           )}
         </button>
 
-        <p className="mt-8 text-xs text-slate-400">
+        <p className="mt-8 text-xs text-cream-white">
           En développement : utilisez le lien simulé ci-dessous pour tester le flow.
         </p>
         <DevMagicLinkHelper email={pendingEmail} />

@@ -68,9 +68,12 @@ function OnboardingEntrepriseCompensation() {
   const salaryRange = formData.isUnpaid ? 'Non rémunéré' : `${formData.minSalary} - ${formData.maxSalary} MAD/mois`
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -91,9 +94,9 @@ function OnboardingEntrepriseCompensation() {
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 space-y-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8 space-y-8">
             {/* Unpaid Toggle */}
-            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+            <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
               <div>
                 <h3 className="font-semibold text-slate-900">Stage non rémunéré</h3>
                 <p className="text-sm text-slate-500">Cochez si le stage n'est pas rémunéré</p>
@@ -101,11 +104,11 @@ function OnboardingEntrepriseCompensation() {
               <button
                 onClick={toggleUnpaid}
                 className={`relative w-14 h-8 rounded-full transition-colors ${
-                  formData.isUnpaid ? 'bg-brand-primary' : 'bg-slate-300'
+                  formData.isUnpaid ? 'bg-brand-primary' : 'bg-cream-white'
                 }`}
               >
                 <span
-                  className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-transform ${
+                  className={`absolute top-1 w-6 h-6 bg-cream-white rounded-full transition-transform ${
                     formData.isUnpaid ? 'translate-x-7' : 'translate-x-1'
                   }`}
                 />
@@ -126,7 +129,7 @@ function OnboardingEntrepriseCompensation() {
                     step="100"
                     value={formData.minSalary}
                     onChange={handleMinSalaryChange}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary"
+                    className="w-full h-2 bg-cream-white rounded-lg appearance-none cursor-pointer accent-brand-primary"
                   />
                   <div className="flex justify-between mt-2 text-sm text-slate-500">
                     <span>1000 MAD</span>
@@ -146,7 +149,7 @@ function OnboardingEntrepriseCompensation() {
                     step="100"
                     value={formData.maxSalary}
                     onChange={handleMaxSalaryChange}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary"
+                    className="w-full h-2 bg-cream-white rounded-lg appearance-none cursor-pointer accent-brand-primary"
                   />
                   <div className="flex justify-between mt-2 text-sm text-slate-500">
                     <span>1000 MAD</span>
@@ -174,7 +177,7 @@ function OnboardingEntrepriseCompensation() {
             <Link
               to="/onboarding/entreprise/requirements"
               onClick={handleNext}
-              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Précédent

@@ -104,9 +104,12 @@ function OnboardingMatchingPreview() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -117,7 +120,7 @@ function OnboardingMatchingPreview() {
           <Stepper steps={studentSteps} currentStep={6} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Découverte</h1>
             <p className="text-slate-500 mb-8">Voici des opportunités qui correspondent à votre profil. Sélectionnez celles qui vous intéressent pour affiner votre matching.</p>
 
@@ -130,7 +133,7 @@ function OnboardingMatchingPreview() {
                   className={`relative border-2 rounded-xl p-5 cursor-pointer transition-all hover:shadow-md ${
                     selectedOffers.includes(offer.id)
                       ? 'border-brand-primary bg-brand-primary/5'
-                      : 'border-slate-200 hover:border-brand-primary/50'
+                      : 'border-cream-white hover:border-brand-primary/50'
                   }`}
                 >
                   {/* Match Badge */}
@@ -139,7 +142,7 @@ function OnboardingMatchingPreview() {
                   </div>
 
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-cream-white flex items-center justify-center">
                       <Building2 className="h-5 w-5 text-slate-600" aria-hidden="true" />
                     </div>
                     <div>
@@ -182,7 +185,7 @@ function OnboardingMatchingPreview() {
               <Link
                 to="/onboarding/preferences"
                 onClick={handleNext}
-                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 Précédent

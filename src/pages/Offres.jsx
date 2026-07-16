@@ -16,9 +16,9 @@ function Offres() {
         <input
           type="text"
           placeholder="Chercher un stage, une entreprise..."
-          className="flex-1 bg-slate-100 rounded-full px-5 py-3 text-sm outline-none"
+          className="flex-1 bg-cream-white rounded-full px-5 py-3 text-sm outline-none"
         />
-        <div className="flex bg-slate-100 rounded-full p-1">
+        <div className="flex bg-cream-white rounded-full p-1">
           <button
             onClick={() => setVue('grille')}
             className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
@@ -48,7 +48,7 @@ function Offres() {
                 <p className="text-slate-600 text-sm">
                   {offres.length} offres correspondant à votre profil
                 </p>
-                <p className="text-slate-400 text-sm">Trié par compatibilité ↓</p>
+                <p className="text-cream-white text-sm">Trié par compatibilité ↓</p>
               </div>
 
               <div className="grid grid-cols-2 gap-5">
@@ -59,7 +59,7 @@ function Offres() {
             </>
           ) : (
             <div className="flex flex-col items-center">
-              <p className="text-slate-400 text-sm mb-6">
+              <p className="text-cream-white text-sm mb-6">
                 {indexActuel + 1} / {offres.length}
               </p>
 
@@ -70,7 +70,7 @@ function Offres() {
               <div className="flex gap-4 mt-6">
                 <button
                   onClick={() => setIndexActuel(Math.max(0, indexActuel - 1))}
-                  className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50"
+                  className="w-12 h-12 rounded-full bg-cream-white border border-cream-white flex items-center justify-center hover:bg-cream"
                 >
                   ✕
                 </button>
@@ -79,7 +79,7 @@ function Offres() {
                 </button>
                 <button
                   onClick={() => setIndexActuel(Math.min(offres.length - 1, indexActuel + 1))}
-                  className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-slate-50"
+                  className="w-12 h-12 rounded-full bg-cream-white border border-cream-white flex items-center justify-center hover:bg-cream"
                 >
                   →
                 </button>

@@ -112,9 +112,12 @@ function OnboardingEntrepriseInfo() {
   const employeeRanges = ['1-10', '11-50', '51-200', '201-500', '500+']
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -135,7 +138,7 @@ function OnboardingEntrepriseInfo() {
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 space-y-6">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8 space-y-6">
             {/* Company Name */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -147,7 +150,7 @@ function OnboardingEntrepriseInfo() {
                 value={formData.companyName}
                 onChange={handleChange}
                 placeholder="Ex: TechCorp Maroc"
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
 
@@ -162,7 +165,7 @@ function OnboardingEntrepriseInfo() {
                     <img
                       src={formData.logoPreview}
                       alt="Logo preview"
-                      className="w-20 h-20 rounded-full object-cover border-2 border-slate-200"
+                      className="w-20 h-20 rounded-full object-cover border-2 border-cream-white"
                     />
                     <button
                       onClick={handleRemoveLogo}
@@ -172,14 +175,14 @@ function OnboardingEntrepriseInfo() {
                     </button>
                   </div>
                 ) : (
-                  <label className="w-20 h-20 rounded-full border-2 border-dashed border-slate-300 flex items-center justify-center cursor-pointer hover:border-brand-primary hover:bg-slate-50 transition-all">
+                  <label className="w-20 h-20 rounded-full border-2 border-dashed border-cream-white flex items-center justify-center cursor-pointer hover:border-brand-primary hover:bg-cream transition-all">
                     <input
                       type="file"
                       accept="image/*"
                       onChange={handleLogoUpload}
                       className="hidden"
                     />
-                    <Upload className="h-8 w-8 text-slate-400" aria-hidden="true" />
+                    <Upload className="h-8 w-8 text-cream-white" aria-hidden="true" />
                   </label>
                 )}
                 <p className="text-sm text-slate-500">Format carré, max 5MB</p>
@@ -195,7 +198,7 @@ function OnboardingEntrepriseInfo() {
                 name="employeeCount"
                 value={formData.employeeCount}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               >
                 <option value="">Sélectionnez...</option>
                 {employeeRanges.map(range => (
@@ -213,7 +216,7 @@ function OnboardingEntrepriseInfo() {
                 name="sector"
                 value={formData.sector}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               >
                 <option value="">Sélectionnez...</option>
                 {sectors.map(sector => (
@@ -235,7 +238,7 @@ function OnboardingEntrepriseInfo() {
                   onKeyDown={handleCityKeyDown}
                   placeholder="Ajouter une ville..."
                   list="moroccan-cities"
-                  className="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
                 <datalist id="moroccan-cities">
                   {moroccanCities.map(city => (
@@ -278,7 +281,7 @@ function OnboardingEntrepriseInfo() {
                 value={formData.website}
                 onChange={handleChange}
                 placeholder="https://www.votre-entreprise.ma"
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
           </div>
@@ -287,7 +290,7 @@ function OnboardingEntrepriseInfo() {
           <div className="mt-8 flex justify-between">
             <Link
               to="/"
-              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Retour

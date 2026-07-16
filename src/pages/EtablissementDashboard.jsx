@@ -67,20 +67,20 @@ function EtablissementDashboard() {
   ]
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-cream">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
-            <span className="text-slate-300">|</span>
+            <span className="text-cream-white">|</span>
             <span className="text-slate-600 font-medium">{etablissementName}</span>
           </div>
           <div className="flex items-center gap-3">
-            <button className="p-2 rounded-lg hover:bg-slate-100 text-slate-600 transition-colors" aria-label="Paramètres">
+            <button className="p-2 rounded-lg hover:bg-cream-white text-slate-600 transition-colors" aria-label="Paramètres">
               <Settings className="h-5 w-5" aria-hidden="true" />
             </button>
-            <button className="p-2 rounded-lg hover:bg-slate-100 text-slate-600 transition-colors" aria-label="Déconnexion">
+            <button className="p-2 rounded-lg hover:bg-cream-white text-slate-600 transition-colors" aria-label="Déconnexion">
               <LogOut className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
@@ -108,7 +108,7 @@ function EtablissementDashboard() {
                 <Link
                   key={stat.label}
                   to={stat.link}
-                  className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className={`w-12 h-12 rounded-xl ${stat.color} flex items-center justify-center`}>
@@ -156,12 +156,12 @@ function EtablissementDashboard() {
                   <Link
                     key={action.title}
                     to={action.link}
-                    className={`group bg-white rounded-xl p-6 border ${
-                      action.primary ? 'border-brand-primary/30 shadow-sm' : 'border-slate-200'
+                    className={`group bg-cream-white rounded-xl p-6 border ${
+                      action.primary ? 'border-brand-primary/30 shadow-sm' : 'border-cream-white'
                     } hover:shadow-md transition-all`}
                   >
                     <div className={`w-12 h-12 rounded-xl mb-4 flex items-center justify-center ${
-                      action.primary ? 'bg-brand-primary/10' : 'bg-slate-100 group-hover:bg-slate-200'
+                      action.primary ? 'bg-brand-primary/10' : 'bg-cream-white group-hover:bg-cream-white'
                     } transition-colors`}>
                       <ActionIcon className={`h-6 w-6 ${action.primary ? 'text-brand-primary' : 'text-slate-600'}`} aria-hidden="true" />
                     </div>
@@ -181,7 +181,7 @@ function EtablissementDashboard() {
 
           {/* Active Filières */}
           {filieres.length > 0 && (
-            <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+            <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-slate-900">Filières configurées</h2>
                 <Link

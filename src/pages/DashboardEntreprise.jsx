@@ -2,7 +2,7 @@ import { stats, pipeline, offres } from '../data/dashboardEntreprise'
 import PipelineColumn from '../components/PipelineColumn'
 
 function DashboardEntreprise() {
-  const couleursBadges = ["bg-slate-500", "bg-amber-500", "bg-teal-500", "bg-orange-500"]
+  const couleursBadges = ["bg-cream0", "bg-amber-500", "bg-teal-500", "bg-orange-500"]
 
   return (
     <div className="px-16 py-8">
@@ -20,10 +20,10 @@ function DashboardEntreprise() {
       {/* Stats */}
       <div className="grid grid-cols-4 gap-5 mb-8">
         {stats.map((s) => (
-          <div key={s.label} className="bg-white border border-slate-200 rounded-2xl p-5">
+          <div key={s.label} className="bg-cream-white border border-cream-white rounded-2xl p-5">
             <div className="flex justify-between items-start mb-4">
               <span className="text-lg">{s.icone}</span>
-              <span className="text-xs text-slate-400">{s.delta}</span>
+              <span className="text-xs text-cream-white">{s.delta}</span>
             </div>
             <p className="text-3xl font-bold text-slate-900">{s.valeur}</p>
             <p className="text-slate-500 text-sm mt-1">{s.label}</p>
@@ -32,7 +32,7 @@ function DashboardEntreprise() {
       </div>
 
       {/* Pipeline */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6 mb-8">
+      <div className="bg-cream-white border border-cream-white rounded-2xl p-6 mb-8">
         <h2 className="text-lg font-bold text-slate-900 mb-6">Pipeline des candidatures</h2>
 
         <div className="grid grid-cols-4 gap-6">
@@ -48,13 +48,13 @@ function DashboardEntreprise() {
       </div>
 
       {/* Mes offres */}
-      <div className="bg-white border border-slate-200 rounded-2xl p-6">
+      <div className="bg-cream-white border border-cream-white rounded-2xl p-6">
         <div className="flex justify-between items-center mb-5">
           <h2 className="text-lg font-bold text-slate-900">Mes offres</h2>
-          <span className="text-sm text-slate-400 cursor-pointer">Voir tout</span>
+          <span className="text-sm text-cream-white cursor-pointer">Voir tout</span>
         </div>
 
-        <div className="flex flex-col divide-y divide-slate-100">
+        <div className="flex flex-col divide-y divide-cream-white">
           {offres.map((offre) => (
             <div key={offre.titre} className="flex items-center justify-between py-4">
               <div>
@@ -66,33 +66,33 @@ function DashboardEntreprise() {
                     </span>
                   )}
                   <span className={`text-xs px-2 py-0.5 rounded-full ${
-                    offre.statut === 'Actif' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'
+                    offre.statut === 'Actif' ? 'bg-emerald-50 text-emerald-600' : 'bg-cream-white text-slate-500'
                   }`}>
                     {offre.statut}
                   </span>
                 </div>
-                <p className="text-slate-400 text-sm">Publiée le {offre.date}</p>
+                <p className="text-cream-white text-sm">Publiée le {offre.date}</p>
               </div>
 
               <div className="flex items-center gap-8 text-center">
                 <div>
                   <p className="font-bold text-slate-900">{offre.candidatures}</p>
-                  <p className="text-slate-400 text-xs">candidatures</p>
+                  <p className="text-cream-white text-xs">candidatures</p>
                 </div>
                 <div>
                   <p className="font-bold text-slate-900">{offre.vues}</p>
-                  <p className="text-slate-400 text-xs">vues</p>
+                  <p className="text-cream-white text-xs">vues</p>
                 </div>
                 <div>
                   <p className="font-bold text-emerald-600">{offre.reponse}</p>
-                  <p className="text-slate-400 text-xs">réponse</p>
+                  <p className="text-cream-white text-xs">réponse</p>
                 </div>
                 {!offre.booste && offre.statut === 'Actif' && (
-                  <button className="border border-slate-200 rounded-full px-4 py-1.5 text-sm text-slate-600 hover:bg-slate-50">
+                  <button className="border border-cream-white rounded-full px-4 py-1.5 text-sm text-slate-600 hover:bg-cream">
                     ⚡ Booster
                   </button>
                 )}
-                <button className="text-slate-400">⋯</button>
+                <button className="text-cream-white">⋯</button>
               </div>
             </div>
           ))}

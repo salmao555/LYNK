@@ -7,7 +7,7 @@ function StatsBar() {
   ]
 
   return (
-    <section className="bg-slate-100 px-16 py-10">
+    <section className="bg-cream-white px-16 py-10">
       <div className="grid grid-cols-4 gap-8 text-center">
         {stats.map((stat) => (
           <div key={stat.label}>

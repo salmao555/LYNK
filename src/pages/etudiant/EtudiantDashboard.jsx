@@ -28,10 +28,10 @@ export default function EtudiantDashboard() {
   const showBanner = score < 100
 
   return (
-    <div className="min-h-[calc(100vh-73px)] bg-slate-200 px-8 py-8">
+    <div className="min-h-[calc(100vh-73px)] bg-cream-white px-8 py-8">
       <div className="max-w-6xl mx-auto">
         {showBanner && (
-          <div className="mb-6 flex items-center justify-between gap-4 rounded-2xl bg-white border border-brand-primary/20 px-5 py-4 shadow-sm">
+          <div className="mb-6 flex items-center justify-between gap-4 rounded-2xl bg-cream-white border border-brand-primary/20 px-5 py-4 shadow-sm">
             <div className="flex items-center gap-4">
               <div className="relative w-12 h-12 shrink-0">
                 <svg className="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
@@ -97,7 +97,7 @@ export default function EtudiantDashboard() {
               <Link
                 key={card.titre}
                 to={card.lien}
-                className="bg-white rounded-2xl border border-slate-200 p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group"
+                className="bg-cream-white rounded-2xl border border-cream-white p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group"
               >
                 <div className="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-4">
                   <card.icone className="h-5 w-5" />
@@ -131,7 +131,7 @@ export default function EtudiantDashboard() {
 
         <Link
           to="/messages"
-          className="mt-8 flex items-center gap-3 bg-white rounded-2xl border border-slate-200 p-4 hover:bg-slate-50 transition-colors"
+          className="mt-8 flex items-center gap-3 bg-cream-white rounded-2xl border border-cream-white p-4 hover:bg-cream transition-colors"
         >
           <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center">
             <MessageSquare className="h-5 w-5 text-brand-primary" />
@@ -140,7 +140,7 @@ export default function EtudiantDashboard() {
             <p className="font-medium text-slate-900">Messages</p>
             <p className="text-sm text-slate-500">2 nouvelles conversations</p>
           </div>
-          <ChevronRight className="h-5 w-5 text-slate-400" />
+          <ChevronRight className="h-5 w-5 text-cream-white" />
         </Link>
       </div>
     </div>
@@ -153,7 +153,7 @@ function ProfileSummary({ profile, score, user }) {
     : user?.nom?.[0] || 'E'
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-6">
+    <div className="bg-cream-white rounded-2xl border border-cream-white p-6">
       <div className="flex items-start gap-4 mb-5">
         <div className="w-14 h-14 rounded-full bg-brand-primary text-white text-lg font-semibold flex items-center justify-center shrink-0">
           {initials}
@@ -163,16 +163,16 @@ function ProfileSummary({ profile, score, user }) {
             {profile ? `${profile.prenom} ${profile.nom}` : user?.nom}
           </h3>
           <p className="text-sm text-slate-500">{profile?.niveau || 'Étudiant'}</p>
-          <p className="text-xs text-slate-400 mt-0.5">{profile?.ecole}</p>
+          <p className="text-xs text-cream-white mt-0.5">{profile?.ecole}</p>
         </div>
       </div>
 
       {profile?.skills?.length > 0 && (
         <div className="mb-4">
-          <p className="text-xs font-semibold text-slate-400 tracking-wide mb-2">COMPÉTENCES</p>
+          <p className="text-xs font-semibold text-cream-white tracking-wide mb-2">COMPÉTENCES</p>
           <div className="flex flex-wrap gap-1.5">
             {profile.skills.slice(0, 6).map((s) => (
-              <span key={s} className="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+              <span key={s} className="text-xs px-2.5 py-1 rounded-full bg-cream-white text-slate-600">
                 {s}
               </span>
             ))}
@@ -180,7 +180,7 @@ function ProfileSummary({ profile, score, user }) {
         </div>
       )}
 
-      <div className="pt-4 border-t border-slate-100 flex justify-between items-center">
+      <div className="pt-4 border-t border-cream-white flex justify-between items-center">
         <span className="text-sm text-slate-500">Profil complété</span>
         <span className="text-lg font-bold text-brand-primary">{score}%</span>
       </div>

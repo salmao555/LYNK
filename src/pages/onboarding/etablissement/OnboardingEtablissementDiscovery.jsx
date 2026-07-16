@@ -105,9 +105,12 @@ function OnboardingEtablissementDiscovery() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -128,11 +131,11 @@ function OnboardingEtablissementDiscovery() {
             {filteredEnterprises.map((enterprise) => (
               <div
                 key={enterprise.id}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 hover:shadow-md transition-shadow"
+                className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-6 hover:shadow-md transition-shadow"
               >
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center text-2xl">
+                  <div className="w-14 h-14 rounded-xl bg-cream-white flex items-center justify-center text-2xl">
                     {enterprise.logo}
                   </div>
                   <div className="flex-1">
@@ -159,7 +162,7 @@ function OnboardingEtablissementDiscovery() {
           </div>
 
           {/* Info Box */}
-          <div className="mb-8 p-4 bg-slate-100 rounded-xl border border-slate-200">
+          <div className="mb-8 p-4 bg-cream-white rounded-xl border border-cream-white">
             <p className="text-sm text-slate-600">
               <span className="font-semibold">💡 Astuce :</span> Ces entreprises sont déjà actives sur Lynk et publient régulièrement des offres de stage. Une fois votre compte créé, vous pourrez voir toutes les opportunités correspondant aux filières de votre établissement.
             </p>
@@ -169,7 +172,7 @@ function OnboardingEtablissementDiscovery() {
           <div className="flex justify-between">
             <Link
               to="/onboarding/etablissement/contact"
-              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Précédent

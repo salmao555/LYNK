@@ -104,7 +104,7 @@ function EntrepriseDashboard() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
               <BarChart3 className="h-6 w-6 text-brand-primary" aria-hidden="true" />
@@ -115,7 +115,7 @@ function EntrepriseDashboard() {
           <p className="text-sm text-slate-500">Vues des offres</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
               <Users className="h-6 w-6 text-brand-orange" aria-hidden="true" />
@@ -126,7 +126,7 @@ function EntrepriseDashboard() {
           <p className="text-sm text-slate-500">Candidatures</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center">
               <Calendar className="h-6 w-6 text-emerald-600" aria-hidden="true" />
@@ -137,7 +137,7 @@ function EntrepriseDashboard() {
           <p className="text-sm text-slate-500">Entretiens planifiés</p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
               <Briefcase className="h-6 w-6 text-brand-primary" aria-hidden="true" />
@@ -151,7 +151,7 @@ function EntrepriseDashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Offers */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
@@ -166,7 +166,7 @@ function EntrepriseDashboard() {
           </div>
           <div className="space-y-4">
             {recentOffers.map((offer) => (
-              <div key={offer.id} className="flex items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-slate-200 transition-colors">
+              <div key={offer.id} className="flex items-center justify-between p-4 rounded-xl border border-cream-white hover:border-cream-white transition-colors">
                 <div className="flex-1">
                   <p className="font-medium text-slate-900 mb-1">{offer.titre}</p>
                   <div className="flex items-center gap-3 text-sm text-slate-500">
@@ -190,7 +190,7 @@ function EntrepriseDashboard() {
         </div>
 
         {/* Recent Applications */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+        <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center">
@@ -202,7 +202,7 @@ function EntrepriseDashboard() {
           </div>
           <div className="space-y-4">
             {recentApplications.map((app) => (
-              <div key={app.id} className="flex items-center justify-between p-4 rounded-xl border border-slate-100 hover:border-slate-200 transition-colors">
+              <div key={app.id} className="flex items-center justify-between p-4 rounded-xl border border-cream-white hover:border-cream-white transition-colors">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <p className="font-medium text-slate-900">{app.nom}</p>
@@ -211,12 +211,12 @@ function EntrepriseDashboard() {
                     )}
                   </div>
                   <p className="text-sm text-slate-500">{app.offre}</p>
-                  <p className="text-xs text-slate-400 mt-1">{app.date}</p>
+                  <p className="text-xs text-cream-white mt-1">{app.date}</p>
                 </div>
                 <div className="text-right">
                   <div className="flex items-center gap-1">
                     <span className="text-lg font-semibold text-slate-900">{app.score}</span>
-                    <span className="text-xs text-slate-400">%</span>
+                    <span className="text-xs text-cream-white">%</span>
                   </div>
                   <p className="text-xs text-slate-500">score</p>
                 </div>

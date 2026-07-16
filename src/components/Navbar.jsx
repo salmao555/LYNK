@@ -33,7 +33,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="flex items-center justify-between px-8 py-4 border-b border-slate-200 bg-white">
+    <nav className="flex items-center justify-between px-8 py-4 border-b border-cream-white bg-cream">
       <div className="flex items-center gap-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
 
@@ -60,10 +60,10 @@ function Navbar() {
       <div className="flex items-center gap-3">
         {user ? (
           <>
-            <button className="w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors text-slate-600">
+            <button className="w-9 h-9 flex items-center justify-center rounded-full bg-cream-white hover:bg-cream-white transition-colors text-slate-600">
               <Moon className="h-4 w-4" aria-hidden="true" />
             </button>
-            <button className="w-9 h-9 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors text-slate-600 relative">
+            <button className="w-9 h-9 flex items-center justify-center rounded-full bg-cream-white hover:bg-cream-white transition-colors text-slate-600 relative">
               <Bell className="h-4 w-4" aria-hidden="true" />
             </button>
             <button

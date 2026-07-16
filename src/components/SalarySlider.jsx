@@ -25,7 +25,7 @@ function SalarySlider({
           step={step}
           value={value}
           onChange={onChange}
-          className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary"
+          className="w-full h-2 bg-cream-white rounded-lg appearance-none cursor-pointer accent-brand-primary"
         />
         <div className="flex items-center justify-between">
           <span className="text-sm text-slate-500">{min} {unit.split('/')[0]}</span>

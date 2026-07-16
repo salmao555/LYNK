@@ -66,7 +66,24 @@ export function mapExtractedProfileToFormData(extracted) {
     educationLevel: mapNiveauToEducationLevel(extracted.niveau),
     skills: extracted.skills || [],
     experiences: mapExtractedExperiences(extracted.experience),
+    projects: mapExtractedProjects(extracted.projets),
   }
+}
+
+/**
+ * OnboardingProjectsSkills.jsx attend une cle "projects" avec la forme
+ * {id, title, description, link} - le schema d'extraction CV renvoie desormais
+ * un champ "projets" separe de "experience" avec {titre, description, lien}.
+ */
+function mapExtractedProjects(projetsArray) {
+  if (!Array.isArray(projetsArray) || projetsArray.length === 0) return []
+
+  return projetsArray.map((proj, index) => ({
+    id: Date.now() + 1000 + index, // offset pour ne pas collisionner avec les ids d'experiences
+    title: proj.titre || '',
+    description: proj.description || '',
+    link: proj.lien || '',
+  }))
 }
 
 /**
@@ -109,6 +126,24 @@ function mapNiveauToEducationLevel(niveau) {
   if (n.includes('licence') || n.includes('bac+3') || n.includes('bac +3') || n.includes('l3')) return 'bac+3'
   if (n.includes('bts') || n.includes('dut') || n.includes('bac+2') || n.includes('bac +2') || n.includes('l2')) return 'bac+2'
   if (n.includes('bac+1') || n.includes('bac +1') || n.includes('l1')) return 'bac+1'
+
+  // Ecoles d'ingenieurs (cycle ingenieur / eleve ingenieur) : pas de correspondance directe
+  // bac+X, on infere depuis l'annee mentionnee si presente.
+  if (n.includes('ingenieur') || n.includes('ingénieur')) {
+    if (n.includes('3eme') || n.includes('3ème') || n.includes('troisieme') || n.includes('troisième') || n.includes('derniere annee') || n.includes('dernière année')) {
+      return 'bac+5'
+    }
+    if (n.includes('2eme') || n.includes('2ème') || n.includes('deuxieme') || n.includes('deuxième')) {
+      return 'bac+4'
+    }
+    if (n.includes('1ere') || n.includes('1ère') || n.includes('premiere') || n.includes('première')) {
+      return 'bac+3'
+    }
+    // Cycle ingenieur mentionne sans annee precise - approximation prudente,
+    // l'etudiant peut corriger manuellement si besoin.
+    return 'bac+3'
+  }
+
   if (n.includes('bac')) return 'bac'
 
   return ''

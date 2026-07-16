@@ -74,9 +74,12 @@ function OnboardingEntrepriseOfferInfo() {
   const moroccanCities = ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Fès', 'Meknès', 'Agadir', 'Oujda', 'Kénitra', 'Tétouan']
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -97,7 +100,7 @@ function OnboardingEntrepriseOfferInfo() {
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 space-y-6">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8 space-y-6">
             {/* Title */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -109,7 +112,7 @@ function OnboardingEntrepriseOfferInfo() {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Ex: Développeur Web Full Stack"
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
 
@@ -122,7 +125,7 @@ function OnboardingEntrepriseOfferInfo() {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               >
                 <option value="">Sélectionnez...</option>
                 {moroccanCities.map(city => (
@@ -142,7 +145,7 @@ function OnboardingEntrepriseOfferInfo() {
                   name="startDate"
                   value={formData.startDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
               <div>
@@ -154,7 +157,7 @@ function OnboardingEntrepriseOfferInfo() {
                   name="endDate"
                   value={formData.endDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
             </div>
@@ -169,7 +172,7 @@ function OnboardingEntrepriseOfferInfo() {
                 value={formData.duration}
                 onChange={handleChange}
                 placeholder="Ex: 3 mois, 6 mois"
-                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
 
@@ -186,12 +189,12 @@ function OnboardingEntrepriseOfferInfo() {
                       value={deliverable}
                       onChange={(e) => updateDeliverable(index, e.target.value)}
                       placeholder={`Livrable ${index + 1}`}
-                      className="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                      className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                     />
                     {formData.deliverables.length > 1 && (
                       <button
                         onClick={() => removeDeliverable(index)}
-                        className="p-3 rounded-xl border border-slate-300 text-slate-400 hover:text-red-500 hover:border-red-300 transition-colors"
+                        className="p-3 rounded-xl border border-cream-white text-cream-white hover:text-red-500 hover:border-red-300 transition-colors"
                       >
                         <X className="h-5 w-5" aria-hidden="true" />
                       </button>
@@ -214,7 +217,7 @@ function OnboardingEntrepriseOfferInfo() {
             <Link
               to="/onboarding/entreprise/info"
               onClick={handleNext}
-              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Précédent

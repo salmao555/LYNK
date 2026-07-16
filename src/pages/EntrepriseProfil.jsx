@@ -43,7 +43,7 @@ function EntrepriseProfil() {
           <div className="flex gap-3">
             <button
               onClick={() => setIsEditing(false)}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-slate-200 text-slate-700 font-semibold rounded-full hover:bg-slate-50 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-cream-white text-slate-700 font-semibold rounded-full hover:bg-cream transition-colors"
             >
               Annuler
             </button>
@@ -61,11 +61,11 @@ function EntrepriseProfil() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Profile Card */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm overflow-hidden">
             {/* Cover */}
             <div className="h-32 bg-gradient-to-r from-brand-primary to-brand-primary-light relative">
               {isEditing && (
-                <button className="absolute bottom-2 right-2 p-2 bg-white/20 hover:bg-white/30 rounded-lg text-white transition-colors">
+                <button className="absolute bottom-2 right-2 p-2 bg-cream-white/20 hover:bg-cream-white/30 rounded-lg text-white transition-colors">
                   <Camera className="h-4 w-4" aria-hidden="true" />
                 </button>
               )}
@@ -74,7 +74,7 @@ function EntrepriseProfil() {
             {/* Logo */}
             <div className="px-6 pb-6">
               <div className="relative -mt-12 mb-4">
-                <div className="w-24 h-24 rounded-2xl bg-white border-4 border-white shadow-lg flex items-center justify-center">
+                <div className="w-24 h-24 rounded-2xl bg-cream-white border-4 border-white shadow-lg flex items-center justify-center">
                   <Building2 className="h-12 w-12 text-brand-primary" aria-hidden="true" />
                 </div>
                 {isEditing && (
@@ -89,15 +89,15 @@ function EntrepriseProfil() {
 
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <Users className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                  <Users className="h-4 w-4 text-cream-white" aria-hidden="true" />
                   {formData.taille}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <MapPin className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                  <MapPin className="h-4 w-4 text-cream-white" aria-hidden="true" />
                   {formData.adresse}
                 </div>
                 <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <Globe className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                  <Globe className="h-4 w-4 text-cream-white" aria-hidden="true" />
                   <a href={formData.siteWeb} target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">
                     {formData.siteWeb}
                   </a>
@@ -107,7 +107,7 @@ function EntrepriseProfil() {
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mt-6">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm mt-6">
             <h3 className="font-semibold text-slate-900 mb-4">Statistiques</h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -129,14 +129,14 @@ function EntrepriseProfil() {
         {/* Details Form */}
         <div className="lg:col-span-2 space-y-6">
           {/* Description */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
             <h3 className="font-semibold text-slate-900 mb-4">Description</h3>
             {isEditing ? (
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
               />
             ) : (
               <p className="text-slate-600 leading-relaxed">{formData.description}</p>
@@ -144,7 +144,7 @@ function EntrepriseProfil() {
           </div>
 
           {/* Culture & Avantages */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
             <h3 className="font-semibold text-slate-900 mb-4">Culture d'entreprise & Avantages</h3>
             <div className="space-y-4">
               <div>
@@ -154,7 +154,7 @@ function EntrepriseProfil() {
                     type="text"
                     value={formData.culture}
                     onChange={(e) => setFormData({ ...formData, culture: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                   />
                 ) : (
                   <p className="text-slate-600">{formData.culture}</p>
@@ -167,7 +167,7 @@ function EntrepriseProfil() {
                     value={formData.avantages}
                     onChange={(e) => setFormData({ ...formData, avantages: e.target.value })}
                     rows={3}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
                   />
                 ) : (
                   <p className="text-slate-600">{formData.avantages}</p>
@@ -177,24 +177,24 @@ function EntrepriseProfil() {
           </div>
 
           {/* Contact */}
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
             <h3 className="font-semibold text-slate-900 mb-4">Informations de contact</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
                 {isEditing ? (
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" aria-hidden="true" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-cream-white" aria-hidden="true" />
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 text-slate-600">
-                    <Mail className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                    <Mail className="h-4 w-4 text-cream-white" aria-hidden="true" />
                     {formData.email}
                   </div>
                 )}
@@ -203,17 +203,17 @@ function EntrepriseProfil() {
                 <label className="block text-sm font-medium text-slate-700 mb-2">Téléphone</label>
                 {isEditing ? (
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" aria-hidden="true" />
+                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-cream-white" aria-hidden="true" />
                     <input
                       type="tel"
                       value={formData.telephone}
                       onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 text-slate-600">
-                    <Phone className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                    <Phone className="h-4 w-4 text-cream-white" aria-hidden="true" />
                     {formData.telephone}
                   </div>
                 )}
@@ -222,17 +222,17 @@ function EntrepriseProfil() {
                 <label className="block text-sm font-medium text-slate-700 mb-2">Adresse</label>
                 {isEditing ? (
                   <div className="relative">
-                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" aria-hidden="true" />
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-cream-white" aria-hidden="true" />
                     <input
                       type="text"
                       value={formData.adresse}
                       onChange={(e) => setFormData({ ...formData, adresse: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 text-slate-600">
-                    <MapPin className="h-4 w-4 text-slate-400" aria-hidden="true" />
+                    <MapPin className="h-4 w-4 text-cream-white" aria-hidden="true" />
                     {formData.adresse}
                   </div>
                 )}

@@ -55,9 +55,12 @@ function OnboardingEtablissementContact() {
   const contactRoles = ['Responsable des stages', 'Direction des études', 'Scolarité', 'Autre']
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -68,7 +71,7 @@ function OnboardingEtablissementContact() {
           <Stepper steps={etablissementSteps} currentStep={4} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Qui gère ce compte ?</h1>
             <p className="text-slate-500 mb-8">Les informations du contact principal pour la gestion des stages.</p>
 
@@ -85,7 +88,7 @@ function OnboardingEtablissementContact() {
                     value={formData.contact.firstName}
                     onChange={handleChange}
                     placeholder="Jean"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                   />
                 </div>
                 <div>
@@ -98,7 +101,7 @@ function OnboardingEtablissementContact() {
                     value={formData.contact.lastName}
                     onChange={handleChange}
                     placeholder="Dupont"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                   />
                 </div>
               </div>
@@ -116,7 +119,7 @@ function OnboardingEtablissementContact() {
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                         formData.contact.role === role
                           ? 'bg-brand-primary text-white'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          : 'bg-cream-white text-slate-700 hover:bg-cream-white'
                       }`}
                     >
                       {role}
@@ -136,7 +139,7 @@ function OnboardingEtablissementContact() {
                   value={formData.contact.email}
                   onChange={handleChange}
                   placeholder="jean.dupont@etablissement.ma"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
 
@@ -151,7 +154,7 @@ function OnboardingEtablissementContact() {
                   value={formData.contact.phone}
                   onChange={handleChange}
                   placeholder="+212 6 12 34 56 78"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
             </div>
@@ -160,7 +163,7 @@ function OnboardingEtablissementContact() {
             <div className="mt-8 flex justify-between">
               <Link
                 to="/onboarding/etablissement/etudiants"
-                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
                 Précédent

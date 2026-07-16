@@ -22,7 +22,7 @@ function Stepper({ steps, currentStep, onStepClick }) {
                     ? 'bg-brand-primary text-white'
                     : isCompleted
                     ? 'bg-brand-primary text-white'
-                    : 'bg-slate-200 text-slate-400'
+                    : 'bg-cream-white text-cream-white'
                 } ${isClickable ? 'cursor-pointer hover:scale-110' : 'cursor-default'}`}
               >
                 {isCompleted ? (
@@ -39,7 +39,7 @@ function Stepper({ steps, currentStep, onStepClick }) {
                     ? 'text-brand-primary'
                     : isCompleted
                     ? 'text-slate-700'
-                    : 'text-slate-400'
+                    : 'text-cream-white'
                 }`}
               >
                 {step.label}
@@ -50,7 +50,7 @@ function Stepper({ steps, currentStep, onStepClick }) {
                 <div className="absolute top-5 left-1/2 w-full h-0.5 -translate-y-1/2 z-0">
                   <div
                     className={`h-full transition-all ${
-                      isCompleted ? 'bg-brand-primary' : 'bg-slate-200'
+                      isCompleted ? 'bg-brand-primary' : 'bg-cream-white'
                     }`}
                     style={{ width: '100%' }}
                   />

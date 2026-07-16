@@ -42,7 +42,7 @@ export default function OnboardingUpload() {
 
   return (
     <OnboardingLayout step={1}>
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
+      <div className="bg-cream-white rounded-3xl border border-cream-white shadow-sm p-8 md:p-10">
         <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">
           Commençons par votre CV
         </h1>
@@ -54,7 +54,7 @@ export default function OnboardingUpload() {
           <div className="border-2 border-dashed border-brand-primary/30 rounded-2xl py-16 text-center bg-brand-primary/5">
             <Loader2 className="h-10 w-10 text-brand-primary animate-spin mx-auto mb-4" />
             <p className="font-semibold text-brand-primary">On lit votre CV...</p>
-            <p className="text-slate-400 text-sm mt-1">Extraction en cours, quelques secondes</p>
+            <p className="text-cream-white text-sm mt-1">Extraction en cours, quelques secondes</p>
           </div>
         ) : (
           <div
@@ -79,7 +79,7 @@ export default function OnboardingUpload() {
             <p className="font-semibold text-brand-primary mb-1">
               Glissez votre CV ici
             </p>
-            <p className="text-slate-400 text-sm mb-4">PDF ou DOCX · max 5 Mo</p>
+            <p className="text-cream-white text-sm mb-4">PDF ou DOCX · max 5 Mo</p>
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); inputRef.current?.click() }}
@@ -98,7 +98,7 @@ export default function OnboardingUpload() {
         <div className="mt-6 text-center">
           <Link
             to="/etudiant/onboarding/verification?manual=1"
-            className="text-sm text-slate-400 hover:text-brand-primary transition-colors underline-offset-2 hover:underline"
+            className="text-sm text-cream-white hover:text-brand-primary transition-colors underline-offset-2 hover:underline"
           >
             Je préfère remplir manuellement
           </Link>

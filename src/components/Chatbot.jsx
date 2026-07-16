@@ -53,11 +53,11 @@ function Chatbot() {
   }
 
   return (
-    <div className={`fixed bottom-6 right-6 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 transition-all ${
+    <div className={`fixed bottom-6 right-6 bg-cream-white rounded-2xl shadow-2xl border border-cream-white z-50 transition-all ${
       isMinimized ? 'w-80' : 'w-96 h-[500px]'
     }`}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-brand-primary">
+      <div className="flex items-center justify-between p-4 border-b border-cream-white bg-brand-primary">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center">
             <MessageSquare className="h-5 w-5 text-brand-orange" aria-hidden="true" />
@@ -70,7 +70,7 @@ function Chatbot() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsMinimized(!isMinimized)}
-            className="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center text-white transition-colors"
+            className="w-8 h-8 rounded-full hover:bg-cream-white/10 flex items-center justify-center text-white transition-colors"
             aria-label={isMinimized ? 'Agrandir' : 'Réduire'}
           >
             {isMinimized ? (
@@ -81,7 +81,7 @@ function Chatbot() {
           </button>
           <button
             onClick={() => setIsOpen(false)}
-            className="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center text-white transition-colors"
+            className="w-8 h-8 rounded-full hover:bg-cream-white/10 flex items-center justify-center text-white transition-colors"
             aria-label="Fermer"
           >
             <X className="h-4 w-4" aria-hidden="true" />
@@ -102,11 +102,11 @@ function Chatbot() {
                   className={`max-w-[80%] px-4 py-2 rounded-2xl ${
                     msg.sender === 'user'
                       ? 'bg-brand-orange text-white'
-                      : 'bg-slate-100 text-slate-900'
+                      : 'bg-cream-white text-slate-900'
                   }`}
                 >
                   <p className="text-sm">{msg.text}</p>
-                  <p className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-brand-orange/80' : 'text-slate-400'}`}>
+                  <p className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-brand-orange/80' : 'text-cream-white'}`}>
                     {msg.time}
                   </p>
                 </div>
@@ -115,14 +115,14 @@ function Chatbot() {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSendMessage} className="p-4 border-t border-slate-200">
+          <form onSubmit={handleSendMessage} className="p-4 border-t border-cream-white">
             <div className="flex gap-2">
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Écrivez votre message..."
-                className="flex-1 px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm transition-all"
+                className="flex-1 px-4 py-2 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm transition-all"
               />
               <button
                 type="submit"

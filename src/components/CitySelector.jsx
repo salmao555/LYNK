@@ -53,25 +53,25 @@ function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label 
 
       {/* Search Bar */}
       <div className="relative mb-3">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" aria-hidden="true" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-cream-white" aria-hidden="true" />
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyDown={handleSearchKeyDown}
           placeholder="Rechercher une ville..."
-          className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+          className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
         />
       </div>
 
       {/* Search Results Dropdown */}
       {searchQuery && filteredCities.length > 0 && (
-        <div className="mb-3 p-2 bg-white border border-slate-200 rounded-xl shadow-lg max-h-40 overflow-y-auto">
+        <div className="mb-3 p-2 bg-cream-white border border-cream-white rounded-xl shadow-lg max-h-40 overflow-y-auto">
           {filteredCities.slice(0, 5).map(city => (
             <button
               key={city}
               onClick={() => handleAddCity(city)}
-              className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-50 text-sm text-slate-700 transition-colors"
+              className="w-full text-left px-3 py-2 rounded-lg hover:bg-cream text-sm text-slate-700 transition-colors"
             >
               {city}
             </button>
@@ -90,7 +90,7 @@ function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label 
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 isSelected
                   ? 'bg-brand-primary text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-cream-white text-slate-700 hover:bg-cream-white'
               }`}
             >
               {city}

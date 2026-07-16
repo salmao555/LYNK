@@ -2,7 +2,7 @@ import { MapPin, Clock, Building2, DollarSign, Eye, Bookmark, Briefcase } from '
 
 function OfferCard({ offre }) {
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <div className="bg-cream-white border border-cream-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-brand-navy text-white font-medium flex items-center justify-center">
@@ -18,7 +18,7 @@ function OfferCard({ offre }) {
           <div className="w-11 h-11 rounded-full border-2 border-emerald-400 flex items-center justify-center text-xs font-semibold text-emerald-600">
             {offre.score}%
           </div>
-          <button className="p-2 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-brand-orange transition-colors" aria-label="Sauvegarder">
+          <button className="p-2 rounded-lg hover:bg-cream-white text-cream-white hover:text-brand-orange transition-colors" aria-label="Sauvegarder">
             <Bookmark className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
@@ -50,13 +50,13 @@ function OfferCard({ offre }) {
 
       <div className="flex flex-wrap gap-2 mb-4">
         {offre.tags.map((tag) => (
-          <span key={tag} className="bg-slate-100 text-slate-600 text-xs px-3 py-1 rounded-full">
+          <span key={tag} className="bg-cream-white text-slate-600 text-xs px-3 py-1 rounded-full">
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+      <div className="flex items-center justify-between pt-3 border-t border-cream-white">
         <div className="flex items-center gap-3">
           <span className="text-brand-orange font-semibold">{offre.salaire}</span>
           {offre.prime && (
@@ -66,7 +66,7 @@ function OfferCard({ offre }) {
             </span>
           )}
         </div>
-        <span className="flex items-center gap-1 text-slate-400 text-sm">
+        <span className="flex items-center gap-1 text-cream-white text-sm">
           <Eye className="h-3 w-3" aria-hidden="true" />
           {offre.vues}
         </span>

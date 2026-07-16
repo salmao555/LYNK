@@ -53,10 +53,10 @@ function Messages() {
   ]
 
   return (
-    <div className="min-h-[calc(100vh-73px)] bg-slate-50 flex">
+    <div className="min-h-[calc(100vh-73px)] bg-cream flex">
       {/* Conversations List */}
-      <div className="w-1/3 border-r border-slate-200 bg-white">
-        <div className="p-6 border-b border-slate-200">
+      <div className="w-1/3 border-r border-cream-white bg-cream-white">
+        <div className="p-6 border-b border-cream-white">
           <h1 className="text-2xl font-bold text-slate-900">Messages</h1>
           <p className="text-slate-500 text-sm mt-1">Vos conversations avec les entreprises</p>
         </div>
@@ -65,10 +65,10 @@ function Messages() {
           {conversations.map((conv) => (
             <div
               key={conv.id}
-              className={`p-4 border-b border-slate-100 cursor-pointer transition-all duration-200 ${
+              className={`p-4 border-b border-cream-white cursor-pointer transition-all duration-200 ${
                 selectedConversation === conv.id
                   ? 'bg-brand-orange/10 border-l-4 border-l-brand-orange'
-                  : 'hover:bg-slate-50 border-l-4 border-l-transparent'
+                  : 'hover:bg-cream border-l-4 border-l-transparent'
               }`}
               onClick={() => setSelectedConversation(conv.id)}
             >
@@ -79,7 +79,7 @@ function Messages() {
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-center mb-1">
                     <h3 className="font-semibold text-slate-900 truncate">{conv.name}</h3>
-                    <span className="text-xs text-slate-400">{conv.time}</span>
+                    <span className="text-xs text-cream-white">{conv.time}</span>
                   </div>
                   <p className="text-sm text-slate-500 truncate">{conv.lastMessage}</p>
                 </div>
@@ -95,11 +95,11 @@ function Messages() {
       </div>
 
       {/* Chat Area */}
-      <div className="flex-1 flex flex-col bg-white">
+      <div className="flex-1 flex flex-col bg-cream-white">
         {selectedConversation ? (
           <>
             {/* Chat Header */}
-            <div className="p-6 border-b border-slate-200 bg-white">
+            <div className="p-6 border-b border-cream-white bg-cream-white">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-semibold">
                   {conversations.find(c => c.id === selectedConversation)?.avatar}
@@ -124,11 +124,11 @@ function Messages() {
                     className={`max-w-md px-4 py-3 rounded-2xl ${
                       msg.sender === 'user'
                         ? 'bg-brand-orange text-white'
-                        : 'bg-white border border-slate-200 text-slate-900 shadow-sm'
+                        : 'bg-cream-white border border-cream-white text-slate-900 shadow-sm'
                     }`}
                   >
                     <p className="text-sm">{msg.text}</p>
-                    <p className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-brand-orange/80' : 'text-slate-400'}`}>
+                    <p className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-brand-orange/80' : 'text-cream-white'}`}>
                       {msg.time}
                     </p>
                   </div>
@@ -137,12 +137,12 @@ function Messages() {
             </div>
 
             {/* Message Input */}
-            <div className="p-6 border-t border-slate-200 bg-white">
+            <div className="p-6 border-t border-cream-white bg-cream-white">
               <div className="flex gap-3">
                 <input
                   type="text"
                   placeholder="Écrivez votre message..."
-                  className="flex-1 px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                  className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                 />
                 <button className="px-6 py-3 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold rounded-xl transition-colors flex items-center gap-2">
                   <span>Envoyer</span>

@@ -115,9 +115,12 @@ function OnboardingEntrepriseMatching() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream flex flex-col relative overflow-hidden">
+      {/* Subtle orange gradient - top-right corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
+      
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -142,10 +145,10 @@ function OnboardingEntrepriseMatching() {
             {sampleInterns.map((intern) => (
               <div
                 key={intern.id}
-                className={`bg-white rounded-2xl border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${
+                className={`bg-cream-white rounded-2xl border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${
                   selectedInterns.includes(intern.id)
                     ? 'border-brand-primary shadow-md'
-                    : 'border-slate-200'
+                    : 'border-cream-white'
                 }`}
                 onClick={() => toggleIntern(intern.id)}
               >
@@ -154,7 +157,7 @@ function OnboardingEntrepriseMatching() {
                   <img
                     src={intern.photo}
                     alt={intern.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-slate-200"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-cream-white"
                   />
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
@@ -178,7 +181,7 @@ function OnboardingEntrepriseMatching() {
                     className={`p-2 rounded-full transition-colors ${
                       selectedInterns.includes(intern.id)
                         ? 'bg-brand-primary text-white'
-                        : 'bg-slate-100 text-slate-400 hover:bg-slate-200'
+                        : 'bg-cream-white text-cream-white hover:bg-cream-white'
                     }`}
                     onClick={(e) => {
                       e.stopPropagation()
@@ -201,7 +204,7 @@ function OnboardingEntrepriseMatching() {
                   {intern.skills.slice(0, 3).map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 py-1 rounded-md bg-slate-100 text-slate-600 text-xs"
+                      className="px-2 py-1 rounded-md bg-cream-white text-slate-600 text-xs"
                     >
                       {skill}
                     </span>
@@ -209,7 +212,7 @@ function OnboardingEntrepriseMatching() {
                 </div>
 
                 {/* Match Score */}
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                <div className="flex items-center justify-between pt-4 border-t border-cream-white">
                   <span className="text-sm text-slate-500">Score de compatibilité</span>
                   <span className="text-lg font-bold text-brand-primary">{intern.match}%</span>
                 </div>
@@ -231,7 +234,7 @@ function OnboardingEntrepriseMatching() {
             <Link
               to="/onboarding/entreprise/compensation"
               onClick={handleNext}
-              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               Précédent
