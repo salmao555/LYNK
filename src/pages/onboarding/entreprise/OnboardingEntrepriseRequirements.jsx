@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, GraduationCap, Building2, Tag, Plus, X } from 'lucide-react'
+import Stepper from '../../../components/Stepper'
 
 function OnboardingEntrepriseRequirements() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     educationLevels: [],
     targetSchools: [],
@@ -13,6 +15,15 @@ function OnboardingEntrepriseRequirements() {
 
   const [newSkill, setNewSkill] = useState('')
   const [newSchool, setNewSchool] = useState('')
+
+  const entrepriseSteps = [
+    { label: 'Infos', path: '/onboarding/entreprise/info' },
+    { label: 'Offre', path: '/onboarding/entreprise/offer-info' },
+    { label: 'Critères', path: '/onboarding/entreprise/requirements' },
+    { label: 'Rémunération', path: '/onboarding/entreprise/compensation' },
+    { label: 'Matching', path: '/onboarding/entreprise/matching' },
+    { label: 'Connexion', path: '/onboarding/entreprise/auth' },
+  ]
 
   // Load existing data from localStorage on mount
   useEffect(() => {
@@ -97,6 +108,14 @@ function OnboardingEntrepriseRequirements() {
     localStorage.setItem('lynk_entreprise_onboarding_data', JSON.stringify({ ...existingData, requirements: formData }))
   }
 
+  const handleStepClick = (stepNumber) => {
+    const step = entrepriseSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
+  }
+
   const educationLevels = ['1ère année', '2ème année', '3ème année', 'Master 1', 'Master 2', 'Indifférent']
   const suggestedSchools = ['EMI', 'ENSIAS', 'UM6P', 'UIR', 'ENSA', 'ENA', 'ENCG', 'FST', 'EST']
 
@@ -110,16 +129,8 @@ function OnboardingEntrepriseRequirements() {
       {/* Content */}
       <div className="flex-1 px-6 py-12">
         <div className="max-w-2xl mx-auto">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 3 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">50%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '50%' }} />
-            </div>
-          </div>
+          {/* Stepper */}
+          <Stepper steps={entrepriseSteps} currentStep={3} onStepClick={handleStepClick} />
 
           {/* Title */}
           <div className="mb-8">
@@ -274,6 +285,7 @@ function OnboardingEntrepriseRequirements() {
           <div className="mt-8 flex justify-between">
             <Link
               to="/onboarding/entreprise/offer-info"
+              onClick={handleNext}
               className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />

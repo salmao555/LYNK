@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, MapPin, Briefcase, DollarSign, Clock } from 'lucide-react'
+import Stepper from '../../components/Stepper'
 
 function OnboardingPreferences() {
+  const navigate = useNavigate()
   const [preferences, setPreferences] = useState({
     opportunityTypes: [],
     workMode: '',
@@ -10,6 +12,16 @@ function OnboardingPreferences() {
     salary: '',
     duration: '',
   })
+
+  const studentSteps = [
+    { label: 'CV', path: '/onboarding/cv-upload' },
+    { label: 'Infos', path: '/onboarding/personal-info' },
+    { label: 'Expériences', path: '/onboarding/experience' },
+    { label: 'Projets', path: '/onboarding/projects-skills' },
+    { label: 'Préférences', path: '/onboarding/preferences' },
+    { label: 'Découverte', path: '/onboarding/matching-preview' },
+    { label: 'Connexion', path: '/onboarding/auth' },
+  ]
 
   // Load existing data from localStorage on mount
   useEffect(() => {
@@ -38,6 +50,14 @@ function OnboardingPreferences() {
     localStorage.setItem('lynk_onboarding_data', JSON.stringify({ ...existingData, preferences }))
   }
 
+  const handleStepClick = (stepNumber) => {
+    const step = studentSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
@@ -47,17 +67,9 @@ function OnboardingPreferences() {
 
       {/* Content */}
       <div className="flex-1 px-6 py-12">
-        <div className="max-w-3xl mx-auto">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 5 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">83%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '83%' }} />
-            </div>
-          </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Stepper */}
+          <Stepper steps={studentSteps} currentStep={5} onStepClick={handleStepClick} />
 
           {/* Main Card */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
@@ -167,6 +179,7 @@ function OnboardingPreferences() {
             <div className="mt-8 flex justify-between">
               <Link
                 to="/onboarding/projects-skills"
+                onClick={handleNext}
                 className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />

@@ -1,13 +1,24 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, DollarSign } from 'lucide-react'
+import Stepper from '../../../components/Stepper'
 
 function OnboardingEntrepriseCompensation() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     minSalary: 2000,
     maxSalary: 6000,
     isUnpaid: false,
   })
+
+  const entrepriseSteps = [
+    { label: 'Infos', path: '/onboarding/entreprise/info' },
+    { label: 'Offre', path: '/onboarding/entreprise/offer-info' },
+    { label: 'Critères', path: '/onboarding/entreprise/requirements' },
+    { label: 'Rémunération', path: '/onboarding/entreprise/compensation' },
+    { label: 'Matching', path: '/onboarding/entreprise/matching' },
+    { label: 'Connexion', path: '/onboarding/entreprise/auth' },
+  ]
 
   // Load existing data from localStorage on mount
   useEffect(() => {
@@ -46,6 +57,14 @@ function OnboardingEntrepriseCompensation() {
     localStorage.setItem('lynk_entreprise_onboarding_data', JSON.stringify({ ...existingData, compensation: formData }))
   }
 
+  const handleStepClick = (stepNumber) => {
+    const step = entrepriseSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
+  }
+
   const salaryRange = formData.isUnpaid ? 'Non rémunéré' : `${formData.minSalary} - ${formData.maxSalary} MAD/mois`
 
   return (
@@ -58,16 +77,8 @@ function OnboardingEntrepriseCompensation() {
       {/* Content */}
       <div className="flex-1 px-6 py-12">
         <div className="max-w-2xl mx-auto">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 4 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">66%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '66%' }} />
-            </div>
-          </div>
+          {/* Stepper */}
+          <Stepper steps={entrepriseSteps} currentStep={4} onStepClick={handleStepClick} />
 
           {/* Title */}
           <div className="mb-8">
@@ -162,6 +173,7 @@ function OnboardingEntrepriseCompensation() {
           <div className="mt-8 flex justify-between">
             <Link
               to="/onboarding/entreprise/requirements"
+              onClick={handleNext}
               className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />

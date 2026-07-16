@@ -1,50 +1,43 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Globe } from 'lucide-react'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../../context/AuthContext'
+import { useOnboardingEtablissement } from '../../../context/OnboardingEtablissementContext'
 
-function OnboardingAuth() {
+function OnboardingEtablissementAuth() {
   const navigate = useNavigate()
   const { login } = useAuth()
+  const { formData, reset } = useOnboardingEtablissement()
 
   const handleOAuth = (provider) => {
     // Simulate OAuth success - in production this would be real OAuth
-    // For now, we collect the onboarding data from localStorage and create the user
-    
-    // Get onboarding data from localStorage (simulated - in real app this would be collected during the flow)
-    const onboardingData = JSON.parse(localStorage.getItem('lynk_onboarding_data') || '{}')
-    
     // Build user object from onboarding data
     const user = {
-      role: 'etudiant',
-      nom: onboardingData.firstName && onboardingData.lastName 
-        ? `${onboardingData.firstName} ${onboardingData.lastName}` 
-        : 'Étudiant',
-      email: onboardingData.email || 'etudiant@lynk.ma',
+      role: 'etablissement',
+      nom: formData.etablissementName || 'Établissement',
+      email: formData.contact.email || 'etablissement@lynk.ma',
       verified: true,
       profile: {
-        prenom: onboardingData.firstName || '',
-        nom: onboardingData.lastName || '',
-        email: onboardingData.email || '',
-        telephone: onboardingData.phone || '',
-        ecole: onboardingData.school || '',
-        niveau: onboardingData.educationLevel || '',
-        experience: onboardingData.experiences || [],
-        projects: onboardingData.projects || [],
-        skills: onboardingData.skills || [],
-        preferences: onboardingData.preferences || {},
-        selectedOffers: onboardingData.selectedOffers || [],
+        etablissementName: formData.etablissementName || '',
+        logo: formData.logo || null,
+        logoPreview: formData.logoPreview || null,
+        etablissementType: formData.etablissementType || '',
+        cities: formData.cities || [],
+        website: formData.website || '',
+        filieres: formData.filieres || [],
+        studentImport: formData.studentImport || {},
+        contact: formData.contact || {},
       },
       provider, // 'google' or 'linkedin'
     }
 
     // Login the user
-    login('etudiant', user.nom, user)
+    login('etablissement', user.nom, user)
 
-    // Clear onboarding data from localStorage
-    localStorage.removeItem('lynk_onboarding_data')
+    // Clear onboarding data
+    reset()
 
-    // Redirect to student dashboard
-    navigate('/etudiant')
+    // Redirect to establishment dashboard
+    navigate('/etablissement')
   }
 
   return (
@@ -64,12 +57,12 @@ function OnboardingAuth() {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center">
             <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-brand-primary/10 flex items-center justify-center">
               <svg className="h-8 w-8 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
             </div>
 
-            <h1 className="font-display text-2xl font-bold text-slate-900 mb-2">Finalisez votre compte</h1>
-            <p className="text-slate-500 mb-8">Connectez-vous pour sauvegarder votre profil et accéder à toutes les fonctionnalités.</p>
+            <h1 className="font-display text-2xl font-bold text-slate-900 mb-2">Finalisez votre compte établissement</h1>
+            <p className="text-slate-500 mb-8">Connectez-vous pour accéder à votre tableau de bord et commencer à gérer les stages de vos étudiants.</p>
 
             {/* OAuth Buttons */}
             <div className="space-y-3">
@@ -97,7 +90,7 @@ function OnboardingAuth() {
             {/* Back Button */}
             <div className="mt-8">
               <Link
-                to="/onboarding/matching-preview"
+                to="/onboarding/etablissement/discovery"
                 className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -111,4 +104,4 @@ function OnboardingAuth() {
   )
 }
 
-export default OnboardingAuth
+export default OnboardingEtablissementAuth

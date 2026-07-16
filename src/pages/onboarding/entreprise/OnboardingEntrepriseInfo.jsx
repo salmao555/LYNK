@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Building2, Upload, X } from 'lucide-react'
+import Stepper from '../../../components/Stepper'
 
 function OnboardingEntrepriseInfo() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     companyName: '',
     logo: null,
@@ -14,6 +16,15 @@ function OnboardingEntrepriseInfo() {
   })
 
   const [newCity, setNewCity] = useState('')
+
+  const entrepriseSteps = [
+    { label: 'Infos', path: '/onboarding/entreprise/info' },
+    { label: 'Offre', path: '/onboarding/entreprise/offer-info' },
+    { label: 'Critères', path: '/onboarding/entreprise/requirements' },
+    { label: 'Rémunération', path: '/onboarding/entreprise/compensation' },
+    { label: 'Matching', path: '/onboarding/entreprise/matching' },
+    { label: 'Connexion', path: '/onboarding/entreprise/auth' },
+  ]
 
   // Load existing data from localStorage on mount
   useEffect(() => {
@@ -88,6 +99,14 @@ function OnboardingEntrepriseInfo() {
     localStorage.setItem('lynk_entreprise_onboarding_data', JSON.stringify({ ...existingData, ...formData }))
   }
 
+  const handleStepClick = (stepNumber) => {
+    const step = entrepriseSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
+  }
+
   const moroccanCities = ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Fès', 'Meknès', 'Agadir', 'Oujda', 'Kénitra', 'Tétouan']
   const sectors = ['Tech', 'Finance', 'Industrie', 'Conseil', 'Marketing', 'Santé', 'Éducation', 'Commerce', 'Autre']
   const employeeRanges = ['1-10', '11-50', '51-200', '201-500', '500+']
@@ -102,16 +121,8 @@ function OnboardingEntrepriseInfo() {
       {/* Content */}
       <div className="flex-1 px-6 py-12">
         <div className="max-w-2xl mx-auto">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 1 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">16%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '16%' }} />
-            </div>
-          </div>
+          {/* Stepper */}
+          <Stepper steps={entrepriseSteps} currentStep={1} onStepClick={handleStepClick} />
 
           {/* Title */}
           <div className="mb-8">

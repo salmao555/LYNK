@@ -46,7 +46,7 @@ function AcademiqueChoix() {
 
             {/* Carte Établissement */}
             <Link
-              to="/login/universite"
+              to="/onboarding/etablissement/info"
               className="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-8 flex flex-col items-center text-center cursor-pointer"
             >
               <div className="w-20 h-20 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-6 group-hover:bg-brand-primary/20 transition-colors">
@@ -57,7 +57,7 @@ function AcademiqueChoix() {
                 Pilotez les stages de vos étudiants, suivez les conventions et accédez aux statistiques de votre établissement.
               </p>
               <div className="mt-6 text-brand-primary font-semibold text-sm group-hover:underline">
-                Accéder à l'espace →
+                Commencer →
               </div>
             </Link>
           </div>

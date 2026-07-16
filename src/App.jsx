@@ -35,6 +35,15 @@ import OnboardingEntrepriseRequirements from './pages/onboarding/entreprise/Onbo
 import OnboardingEntrepriseCompensation from './pages/onboarding/entreprise/OnboardingEntrepriseCompensation'
 import OnboardingEntrepriseMatching from './pages/onboarding/entreprise/OnboardingEntrepriseMatching'
 import OnboardingEntrepriseAuth from './pages/onboarding/entreprise/OnboardingEntrepriseAuth'
+import OnboardingEtablissementInfo from './pages/onboarding/etablissement/OnboardingEtablissementInfo'
+import OnboardingEtablissementFilieres from './pages/onboarding/etablissement/OnboardingEtablissementFilieres'
+import OnboardingEtablissementEtudiants from './pages/onboarding/etablissement/OnboardingEtablissementEtudiants'
+import OnboardingEtablissementContact from './pages/onboarding/etablissement/OnboardingEtablissementContact'
+import OnboardingEtablissementDiscovery from './pages/onboarding/etablissement/OnboardingEtablissementDiscovery'
+import OnboardingEtablissementAuth from './pages/onboarding/etablissement/OnboardingEtablissementAuth'
+import EtablissementDashboard from './pages/EtablissementDashboard'
+import EtudiantDashboard from './pages/etudiant/EtudiantDashboard'
+import { OnboardingEtablissementProvider } from './context/OnboardingEtablissementContext'
 import { useAuth } from './context/AuthContext'
 
 function LandingPage() {
@@ -94,7 +103,22 @@ function App() {
         <Route path="/onboarding/entreprise/matching" element={<OnboardingEntrepriseMatching />} />
         <Route path="/onboarding/entreprise/auth" element={<OnboardingEntrepriseAuth />} />
 
+        {/* Establishment onboarding flow */}
+        <Route path="/onboarding/etablissement/*" element={
+          <OnboardingEtablissementProvider>
+            <Routes>
+              <Route path="info" element={<OnboardingEtablissementInfo />} />
+              <Route path="filieres" element={<OnboardingEtablissementFilieres />} />
+              <Route path="etudiants" element={<OnboardingEtablissementEtudiants />} />
+              <Route path="contact" element={<OnboardingEtablissementContact />} />
+              <Route path="discovery" element={<OnboardingEtablissementDiscovery />} />
+              <Route path="auth" element={<OnboardingEtablissementAuth />} />
+            </Routes>
+          </OnboardingEtablissementProvider>
+        } />
+
         <Route path="/bienvenue" element={<PageAvecNavbar><Welcome /></PageAvecNavbar>} />
+        <Route path="/etudiant" element={<EtudiantRoute><PageAvecNavbar><EtudiantDashboard /></PageAvecNavbar></EtudiantRoute>} />
 
         <Route path="/offres" element={<PageAvecNavbar><Offres /></PageAvecNavbar>} />
         <Route path="/mon-cv" element={<PageAvecNavbar><MonCV /></PageAvecNavbar>} />
@@ -104,6 +128,7 @@ function App() {
         <Route path="/entreprise/publier" element={<PageAvecNavbar><EntreprisePublier /></PageAvecNavbar>} />
         <Route path="/entreprise/profil" element={<PageAvecNavbar><EntrepriseProfil /></PageAvecNavbar>} />
         <Route path="/entreprise/offres" element={<PageAvecNavbar><EntrepriseOffres /></PageAvecNavbar>} />
+        <Route path="/etablissement" element={<PageAvecNavbar><EtablissementDashboard /></PageAvecNavbar>} />
         <Route path="/etablissement/conventions" element={<PageAvecNavbar><EtablissementConventions /></PageAvecNavbar>} />
         <Route path="/etablissement/etudiants" element={<PageAvecNavbar><EtablissementEtudiants /></PageAvecNavbar>} />
         <Route path="/etablissement/statistiques" element={<PageAvecNavbar><EtablissementStatistiques /></PageAvecNavbar>} />

@@ -1,9 +1,21 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Heart, Building2, MapPin, DollarSign } from 'lucide-react'
+import Stepper from '../../components/Stepper'
 
 function OnboardingMatchingPreview() {
+  const navigate = useNavigate()
   const [selectedOffers, setSelectedOffers] = useState([])
+
+  const studentSteps = [
+    { label: 'CV', path: '/onboarding/cv-upload' },
+    { label: 'Infos', path: '/onboarding/personal-info' },
+    { label: 'Expériences', path: '/onboarding/experience' },
+    { label: 'Projets', path: '/onboarding/projects-skills' },
+    { label: 'Préférences', path: '/onboarding/preferences' },
+    { label: 'Découverte', path: '/onboarding/matching-preview' },
+    { label: 'Connexion', path: '/onboarding/auth' },
+  ]
 
   const sampleOffers = [
     {
@@ -83,6 +95,14 @@ function OnboardingMatchingPreview() {
     localStorage.setItem('lynk_onboarding_data', JSON.stringify({ ...existingData, selectedOffers }))
   }
 
+  const handleStepClick = (stepNumber) => {
+    const step = studentSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
@@ -92,17 +112,9 @@ function OnboardingMatchingPreview() {
 
       {/* Content */}
       <div className="flex-1 px-6 py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 6 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">100%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '100%' }} />
-            </div>
-          </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Stepper */}
+          <Stepper steps={studentSteps} currentStep={6} onStepClick={handleStepClick} />
 
           {/* Main Card */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
@@ -169,6 +181,7 @@ function OnboardingMatchingPreview() {
             <div className="flex justify-between">
               <Link
                 to="/onboarding/preferences"
+                onClick={handleNext}
                 className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />

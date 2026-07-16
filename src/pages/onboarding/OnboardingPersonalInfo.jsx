@@ -66,7 +66,7 @@ function OnboardingPersonalInfo() {
 
       {/* Content */}
       <div className="flex-1 px-6 py-12">
-        <div className="w-full max-w-2xl">
+        <div className="max-w-2xl mx-auto">
           {/* Stepper */}
           <Stepper steps={studentSteps} currentStep={2} onStepClick={handleStepClick} />
 

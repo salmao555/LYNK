@@ -62,17 +62,9 @@ function OnboardingExperience() {
 
       {/* Content */}
       <div className="flex-1 px-6 py-12">
-        <div className="max-w-3xl mx-auto">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 3 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">50%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '50%' }} />
-            </div>
-          </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Stepper */}
+          <Stepper steps={studentSteps} currentStep={3} onStepClick={handleStepClick} />
 
           {/* Main Card */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
@@ -169,6 +161,7 @@ function OnboardingExperience() {
             <div className="mt-8 flex justify-between">
               <Link
                 to="/onboarding/personal-info"
+                onClick={handleNext}
                 className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />

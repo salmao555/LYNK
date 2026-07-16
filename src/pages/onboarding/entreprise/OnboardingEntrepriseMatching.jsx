@@ -1,9 +1,20 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Heart, GraduationCap, MapPin, Building2 } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { ArrowLeft, ArrowRight, Heart, GraduationCap, MapPin, Building2, ExternalLink } from 'lucide-react'
+import Stepper from '../../../components/Stepper'
 
 function OnboardingEntrepriseMatching() {
+  const navigate = useNavigate()
   const [selectedInterns, setSelectedInterns] = useState([])
+
+  const entrepriseSteps = [
+    { label: 'Infos', path: '/onboarding/entreprise/info' },
+    { label: 'Offre', path: '/onboarding/entreprise/offer-info' },
+    { label: 'Critères', path: '/onboarding/entreprise/requirements' },
+    { label: 'Rémunération', path: '/onboarding/entreprise/compensation' },
+    { label: 'Matching', path: '/onboarding/entreprise/matching' },
+    { label: 'Connexion', path: '/onboarding/entreprise/auth' },
+  ]
 
   const sampleInterns = [
     {
@@ -14,6 +25,8 @@ function OnboardingEntrepriseMatching() {
       skills: ['React', 'Python', 'Machine Learning'],
       match: 94,
       selected: false,
+      photo: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Youssef',
+      linkedin: 'https://linkedin.com/in/youssef-amrani',
     },
     {
       id: 2,
@@ -23,6 +36,8 @@ function OnboardingEntrepriseMatching() {
       skills: ['Java', 'Spring', 'DevOps'],
       match: 91,
       selected: false,
+      photo: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sara',
+      linkedin: 'https://linkedin.com/in/sara-benjelloun',
     },
     {
       id: 3,
@@ -32,6 +47,8 @@ function OnboardingEntrepriseMatching() {
       skills: ['Data Science', 'SQL', 'Python'],
       match: 88,
       selected: false,
+      photo: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Karim',
+      linkedin: 'https://linkedin.com/in/karim-tazi',
     },
     {
       id: 4,
@@ -41,6 +58,8 @@ function OnboardingEntrepriseMatching() {
       skills: ['UI/UX', 'Figma', 'JavaScript'],
       match: 85,
       selected: false,
+      photo: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Nour',
+      linkedin: 'https://linkedin.com/in/nour-el-houda',
     },
     {
       id: 5,
@@ -50,6 +69,8 @@ function OnboardingEntrepriseMatching() {
       skills: ['Full Stack', 'Node.js', 'MongoDB'],
       match: 82,
       selected: false,
+      photo: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Omar',
+      linkedin: 'https://linkedin.com/in/omar-kabbaj',
     },
     {
       id: 6,
@@ -59,6 +80,8 @@ function OnboardingEntrepriseMatching() {
       skills: ['Marketing', 'SEO', 'Analytics'],
       match: 79,
       selected: false,
+      photo: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Fatima',
+      linkedin: 'https://linkedin.com/in/fatima-zahra',
     },
   ]
 
@@ -83,6 +106,14 @@ function OnboardingEntrepriseMatching() {
     localStorage.setItem('lynk_entreprise_onboarding_data', JSON.stringify({ ...existingData, selectedInterns }))
   }
 
+  const handleStepClick = (stepNumber) => {
+    const step = entrepriseSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
@@ -92,17 +123,9 @@ function OnboardingEntrepriseMatching() {
 
       {/* Content */}
       <div className="flex-1 px-6 py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 5 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">83%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '83%' }} />
-            </div>
-          </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Stepper */}
+          <Stepper steps={entrepriseSteps} currentStep={5} onStepClick={handleStepClick} />
 
           {/* Title */}
           <div className="mb-8">
@@ -126,10 +149,26 @@ function OnboardingEntrepriseMatching() {
                 }`}
                 onClick={() => toggleIntern(intern.id)}
               >
-                {/* Header */}
-                <div className="flex items-start justify-between mb-4">
+                {/* Header with Photo */}
+                <div className="flex items-start gap-3 mb-4">
+                  <img
+                    src={intern.photo}
+                    alt={intern.name}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-slate-200"
+                  />
                   <div className="flex-1">
-                    <h3 className="font-semibold text-slate-900 mb-1">{intern.name}</h3>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-semibold text-slate-900">{intern.name}</h3>
+                      <a
+                        href={intern.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#0077B5] hover:text-[#005885] transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    </div>
                     <div className="flex items-center gap-1 text-sm text-slate-500">
                       <GraduationCap className="h-4 w-4" aria-hidden="true" />
                       {intern.school}
@@ -141,6 +180,10 @@ function OnboardingEntrepriseMatching() {
                         ? 'bg-brand-primary text-white'
                         : 'bg-slate-100 text-slate-400 hover:bg-slate-200'
                     }`}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      toggleIntern(intern.id)
+                    }}
                   >
                     <Heart className="h-5 w-5" aria-hidden="true" />
                   </button>
@@ -187,6 +230,7 @@ function OnboardingEntrepriseMatching() {
           <div className="flex justify-between">
             <Link
               to="/onboarding/entreprise/compensation"
+              onClick={handleNext}
               className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden="true" />
