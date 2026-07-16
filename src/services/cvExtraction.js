@@ -1,7 +1,4 @@
-/**
- * CV extraction pipeline (frontend mock).
- * Production: pdf-parse / mammoth for text → LLM with structured JSON prompt.
- */
+const API_URL = 'http://localhost:8000/api'
 
 const ACCEPTED_TYPES = {
   'application/pdf': 'pdf',
@@ -33,61 +30,88 @@ export function validateCVFile(file) {
   return null
 }
 
-async function parseFileText(file) {
-  const name = file.name.toLowerCase()
-  if (name.endsWith('.pdf')) {
-    // pdf-parse côté serveur en production
-    return `[PDF] ${file.name}`
-  }
-  if (name.endsWith('.docx')) {
-    // mammoth côté serveur en production
-    return `[DOCX] ${file.name}`
-  }
-  return file.name
-}
-
-async function extractWithLLM(_rawText, fileName) {
-  await new Promise((r) => setTimeout(r, 1800))
-
-  const base = fileName.replace(/\.(pdf|docx)$/i, '').replace(/[_-]/g, ' ')
-  const parts = base.split(' ').filter(Boolean)
-
-  return {
-    prenom: parts[0] ? capitalize(parts[0]) : 'Marie',
-    nom: parts[1] ? capitalize(parts[1]) : 'Dupont',
-    email: `${(parts[0] || 'marie').toLowerCase()}.${(parts[1] || 'dupont').toLowerCase()}@email.com`,
-    telephone: '+33 6 12 34 56 78',
-    ecole: 'Université Paris-Saclay',
-    niveau: 'Master 2 — Informatique',
-    skills: ['React', 'TypeScript', 'Node.js', 'Git', 'Agile'],
-    experience: [
-      {
-        titre: 'Stage développeur front-end',
-        entreprise: 'Startup Tech',
-        periode: 'Juin — Août 2025',
-        description: 'Développement de composants React et intégration API REST.',
-      },
-      {
-        titre: 'Projet associatif — Trésorière',
-        entreprise: 'BDE Informatique',
-        periode: '2024 — 2025',
-        description: 'Gestion budgétaire et organisation d\'événements étudiants.',
-      },
-    ],
-  }
-}
-
-function capitalize(s) {
-  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase()
-}
-
 export async function extractFromCV(file) {
-  const error = validateCVFile(file)
-  if (error) throw new Error(error)
+  const validationError = validateCVFile(file)
+  if (validationError) throw new Error(validationError)
 
-  const rawText = await parseFileText(file)
-  const extracted = await extractWithLLM(rawText, file.name)
+  const formData = new FormData()
+  formData.append('cv', file)
+
+  const res = await fetch(`${API_URL}/cvs/extract/`, {
+    method: 'POST',
+    body: formData,
+  })
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: 'Erreur lors de l\'extraction.' }))
+    throw new Error(err.error || `Erreur ${res.status}`)
+  }
+
+  const extracted = await res.json()
   return { ...CV_SCHEMA, ...extracted }
+}
+
+/**
+ * Mappe le schema d'extraction CV (prenom/nom/ecole/telephone/niveau)
+ * vers les noms de champs attendus par OnboardingPersonalInfo.jsx
+ * (firstName/lastName/school/phone/educationLevel).
+ */
+export function mapExtractedProfileToFormData(extracted) {
+  return {
+    firstName: extracted.prenom || '',
+    lastName: extracted.nom || '',
+    email: extracted.email || '',
+    phone: extracted.telephone || '',
+    school: extracted.ecole || '',
+    educationLevel: mapNiveauToEducationLevel(extracted.niveau),
+    skills: extracted.skills || [],
+    experiences: mapExtractedExperiences(extracted.experience),
+  }
+}
+
+/**
+ * OnboardingExperience.jsx attend une cle "experiences" (pluriel) avec la forme
+ * {id, title, company, startDate, endDate, description} - differente du schema
+ * d'extraction CV {titre, entreprise, periode, description}.
+ *
+ * "periode" (ex: "Juin - Aout 2025") ne peut pas etre decoupe de facon fiable en
+ * dates exactes yyyy-mm-dd pour les <input type="date">, donc on le glisse dans
+ * la description plutot que de deviner des dates fausses ; l'etudiant renseigne
+ * les dates lui-meme.
+ */
+function mapExtractedExperiences(experienceArray) {
+  if (!Array.isArray(experienceArray)) return []
+
+  return experienceArray.map((exp, index) => ({
+    id: Date.now() + index,
+    title: exp.titre || '',
+    company: exp.entreprise || '',
+    startDate: '',
+    endDate: '',
+    description: exp.periode
+      ? `(${exp.periode}) ${exp.description || ''}`.trim()
+      : (exp.description || ''),
+  }))
+}
+
+/**
+ * Heuristique texte libre -> valeur du <select> educationLevel.
+ * Ne devine pas au hasard : si aucun mot-clé ne matche, retourne ''
+ * (le select affichera "Sélectionner", l'étudiant choisit lui-même).
+ */
+function mapNiveauToEducationLevel(niveau) {
+  if (!niveau) return ''
+  const n = niveau.toLowerCase()
+
+  if (n.includes('doctorat') || n.includes('phd')) return 'doctorat'
+  if (n.includes('master 2') || n.includes('m2') || n.includes('bac+5') || n.includes('bac +5')) return 'bac+5'
+  if (n.includes('master 1') || n.includes('m1') || n.includes('bac+4') || n.includes('bac +4')) return 'bac+4'
+  if (n.includes('licence') || n.includes('bac+3') || n.includes('bac +3') || n.includes('l3')) return 'bac+3'
+  if (n.includes('bts') || n.includes('dut') || n.includes('bac+2') || n.includes('bac +2') || n.includes('l2')) return 'bac+2'
+  if (n.includes('bac+1') || n.includes('bac +1') || n.includes('l1')) return 'bac+1'
+  if (n.includes('bac')) return 'bac'
+
+  return ''
 }
 
 export function emptyProfile() {

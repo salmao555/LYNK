@@ -26,7 +26,7 @@ export default function Hero() {
           to="/academique/choix"
           className="w-fit rounded-full bg-white px-6 py-3 font-semibold text-slate-900 hover:bg-slate-100 transition-colors"
         >
-          Continuer →
+          Étudiant ou établissement ?  →
         </Link>
       </section>
 
@@ -45,7 +45,7 @@ export default function Hero() {
           pilotez votre pipeline.
         </p>
         <Link
-          to="/login/entreprise"
+          to="/onboarding/entreprise/info"
           className="w-fit rounded-full bg-brand-primary px-6 py-3 font-semibold text-white hover:bg-brand-primary-dark transition-colors"
         >
           Je recrute un stagiaire →

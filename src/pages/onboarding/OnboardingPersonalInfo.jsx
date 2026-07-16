@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import Stepper from '../../components/Stepper'
 
 function OnboardingPersonalInfo() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -11,6 +13,16 @@ function OnboardingPersonalInfo() {
     school: '',
     educationLevel: '',
   })
+
+  const studentSteps = [
+    { label: 'CV', path: '/onboarding/cv-upload' },
+    { label: 'Infos', path: '/onboarding/personal-info' },
+    { label: 'Expériences', path: '/onboarding/experience' },
+    { label: 'Projets', path: '/onboarding/projects-skills' },
+    { label: 'Préférences', path: '/onboarding/preferences' },
+    { label: 'Découverte', path: '/onboarding/matching-preview' },
+    { label: 'Connexion', path: '/onboarding/auth' },
+  ]
 
   // Load existing data from localStorage on mount
   useEffect(() => {
@@ -37,6 +49,14 @@ function OnboardingPersonalInfo() {
     localStorage.setItem('lynk_onboarding_data', JSON.stringify({ ...existingData, ...formData }))
   }
 
+  const handleStepClick = (stepNumber) => {
+    const step = studentSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Header */}
@@ -45,18 +65,10 @@ function OnboardingPersonalInfo() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex items-center justify-center px-6 py-12">
+      <div className="flex-1 px-6 py-12">
         <div className="w-full max-w-2xl">
-          {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-slate-600">Étape 2 sur 6</span>
-              <span className="text-sm font-medium text-brand-primary">33%</span>
-            </div>
-            <div className="w-full bg-slate-200 rounded-full h-2">
-              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '33%' }} />
-            </div>
-          </div>
+          {/* Stepper */}
+          <Stepper steps={studentSteps} currentStep={2} onStepClick={handleStepClick} />
 
           {/* Main Card */}
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">

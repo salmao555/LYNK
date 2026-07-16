@@ -29,6 +29,12 @@ import OnboardingProjectsSkills from './pages/onboarding/OnboardingProjectsSkill
 import OnboardingPreferences from './pages/onboarding/OnboardingPreferences'
 import OnboardingMatchingPreview from './pages/onboarding/OnboardingMatchingPreview'
 import OnboardingAuth from './pages/onboarding/OnboardingAuth'
+import OnboardingEntrepriseInfo from './pages/onboarding/entreprise/OnboardingEntrepriseInfo'
+import OnboardingEntrepriseOfferInfo from './pages/onboarding/entreprise/OnboardingEntrepriseOfferInfo'
+import OnboardingEntrepriseRequirements from './pages/onboarding/entreprise/OnboardingEntrepriseRequirements'
+import OnboardingEntrepriseCompensation from './pages/onboarding/entreprise/OnboardingEntrepriseCompensation'
+import OnboardingEntrepriseMatching from './pages/onboarding/entreprise/OnboardingEntrepriseMatching'
+import OnboardingEntrepriseAuth from './pages/onboarding/entreprise/OnboardingEntrepriseAuth'
 import { useAuth } from './context/AuthContext'
 
 function LandingPage() {
@@ -79,6 +85,14 @@ function App() {
         <Route path="/onboarding/preferences" element={<OnboardingPreferences />} />
         <Route path="/onboarding/matching-preview" element={<OnboardingMatchingPreview />} />
         <Route path="/onboarding/auth" element={<OnboardingAuth />} />
+
+        {/* Enterprise onboarding flow */}
+        <Route path="/onboarding/entreprise/info" element={<OnboardingEntrepriseInfo />} />
+        <Route path="/onboarding/entreprise/offer-info" element={<OnboardingEntrepriseOfferInfo />} />
+        <Route path="/onboarding/entreprise/requirements" element={<OnboardingEntrepriseRequirements />} />
+        <Route path="/onboarding/entreprise/compensation" element={<OnboardingEntrepriseCompensation />} />
+        <Route path="/onboarding/entreprise/matching" element={<OnboardingEntrepriseMatching />} />
+        <Route path="/onboarding/entreprise/auth" element={<OnboardingEntrepriseAuth />} />
 
         <Route path="/bienvenue" element={<PageAvecNavbar><Welcome /></PageAvecNavbar>} />
 

@@ -1,11 +1,23 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Plus, Trash2, Building2 } from 'lucide-react'
+import Stepper from '../../components/Stepper'
 
 function OnboardingExperience() {
+  const navigate = useNavigate()
   const [experiences, setExperiences] = useState([
     { id: 1, title: '', company: '', startDate: '', endDate: '', description: '' }
   ])
+
+  const studentSteps = [
+    { label: 'CV', path: '/onboarding/cv-upload' },
+    { label: 'Infos', path: '/onboarding/personal-info' },
+    { label: 'Expériences', path: '/onboarding/experience' },
+    { label: 'Projets', path: '/onboarding/projects-skills' },
+    { label: 'Préférences', path: '/onboarding/preferences' },
+    { label: 'Découverte', path: '/onboarding/matching-preview' },
+    { label: 'Connexion', path: '/onboarding/auth' },
+  ]
 
   // Load existing data from localStorage on mount
   useEffect(() => {
@@ -31,6 +43,14 @@ function OnboardingExperience() {
   const handleNext = () => {
     const existingData = JSON.parse(localStorage.getItem('lynk_onboarding_data') || '{}')
     localStorage.setItem('lynk_onboarding_data', JSON.stringify({ ...existingData, experiences }))
+  }
+
+  const handleStepClick = (stepNumber) => {
+    const step = studentSteps[stepNumber - 1]
+    if (step) {
+      handleNext()
+      navigate(step.path)
+    }
   }
 
   return (

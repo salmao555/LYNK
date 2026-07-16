@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import { Upload, FileText, ChevronDown, ChevronUp } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Upload, FileText, ChevronDown, ChevronUp, Loader2 } from 'lucide-react'
+import { extractFromCV, mapExtractedProfileToFormData } from '../../services/cvExtraction'
 
 // Reusable upload component
 function UploadZone({ onFileSelect, file, onRemove }) {
@@ -45,7 +46,7 @@ function UploadZone({ onFileSelect, file, onRemove }) {
         onChange={handleFileSelect}
         className="hidden"
       />
-      
+
       {file ? (
         <div className="border-2 border-dashed border-brand-primary bg-brand-primary/5 rounded-2xl p-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -98,26 +99,48 @@ function UploadZone({ onFileSelect, file, onRemove }) {
 }
 
 function OnboardingCVUpload() {
+  const navigate = useNavigate()
   const [file, setFile] = useState(null)
   const [expandedOption, setExpandedOption] = useState('cv') // 'cv' or 'linkedin'
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleFileSelect = (selectedFile) => {
+    setError('')
     setFile(selectedFile)
   }
 
   const handleRemoveFile = () => {
     setFile(null)
+    setError('')
   }
 
   const toggleLinkedIn = () => {
     setExpandedOption(expandedOption === 'linkedin' ? 'cv' : 'linkedin')
   }
 
+  const handleContinue = async () => {
+    if (!file) return
+    setError('')
+    setLoading(true)
+    try {
+      const extracted = await extractFromCV(file)
+      const mapped = mapExtractedProfileToFormData(extracted)
+      const existingData = JSON.parse(localStorage.getItem('lynk_onboarding_data') || '{}')
+      localStorage.setItem('lynk_onboarding_data', JSON.stringify({ ...existingData, ...mapped }))
+      navigate('/onboarding/personal-info')
+    } catch (err) {
+      setError(err.message || 'Erreur lors de la lecture du CV.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col relative overflow-hidden">
       {/* Subtle orange gradient - top-right corner */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
-      
+
       {/* Header */}
       <div className="bg-white border-b border-slate-200 px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
@@ -156,11 +179,11 @@ function OnboardingCVUpload() {
                   <ChevronDown className="h-5 w-5 text-slate-400" aria-hidden="true" />
                 )}
               </div>
-              
+
               {expandedOption === 'cv' && (
                 <div className="px-6 pb-6">
                   <UploadZone onFileSelect={handleFileSelect} file={file} onRemove={handleRemoveFile} />
-                  
+
                   <button
                     onClick={toggleLinkedIn}
                     className="mt-4 text-sm text-slate-500 hover:text-brand-primary transition-colors"
@@ -184,7 +207,7 @@ function OnboardingCVUpload() {
                   <ChevronDown className="h-5 w-5 text-slate-400" aria-hidden="true" />
                 )}
               </div>
-              
+
               {expandedOption === 'linkedin' && (
                 <div className="px-6 pb-6">
                   {/* Instructions */}
@@ -216,6 +239,10 @@ function OnboardingCVUpload() {
             </div>
           </div>
 
+          {error && (
+            <p className="mt-4 text-sm text-red-600 text-center">{error}</p>
+          )}
+
           {/* Manual fill link */}
           <div className="mt-8 text-center">
             <Link
@@ -229,12 +256,14 @@ function OnboardingCVUpload() {
           {/* Continue button */}
           {file && (
             <div className="mt-8 flex justify-center">
-              <Link
-                to="/onboarding/personal-info"
-                className="px-8 py-3 rounded-full font-medium bg-brand-primary hover:bg-brand-primary-dark text-white transition-colors"
+              <button
+                onClick={handleContinue}
+                disabled={loading}
+                className="px-8 py-3 rounded-full font-medium bg-brand-primary hover:bg-brand-primary-dark text-white transition-colors disabled:opacity-60 inline-flex items-center gap-2"
               >
-                Continuer
-              </Link>
+                {loading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                {loading ? 'Analyse en cours...' : 'Continuer'}
+              </button>
             </div>
           )}
         </div>

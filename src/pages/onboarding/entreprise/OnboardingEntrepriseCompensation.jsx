@@ -1,0 +1,185 @@
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowLeft, ArrowRight, DollarSign } from 'lucide-react'
+
+function OnboardingEntrepriseCompensation() {
+  const [formData, setFormData] = useState({
+    minSalary: 2000,
+    maxSalary: 6000,
+    isUnpaid: false,
+  })
+
+  // Load existing data from localStorage on mount
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('lynk_entreprise_onboarding_data') || '{}')
+    if (savedData.compensation) {
+      setFormData(savedData.compensation)
+    }
+  }, [])
+
+  const handleMinSalaryChange = (e) => {
+    const value = parseInt(e.target.value)
+    setFormData({
+      ...formData,
+      minSalary: Math.min(value, formData.maxSalary - 500)
+    })
+  }
+
+  const handleMaxSalaryChange = (e) => {
+    const value = parseInt(e.target.value)
+    setFormData({
+      ...formData,
+      maxSalary: Math.max(value, formData.minSalary + 500)
+    })
+  }
+
+  const toggleUnpaid = () => {
+    setFormData({
+      ...formData,
+      isUnpaid: !formData.isUnpaid
+    })
+  }
+
+  // Save data to localStorage when navigating away
+  const handleNext = () => {
+    const existingData = JSON.parse(localStorage.getItem('lynk_entreprise_onboarding_data') || '{}')
+    localStorage.setItem('lynk_entreprise_onboarding_data', JSON.stringify({ ...existingData, compensation: formData }))
+  }
+
+  const salaryRange = formData.isUnpaid ? 'Non rémunéré' : `${formData.minSalary} - ${formData.maxSalary} MAD/mois`
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      {/* Header */}
+      <div className="bg-white border-b border-slate-200 px-6 py-4">
+        <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 px-6 py-12">
+        <div className="max-w-2xl mx-auto">
+          {/* Progress */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-slate-600">Étape 4 sur 6</span>
+              <span className="text-sm font-medium text-brand-primary">66%</span>
+            </div>
+            <div className="w-full bg-slate-200 rounded-full h-2">
+              <div className="bg-brand-primary rounded-full h-2 transition-all" style={{ width: '66%' }} />
+            </div>
+          </div>
+
+          {/* Title */}
+          <div className="mb-8">
+            <h1 className="font-display text-3xl font-bold text-slate-900 mb-3 text-balance">
+              Rémunération proposée
+            </h1>
+            <p className="text-slate-500 text-pretty">
+              Soyez transparent sur la rémunération pour attirer les meilleurs candidats.
+            </p>
+          </div>
+
+          {/* Form */}
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 space-y-8">
+            {/* Unpaid Toggle */}
+            <div className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+              <div>
+                <h3 className="font-semibold text-slate-900">Stage non rémunéré</h3>
+                <p className="text-sm text-slate-500">Cochez si le stage n'est pas rémunéré</p>
+              </div>
+              <button
+                onClick={toggleUnpaid}
+                className={`relative w-14 h-8 rounded-full transition-colors ${
+                  formData.isUnpaid ? 'bg-brand-primary' : 'bg-slate-300'
+                }`}
+              >
+                <span
+                  className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-transform ${
+                    formData.isUnpaid ? 'translate-x-7' : 'translate-x-1'
+                  }`}
+                />
+              </button>
+            </div>
+
+            {/* Salary Sliders */}
+            {!formData.isUnpaid && (
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Salaire minimum (MAD/mois)
+                  </label>
+                  <input
+                    type="range"
+                    min="1000"
+                    max="15000"
+                    step="100"
+                    value={formData.minSalary}
+                    onChange={handleMinSalaryChange}
+                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary"
+                  />
+                  <div className="flex justify-between mt-2 text-sm text-slate-500">
+                    <span>1000 MAD</span>
+                    <span className="font-semibold text-brand-primary">{formData.minSalary} MAD</span>
+                    <span>15000 MAD</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Salaire maximum (MAD/mois)
+                  </label>
+                  <input
+                    type="range"
+                    min="1000"
+                    max="15000"
+                    step="100"
+                    value={formData.maxSalary}
+                    onChange={handleMaxSalaryChange}
+                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary"
+                  />
+                  <div className="flex justify-between mt-2 text-sm text-slate-500">
+                    <span>1000 MAD</span>
+                    <span className="font-semibold text-brand-primary">{formData.maxSalary} MAD</span>
+                    <span>15000 MAD</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Summary */}
+            <div className="p-6 bg-brand-primary/5 rounded-xl border border-brand-primary/20">
+              <div className="flex items-center gap-3">
+                <DollarSign className="h-6 w-6 text-brand-primary" aria-hidden="true" />
+                <div>
+                  <p className="text-sm text-slate-600">Rémunération affichée</p>
+                  <p className="text-xl font-bold text-slate-900">{salaryRange}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="mt-8 flex justify-between">
+            <Link
+              to="/onboarding/entreprise/requirements"
+              className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-slate-100 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              Précédent
+            </Link>
+            <Link
+              to="/onboarding/entreprise/matching"
+              onClick={handleNext}
+              className="flex items-center gap-2 px-8 py-3 rounded-full font-medium bg-brand-primary hover:bg-brand-primary-dark text-white transition-colors"
+            >
+              Suivant
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default OnboardingEntrepriseCompensation
