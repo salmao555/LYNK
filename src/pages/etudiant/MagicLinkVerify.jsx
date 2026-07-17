@@ -27,7 +27,7 @@ export default function MagicLinkVerify() {
   if (error) {
     return (
       <div className="min-h-screen bg-cream-white flex items-center justify-center px-6">
-        <div className="bg-cream-white rounded-3xl border border-cream-white p-10 text-center max-w-md">
+        <div className="bg-cream-white rounded-3xl border border-cream-border p-10 text-center max-w-md">
           <p className="text-red-600 mb-4">{error}</p>
           <a href="/etudiant/onboarding" className="text-brand-primary font-medium hover:underline">
             Recommencer l'inscription

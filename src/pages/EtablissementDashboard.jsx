@@ -69,7 +69,7 @@ function EtablissementDashboard() {
   return (
     <div className="min-h-screen bg-cream">
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
@@ -108,7 +108,7 @@ function EtablissementDashboard() {
                 <Link
                   key={stat.label}
                   to={stat.link}
-                  className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div className={`w-12 h-12 rounded-xl ${stat.color} flex items-center justify-center`}>
@@ -157,7 +157,7 @@ function EtablissementDashboard() {
                     key={action.title}
                     to={action.link}
                     className={`group bg-cream-white rounded-xl p-6 border ${
-                      action.primary ? 'border-brand-primary/30 shadow-sm' : 'border-cream-white'
+                      action.primary ? 'border-brand-primary/30 shadow-sm' : 'border-cream-border'
                     } hover:shadow-md transition-all`}
                   >
                     <div className={`w-12 h-12 rounded-xl mb-4 flex items-center justify-center ${
@@ -181,7 +181,7 @@ function EtablissementDashboard() {
 
           {/* Active Filières */}
           {filieres.length > 0 && (
-            <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+            <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-slate-900">Filières configurées</h2>
                 <Link

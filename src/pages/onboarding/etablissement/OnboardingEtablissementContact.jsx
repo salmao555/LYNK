@@ -60,7 +60,7 @@ function OnboardingEtablissementContact() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -71,7 +71,7 @@ function OnboardingEtablissementContact() {
           <Stepper steps={etablissementSteps} currentStep={4} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Qui gère ce compte ?</h1>
             <p className="text-slate-500 mb-8">Les informations du contact principal pour la gestion des stages.</p>
 
@@ -88,7 +88,7 @@ function OnboardingEtablissementContact() {
                     value={formData.contact.firstName}
                     onChange={handleChange}
                     placeholder="Jean"
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                   />
                 </div>
                 <div>
@@ -101,7 +101,7 @@ function OnboardingEtablissementContact() {
                     value={formData.contact.lastName}
                     onChange={handleChange}
                     placeholder="Dupont"
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                   />
                 </div>
               </div>
@@ -139,7 +139,7 @@ function OnboardingEtablissementContact() {
                   value={formData.contact.email}
                   onChange={handleChange}
                   placeholder="jean.dupont@etablissement.ma"
-                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
 
@@ -154,7 +154,7 @@ function OnboardingEtablissementContact() {
                   value={formData.contact.phone}
                   onChange={handleChange}
                   placeholder="+212 6 12 34 56 78"
-                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
             </div>

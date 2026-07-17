@@ -97,7 +97,7 @@ export default function EtudiantDashboard() {
               <Link
                 key={card.titre}
                 to={card.lien}
-                className="bg-cream-white rounded-2xl border border-cream-white p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group"
+                className="bg-cream-white rounded-2xl border border-cream-border p-5 hover:-translate-y-0.5 hover:shadow-md transition-all group"
               >
                 <div className="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-4">
                   <card.icone className="h-5 w-5" />
@@ -131,7 +131,7 @@ export default function EtudiantDashboard() {
 
         <Link
           to="/messages"
-          className="mt-8 flex items-center gap-3 bg-cream-white rounded-2xl border border-cream-white p-4 hover:bg-cream transition-colors"
+          className="mt-8 flex items-center gap-3 bg-cream-white rounded-2xl border border-cream-border p-4 hover:bg-cream transition-colors"
         >
           <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center">
             <MessageSquare className="h-5 w-5 text-brand-primary" />
@@ -153,7 +153,7 @@ function ProfileSummary({ profile, score, user }) {
     : user?.nom?.[0] || 'E'
 
   return (
-    <div className="bg-cream-white rounded-2xl border border-cream-white p-6">
+    <div className="bg-cream-white rounded-2xl border border-cream-border p-6">
       <div className="flex items-start gap-4 mb-5">
         <div className="w-14 h-14 rounded-full bg-brand-primary text-white text-lg font-semibold flex items-center justify-center shrink-0">
           {initials}
@@ -180,7 +180,7 @@ function ProfileSummary({ profile, score, user }) {
         </div>
       )}
 
-      <div className="pt-4 border-t border-cream-white flex justify-between items-center">
+      <div className="pt-4 border-t border-cream-border flex justify-between items-center">
         <span className="text-sm text-slate-500">Profil complété</span>
         <span className="text-lg font-bold text-brand-primary">{score}%</span>
       </div>

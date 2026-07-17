@@ -110,7 +110,7 @@ function OnboardingEtablissementDiscovery() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -131,7 +131,7 @@ function OnboardingEtablissementDiscovery() {
             {filteredEnterprises.map((enterprise) => (
               <div
                 key={enterprise.id}
-                className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-6 hover:shadow-md transition-shadow"
+                className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-6 hover:shadow-md transition-shadow"
               >
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-4">
@@ -162,7 +162,7 @@ function OnboardingEtablissementDiscovery() {
           </div>
 
           {/* Info Box */}
-          <div className="mb-8 p-4 bg-cream-white rounded-xl border border-cream-white">
+          <div className="mb-8 p-4 bg-cream-white rounded-xl border border-cream-border">
             <p className="text-sm text-slate-600">
               <span className="font-semibold">💡 Astuce :</span> Ces entreprises sont déjà actives sur Lynk et publient régulièrement des offres de stage. Une fois votre compte créé, vous pourrez voir toutes les opportunités correspondant aux filières de votre établissement.
             </p>

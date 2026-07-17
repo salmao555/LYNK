@@ -10,7 +10,7 @@ const STEPS = [
 export default function OnboardingLayout({ step, children }) {
   return (
     <div className="min-h-screen bg-cream-white font-sans flex flex-col">
-      <header className="px-8 py-5 flex items-center justify-between bg-cream-white border-b border-cream-white">
+      <header className="px-8 py-5 flex items-center justify-between bg-cream-white border-b border-cream-border">
         <Link to="/" className="font-display text-2xl font-bold text-brand-primary">
           Lynk
         </Link>

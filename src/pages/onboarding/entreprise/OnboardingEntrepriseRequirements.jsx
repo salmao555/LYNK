@@ -125,7 +125,7 @@ function OnboardingEntrepriseRequirements() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -146,7 +146,7 @@ function OnboardingEntrepriseRequirements() {
           </div>
 
           {/* Form */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8 space-y-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8 space-y-8">
             {/* Education Levels */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-3">
@@ -180,7 +180,7 @@ function OnboardingEntrepriseRequirements() {
                     type="checkbox"
                     checked={formData.allSchools}
                     onChange={toggleAllSchools}
-                    className="w-4 h-4 rounded border-cream-white text-brand-primary focus:ring-brand-primary"
+                    className="w-4 h-4 rounded border-cream-border text-brand-primary focus:ring-brand-primary"
                   />
                   <span className="text-sm text-slate-700">Toutes écoles</span>
                 </label>
@@ -195,7 +195,7 @@ function OnboardingEntrepriseRequirements() {
                       onKeyDown={handleSchoolKeyDown}
                       placeholder="Ajouter une école..."
                       list="suggested-schools"
-                      className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                      className="flex-1 px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                     />
                     <datalist id="suggested-schools">
                       {suggestedSchools.map(school => (
@@ -241,7 +241,7 @@ function OnboardingEntrepriseRequirements() {
                   onChange={(e) => setNewSkill(e.target.value)}
                   onKeyDown={handleSkillKeyDown}
                   placeholder="Ex: React, Python, Communication..."
-                  className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="flex-1 px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
                 <button
                   onClick={addSkill}
@@ -279,7 +279,7 @@ function OnboardingEntrepriseRequirements() {
                 onChange={handleChange}
                 placeholder="Ex: Anglais courant, disponible immédiatement, mobilité..."
                 rows={3}
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all resize-none"
               />
             </div>
           </div>

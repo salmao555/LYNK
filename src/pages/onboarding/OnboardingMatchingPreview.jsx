@@ -109,7 +109,7 @@ function OnboardingMatchingPreview() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -120,7 +120,7 @@ function OnboardingMatchingPreview() {
           <Stepper steps={studentSteps} currentStep={6} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Découverte</h1>
             <p className="text-slate-500 mb-8">Voici des opportunités qui correspondent à votre profil. Sélectionnez celles qui vous intéressent pour affiner votre matching.</p>
 
@@ -133,7 +133,7 @@ function OnboardingMatchingPreview() {
                   className={`relative border-2 rounded-xl p-5 cursor-pointer transition-all hover:shadow-md ${
                     selectedOffers.includes(offer.id)
                       ? 'border-brand-primary bg-brand-primary/5'
-                      : 'border-cream-white hover:border-brand-primary/50'
+                      : 'border-cream-border hover:border-brand-primary/50'
                   }`}
                 >
                   {/* Match Badge */}

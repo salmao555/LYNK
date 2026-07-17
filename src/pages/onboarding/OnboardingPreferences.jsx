@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, MapPin, Briefcase, DollarSign, Clock } from 'lucide-react'
 import Stepper from '../../components/Stepper'
+import CitySelector from '../../components/CitySelector'
+import SalarySlider from '../../components/SalarySlider'
 
 function OnboardingPreferences() {
   const navigate = useNavigate()
   const [preferences, setPreferences] = useState({
     opportunityTypes: [],
     workMode: '',
-    cities: '',
+    cities: [],
     salary: '',
     duration: '',
   })
@@ -27,7 +29,10 @@ function OnboardingPreferences() {
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem('lynk_onboarding_data') || '{}')
     if (savedData.preferences) {
-      setPreferences(savedData.preferences)
+      setPreferences({
+        ...savedData.preferences,
+        cities: savedData.preferences.cities || []
+      })
     }
   }, [])
 
@@ -42,6 +47,19 @@ function OnboardingPreferences() {
 
   const handleChange = (e) => {
     setPreferences({ ...preferences, [e.target.name]: e.target.value })
+  }
+
+  const handleCityToggle = (city, clearPrevious = false) => {
+    if (clearPrevious) {
+      setPreferences({ ...preferences, cities: [city] })
+    } else {
+      setPreferences({
+        ...preferences,
+        cities: preferences.cities.includes(city)
+          ? preferences.cities.filter(c => c !== city)
+          : [...preferences.cities, city]
+      })
+    }
   }
 
   // Save data to localStorage when navigating away
@@ -64,7 +82,7 @@ function OnboardingPreferences() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -75,7 +93,7 @@ function OnboardingPreferences() {
           <Stepper steps={studentSteps} currentStep={5} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Préférences de carrière</h1>
             <p className="text-slate-500 mb-8">Définissez vos critères de recherche pour trouver l'opportunité idéale.</p>
 
@@ -114,7 +132,7 @@ function OnboardingPreferences() {
                       className={`px-4 py-3 rounded-xl border-2 text-sm font-medium transition-colors ${
                         preferences.workMode === mode
                           ? 'border-brand-primary bg-brand-primary/10 text-brand-primary'
-                          : 'border-cream-white text-slate-600 hover:border-cream-white'
+                          : 'border-cream-border text-slate-600 hover:border-cream-border'
                       }`}
                     >
                       {mode}
@@ -125,57 +143,36 @@ function OnboardingPreferences() {
 
               {/* Cities */}
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-brand-primary" aria-hidden="true" />
-                  Ville(s) de préférence
-                </label>
-                <input
-                  type="text"
-                  name="cities"
-                  value={preferences.cities}
-                  onChange={handleChange}
-                  placeholder="Ex: Casablanca, Rabat, Tanger..."
-                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                <CitySelector
+                  selectedCities={preferences.cities}
+                  onCityToggle={handleCityToggle}
+                  label="Ville(s) de préférence"
                 />
-                <p className="text-xs text-cream-white mt-1">Séparez les villes par des virgules</p>
               </div>
 
               {/* Salary */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
-                  <DollarSign className="h-4 w-4 text-brand-primary" aria-hidden="true" />
-                  Rémunération souhaitée (MAD/mois)
-                </label>
-                <input
-                  type="number"
-                  name="salary"
-                  value={preferences.salary}
-                  onChange={handleChange}
-                  placeholder="Ex: 5000"
-                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
-                />
-              </div>
+              <SalarySlider
+                value={preferences.salary || 0}
+                onChange={(e) => setPreferences({ ...preferences, salary: e.target.value })}
+                min={0}
+                max={15000}
+                step={100}
+                label="Rémunération souhaitée"
+                unit="MAD/mois"
+                icon="dollar"
+              />
 
               {/* Duration */}
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-brand-primary" aria-hidden="true" />
-                  Durée souhaitée
-                </label>
-                <select
-                  name="duration"
-                  value={preferences.duration}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all bg-cream-white"
-                >
-                  <option value="">Sélectionner</option>
-                  <option value="2 mois">2 mois</option>
-                  <option value="3 mois">3 mois</option>
-                  <option value="3-6 mois">3-6 mois</option>
-                  <option value="6+ mois">6+ mois</option>
-                  <option value="1 an">1 an</option>
-                </select>
-              </div>
+              <SalarySlider
+                value={parseInt(preferences.duration) || 0}
+                onChange={(e) => setPreferences({ ...preferences, duration: e.target.value + ' mois' })}
+                min={1}
+                max={12}
+                step={1}
+                label="Durée souhaitée"
+                unit="mois"
+                icon="clock"
+              />
             </div>
 
             {/* Navigation */}

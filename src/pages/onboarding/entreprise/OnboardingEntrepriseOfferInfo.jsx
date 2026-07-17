@@ -79,7 +79,7 @@ function OnboardingEntrepriseOfferInfo() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -100,7 +100,7 @@ function OnboardingEntrepriseOfferInfo() {
           </div>
 
           {/* Form */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8 space-y-6">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8 space-y-6">
             {/* Title */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -112,7 +112,7 @@ function OnboardingEntrepriseOfferInfo() {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Ex: Développeur Web Full Stack"
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
 
@@ -125,7 +125,7 @@ function OnboardingEntrepriseOfferInfo() {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               >
                 <option value="">Sélectionnez...</option>
                 {moroccanCities.map(city => (
@@ -145,7 +145,7 @@ function OnboardingEntrepriseOfferInfo() {
                   name="startDate"
                   value={formData.startDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
               <div>
@@ -157,7 +157,7 @@ function OnboardingEntrepriseOfferInfo() {
                   name="endDate"
                   value={formData.endDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
               </div>
             </div>
@@ -172,7 +172,7 @@ function OnboardingEntrepriseOfferInfo() {
                 value={formData.duration}
                 onChange={handleChange}
                 placeholder="Ex: 3 mois, 6 mois"
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
 
@@ -189,12 +189,12 @@ function OnboardingEntrepriseOfferInfo() {
                       value={deliverable}
                       onChange={(e) => updateDeliverable(index, e.target.value)}
                       placeholder={`Livrable ${index + 1}`}
-                      className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                      className="flex-1 px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                     />
                     {formData.deliverables.length > 1 && (
                       <button
                         onClick={() => removeDeliverable(index)}
-                        className="p-3 rounded-xl border border-cream-white text-cream-white hover:text-red-500 hover:border-red-300 transition-colors"
+                        className="p-3 rounded-xl border border-cream-border text-cream-white hover:text-red-500 hover:border-red-300 transition-colors"
                       >
                         <X className="h-5 w-5" aria-hidden="true" />
                       </button>

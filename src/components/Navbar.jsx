@@ -33,7 +33,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="flex items-center justify-between px-8 py-4 border-b border-cream-white bg-cream">
+    <nav className="flex items-center justify-between px-8 py-4 border-b border-cream-border bg-cream">
       <div className="flex items-center gap-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
 

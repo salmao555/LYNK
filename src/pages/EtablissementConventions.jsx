@@ -71,7 +71,7 @@ function EtablissementConventions() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
               <CheckCircle className="h-5 w-5 text-emerald-600" aria-hidden="true" />
@@ -80,7 +80,7 @@ function EtablissementConventions() {
           </div>
           <p className="text-sm text-slate-500">Conventions validées</p>
         </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center">
               <Clock className="h-5 w-5 text-amber-600" aria-hidden="true" />
@@ -89,7 +89,7 @@ function EtablissementConventions() {
           </div>
           <p className="text-sm text-slate-500">En attente de validation</p>
         </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
               <ClipboardList className="h-5 w-5 text-brand-primary" aria-hidden="true" />
@@ -101,10 +101,10 @@ function EtablissementConventions() {
       </div>
 
       {/* Conventions List */}
-      <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm overflow-hidden">
+      <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-cream border-b border-cream-white">
+            <thead className="bg-cream border-b border-cream-border">
               <tr>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-slate-600">Étudiant</th>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-slate-600">Entreprise</th>
@@ -119,7 +119,7 @@ function EtablissementConventions() {
                 const config = statutConfig[conv.statut]
                 const StatusIcon = config.icon
                 return (
-                  <tr key={conv.id} className="border-b border-cream-white hover:bg-cream transition-colors">
+                  <tr key={conv.id} className="border-b border-cream-border hover:bg-cream transition-colors">
                     <td className="px-6 py-4">
                       <p className="font-medium text-slate-900">{conv.etudiant}</p>
                     </td>

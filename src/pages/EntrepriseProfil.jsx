@@ -43,7 +43,7 @@ function EntrepriseProfil() {
           <div className="flex gap-3">
             <button
               onClick={() => setIsEditing(false)}
-              className="inline-flex items-center gap-2 px-6 py-3 border border-cream-white text-slate-700 font-semibold rounded-full hover:bg-cream transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-cream-border text-slate-700 font-semibold rounded-full hover:bg-cream transition-colors"
             >
               Annuler
             </button>
@@ -61,7 +61,7 @@ function EntrepriseProfil() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Profile Card */}
         <div className="lg:col-span-1">
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm overflow-hidden">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm overflow-hidden">
             {/* Cover */}
             <div className="h-32 bg-gradient-to-r from-brand-primary to-brand-primary-light relative">
               {isEditing && (
@@ -107,7 +107,7 @@ function EntrepriseProfil() {
           </div>
 
           {/* Quick Stats */}
-          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm mt-6">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm mt-6">
             <h3 className="font-semibold text-slate-900 mb-4">Statistiques</h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -129,14 +129,14 @@ function EntrepriseProfil() {
         {/* Details Form */}
         <div className="lg:col-span-2 space-y-6">
           {/* Description */}
-          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
             <h3 className="font-semibold text-slate-900 mb-4">Description</h3>
             {isEditing ? (
               <textarea
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
               />
             ) : (
               <p className="text-slate-600 leading-relaxed">{formData.description}</p>
@@ -144,7 +144,7 @@ function EntrepriseProfil() {
           </div>
 
           {/* Culture & Avantages */}
-          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
             <h3 className="font-semibold text-slate-900 mb-4">Culture d'entreprise & Avantages</h3>
             <div className="space-y-4">
               <div>
@@ -154,7 +154,7 @@ function EntrepriseProfil() {
                     type="text"
                     value={formData.culture}
                     onChange={(e) => setFormData({ ...formData, culture: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                   />
                 ) : (
                   <p className="text-slate-600">{formData.culture}</p>
@@ -167,7 +167,7 @@ function EntrepriseProfil() {
                     value={formData.avantages}
                     onChange={(e) => setFormData({ ...formData, avantages: e.target.value })}
                     rows={3}
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
                   />
                 ) : (
                   <p className="text-slate-600">{formData.avantages}</p>
@@ -177,7 +177,7 @@ function EntrepriseProfil() {
           </div>
 
           {/* Contact */}
-          <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+          <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
             <h3 className="font-semibold text-slate-900 mb-4">Informations de contact</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -189,7 +189,7 @@ function EntrepriseProfil() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                 ) : (
@@ -208,7 +208,7 @@ function EntrepriseProfil() {
                       type="tel"
                       value={formData.telephone}
                       onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                 ) : (
@@ -227,7 +227,7 @@ function EntrepriseProfil() {
                       type="text"
                       value={formData.adresse}
                       onChange={(e) => setFormData({ ...formData, adresse: e.target.value })}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                 ) : (

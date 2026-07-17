@@ -53,11 +53,11 @@ function Chatbot() {
   }
 
   return (
-    <div className={`fixed bottom-6 right-6 bg-cream-white rounded-2xl shadow-2xl border border-cream-white z-50 transition-all ${
+    <div className={`fixed bottom-6 right-6 bg-cream-white rounded-2xl shadow-2xl border border-cream-border z-50 transition-all ${
       isMinimized ? 'w-80' : 'w-96 h-[500px]'
     }`}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-cream-white bg-brand-primary">
+      <div className="flex items-center justify-between p-4 border-b border-cream-border bg-brand-primary">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-brand-orange/20 flex items-center justify-center">
             <MessageSquare className="h-5 w-5 text-brand-orange" aria-hidden="true" />
@@ -115,14 +115,14 @@ function Chatbot() {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSendMessage} className="p-4 border-t border-cream-white">
+          <form onSubmit={handleSendMessage} className="p-4 border-t border-cream-border">
             <div className="flex gap-2">
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Écrivez votre message..."
-                className="flex-1 px-4 py-2 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm transition-all"
+                className="flex-1 px-4 py-2 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm transition-all"
               />
               <button
                 type="submit"

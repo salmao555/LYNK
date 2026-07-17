@@ -101,7 +101,7 @@ function OnboardingEtablissementEtudiants() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -112,7 +112,7 @@ function OnboardingEtablissementEtudiants() {
           <Stepper steps={etablissementSteps} currentStep={3} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Ajoutez vos étudiants</h1>
             <p className="text-slate-500 mb-8">Deux façons de faire, vous pouvez utiliser les deux. Cette étape est optionnelle — vous pourrez compléter plus tard depuis votre dashboard.</p>
 
@@ -137,7 +137,7 @@ function OnboardingEtablissementEtudiants() {
 
                 <button
                   onClick={handleDownloadTemplate}
-                  className="w-full mb-4 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-cream-white bg-cream-white hover:bg-cream transition-colors text-sm font-medium text-slate-700"
+                  className="w-full mb-4 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-cream-border bg-cream-white hover:bg-cream transition-colors text-sm font-medium text-slate-700"
                 >
                   <Download className="h-4 w-4" aria-hidden="true" />
                   Télécharger le modèle
@@ -145,7 +145,7 @@ function OnboardingEtablissementEtudiants() {
 
                 <div
                   className={`border-2 border-dashed rounded-xl p-6 text-center transition-all ${
-                    isDragging ? 'border-brand-primary bg-brand-primary/5' : 'border-cream-white hover:border-cream-white'
+                    isDragging ? 'border-brand-primary bg-brand-primary/5' : 'border-cream-border hover:border-cream-border'
                   }`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -171,7 +171,7 @@ function OnboardingEtablissementEtudiants() {
                 </div>
 
                 {csvPreview !== null && (
-                  <div className="mt-4 p-3 bg-cream-white rounded-lg border border-cream-white">
+                  <div className="mt-4 p-3 bg-cream-white rounded-lg border border-cream-border">
                     <div className="flex items-center gap-2">
                       <FileText className="h-4 w-4 text-brand-primary" aria-hidden="true" />
                       <span className="text-sm font-medium text-slate-700">
@@ -183,7 +183,7 @@ function OnboardingEtablissementEtudiants() {
               </div>
 
               {/* Block B: Email Domain */}
-              <div className="border-2 border-cream-white rounded-2xl p-6 bg-cream">
+              <div className="border-2 border-cream-border rounded-2xl p-6 bg-cream">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-cream-white flex items-center justify-center">
                     <Mail className="h-6 w-6 text-slate-600" aria-hidden="true" />
@@ -203,7 +203,7 @@ function OnboardingEtablissementEtudiants() {
                     Domaine de vos emails étudiants
                   </label>
                   <div className="flex items-center">
-                    <span className="px-4 py-3 bg-cream-white border border-cream-white rounded-l-xl text-slate-600 text-sm">
+                    <span className="px-4 py-3 bg-cream-white border border-cream-border rounded-l-xl text-slate-600 text-sm">
                       @
                     </span>
                     <input
@@ -211,7 +211,7 @@ function OnboardingEtablissementEtudiants() {
                       value={formData.studentImport.emailDomain}
                       onChange={handleEmailDomainChange}
                       placeholder="emi.ac.ma"
-                      className="flex-1 px-4 py-3 border border-l-0 border-cream-white rounded-r-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                      className="flex-1 px-4 py-3 border border-l-0 border-cream-border rounded-r-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                     />
                   </div>
                   <p className="text-xs text-slate-500 mt-2">

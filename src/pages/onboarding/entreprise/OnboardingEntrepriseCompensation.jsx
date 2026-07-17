@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, DollarSign } from 'lucide-react'
 import Stepper from '../../../components/Stepper'
+import SalarySlider from '../../../components/SalarySlider'
 
 function OnboardingEntrepriseCompensation() {
   const navigate = useNavigate()
@@ -73,7 +74,7 @@ function OnboardingEntrepriseCompensation() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -94,7 +95,7 @@ function OnboardingEntrepriseCompensation() {
           </div>
 
           {/* Form */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8 space-y-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8 space-y-8">
             {/* Unpaid Toggle */}
             <div className="flex items-center justify-between p-4 bg-cream rounded-xl">
               <div>
@@ -118,45 +119,27 @@ function OnboardingEntrepriseCompensation() {
             {/* Salary Sliders */}
             {!formData.isUnpaid && (
               <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Salaire minimum (MAD/mois)
-                  </label>
-                  <input
-                    type="range"
-                    min="1000"
-                    max="15000"
-                    step="100"
-                    value={formData.minSalary}
-                    onChange={handleMinSalaryChange}
-                    className="w-full h-2 bg-cream-white rounded-lg appearance-none cursor-pointer accent-brand-primary"
-                  />
-                  <div className="flex justify-between mt-2 text-sm text-slate-500">
-                    <span>1000 MAD</span>
-                    <span className="font-semibold text-brand-primary">{formData.minSalary} MAD</span>
-                    <span>15000 MAD</span>
-                  </div>
-                </div>
+                <SalarySlider
+                  value={formData.minSalary}
+                  onChange={handleMinSalaryChange}
+                  min={1000}
+                  max={15000}
+                  step={100}
+                  label="Salaire minimum"
+                  unit="MAD/mois"
+                  icon="dollar"
+                />
 
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Salaire maximum (MAD/mois)
-                  </label>
-                  <input
-                    type="range"
-                    min="1000"
-                    max="15000"
-                    step="100"
-                    value={formData.maxSalary}
-                    onChange={handleMaxSalaryChange}
-                    className="w-full h-2 bg-cream-white rounded-lg appearance-none cursor-pointer accent-brand-primary"
-                  />
-                  <div className="flex justify-between mt-2 text-sm text-slate-500">
-                    <span>1000 MAD</span>
-                    <span className="font-semibold text-brand-primary">{formData.maxSalary} MAD</span>
-                    <span>15000 MAD</span>
-                  </div>
-                </div>
+                <SalarySlider
+                  value={formData.maxSalary}
+                  onChange={handleMaxSalaryChange}
+                  min={1000}
+                  max={15000}
+                  step={100}
+                  label="Salaire maximum"
+                  unit="MAD/mois"
+                  icon="dollar"
+                />
               </div>
             )}
 

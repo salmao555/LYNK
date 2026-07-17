@@ -34,12 +34,12 @@ function Testimonials() {
 
       <div className="grid grid-cols-3 gap-6 text-left">
         {testimonials.map((t) => (
-          <div key={t.name} className="bg-cream-white border border-cream-white rounded-2xl p-6">
+          <div key={t.name} className="bg-cream-white border border-cream-border rounded-2xl p-6">
             <p className="text-brand-primary mb-4">★★★★★</p>
             <p className="text-black text-sm leading-relaxed mb-6">
               "{t.text}"
             </p>
-            <div className="flex items-center justify-between pt-4 border-t border-cream-white">
+            <div className="flex items-center justify-between pt-4 border-t border-cream-border">
               <div className="flex items-center gap-3">
                 <div className={`w-9 h-9 rounded-full ${t.color} text-white text-xs font-medium flex items-center justify-center`}>
                   {t.initials}

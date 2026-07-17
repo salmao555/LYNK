@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Building2, Upload, X } from 'lucide-react'
 import Stepper from '../../../components/Stepper'
+import CitySelector from '../../../components/CitySelector'
 
 function OnboardingEntrepriseInfo() {
   const navigate = useNavigate()
+  const fileInputRef = useRef(null)
   const [formData, setFormData] = useState({
     companyName: '',
     logo: null,
@@ -14,8 +16,6 @@ function OnboardingEntrepriseInfo() {
     cities: [],
     website: '',
   })
-
-  const [newCity, setNewCity] = useState('')
 
   const entrepriseSteps = [
     { label: 'Infos', path: '/onboarding/entreprise/info' },
@@ -69,28 +69,21 @@ function OnboardingEntrepriseInfo() {
     })
   }
 
-  const addCity = () => {
-    if (newCity.trim() && !formData.cities.includes(newCity.trim())) {
+  const handleCityToggle = (city, clearPrevious = false) => {
+    if (clearPrevious) {
+      setFormData({ ...formData, cities: [city] })
+    } else {
       setFormData({
         ...formData,
-        cities: [...formData.cities, newCity.trim()]
+        cities: formData.cities.includes(city)
+          ? formData.cities.filter(c => c !== city)
+          : [...formData.cities, city]
       })
-      setNewCity('')
     }
   }
 
-  const removeCity = (city) => {
-    setFormData({
-      ...formData,
-      cities: formData.cities.filter(c => c !== city)
-    })
-  }
-
-  const handleCityKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      addCity()
-    }
+  const handleLogoLabelClick = () => {
+    fileInputRef.current?.click()
   }
 
   // Save data to localStorage when navigating away
@@ -107,7 +100,6 @@ function OnboardingEntrepriseInfo() {
     }
   }
 
-  const moroccanCities = ['Casablanca', 'Rabat', 'Marrakech', 'Tanger', 'Fès', 'Meknès', 'Agadir', 'Oujda', 'Kénitra', 'Tétouan']
   const sectors = ['Tech', 'Finance', 'Industrie', 'Conseil', 'Marketing', 'Santé', 'Éducation', 'Commerce', 'Autre']
   const employeeRanges = ['1-10', '11-50', '51-200', '201-500', '500+']
 
@@ -117,7 +109,7 @@ function OnboardingEntrepriseInfo() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -138,7 +130,7 @@ function OnboardingEntrepriseInfo() {
           </div>
 
           {/* Form */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8 space-y-6">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8 space-y-6">
             {/* Company Name */}
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -150,7 +142,7 @@ function OnboardingEntrepriseInfo() {
                 value={formData.companyName}
                 onChange={handleChange}
                 placeholder="Ex: TechCorp Maroc"
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
 
@@ -165,7 +157,7 @@ function OnboardingEntrepriseInfo() {
                     <img
                       src={formData.logoPreview}
                       alt="Logo preview"
-                      className="w-20 h-20 rounded-full object-cover border-2 border-cream-white"
+                      className="w-20 h-20 rounded-full object-cover border-2 border-cream-border"
                     />
                     <button
                       onClick={handleRemoveLogo}
@@ -175,15 +167,19 @@ function OnboardingEntrepriseInfo() {
                     </button>
                   </div>
                 ) : (
-                  <label className="w-20 h-20 rounded-full border-2 border-dashed border-cream-white flex items-center justify-center cursor-pointer hover:border-brand-primary hover:bg-cream transition-all">
+                  <div 
+                    onClick={handleLogoLabelClick}
+                    className="w-20 h-20 rounded-full border-2 border-dashed border-cream-border flex items-center justify-center cursor-pointer hover:border-brand-primary hover:bg-cream transition-all"
+                  >
                     <input
+                      ref={fileInputRef}
                       type="file"
                       accept="image/*"
                       onChange={handleLogoUpload}
                       className="hidden"
                     />
                     <Upload className="h-8 w-8 text-cream-white" aria-hidden="true" />
-                  </label>
+                  </div>
                 )}
                 <p className="text-sm text-slate-500">Format carré, max 5MB</p>
               </div>
@@ -198,7 +194,7 @@ function OnboardingEntrepriseInfo() {
                 name="employeeCount"
                 value={formData.employeeCount}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               >
                 <option value="">Sélectionnez...</option>
                 {employeeRanges.map(range => (
@@ -216,7 +212,7 @@ function OnboardingEntrepriseInfo() {
                 name="sector"
                 value={formData.sector}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               >
                 <option value="">Sélectionnez...</option>
                 {sectors.map(sector => (
@@ -227,47 +223,11 @@ function OnboardingEntrepriseInfo() {
 
             {/* Cities */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Ville(s) où l'entreprise opère *
-              </label>
-              <div className="flex gap-2 mb-3">
-                <input
-                  type="text"
-                  value={newCity}
-                  onChange={(e) => setNewCity(e.target.value)}
-                  onKeyDown={handleCityKeyDown}
-                  placeholder="Ajouter une ville..."
-                  list="moroccan-cities"
-                  className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
-                />
-                <datalist id="moroccan-cities">
-                  {moroccanCities.map(city => (
-                    <option key={city} value={city} />
-                  ))}
-                </datalist>
-                <button
-                  onClick={addCity}
-                  className="px-4 py-3 rounded-xl bg-brand-primary text-white font-medium hover:bg-brand-primary-dark transition-colors"
-                >
-                  Ajouter
-                </button>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {formData.cities.map(city => (
-                  <span
-                    key={city}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-sm"
-                  >
-                    {city}
-                    <button
-                      onClick={() => removeCity(city)}
-                      className="hover:text-brand-primary-dark"
-                    >
-                      <X className="h-3 w-3" aria-hidden="true" />
-                    </button>
-                  </span>
-                ))}
-              </div>
+              <CitySelector
+                selectedCities={formData.cities}
+                onCityToggle={handleCityToggle}
+                label="Ville(s) où l'entreprise opère"
+              />
             </div>
 
             {/* Website */}
@@ -281,7 +241,7 @@ function OnboardingEntrepriseInfo() {
                 value={formData.website}
                 onChange={handleChange}
                 placeholder="https://www.votre-entreprise.ma"
-                className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
               />
             </div>
           </div>

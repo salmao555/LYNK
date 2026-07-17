@@ -4,6 +4,9 @@ import { Search, X } from 'lucide-react'
 function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label }) {
   const [searchQuery, setSearchQuery] = useState('')
 
+  // Ensure selectedCities is always an array
+  const citiesArray = Array.isArray(selectedCities) ? selectedCities : []
+
   const commonCities = ['Casablanca', 'Rabat', 'Tanger', 'Marrakech', 'Fès', 'Agadir', 'Meknès', 'Oujda', 'Kénitra', 'Tétouan']
   const allMoroccanCities = [
     'Casablanca', 'Rabat', 'Tanger', 'Marrakech', 'Fès', 'Agadir', 'Meknès', 'Oujda', 'Kénitra', 'Tétouan',
@@ -16,7 +19,7 @@ function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label 
 
   const filteredCities = allMoroccanCities.filter(city =>
     city.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    !selectedCities.includes(city)
+    !citiesArray.includes(city)
   )
 
   const handleCityClick = (city) => {
@@ -38,7 +41,7 @@ function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label 
   }
 
   const handleSearchKeyDown = (e) => {
-    if (e.key === 'Enter' && searchQuery.trim() && !selectedCities.includes(searchQuery.trim())) {
+    if (e.key === 'Enter' && searchQuery.trim() && !citiesArray.includes(searchQuery.trim())) {
       handleAddCity(searchQuery.trim())
     }
   }
@@ -60,13 +63,13 @@ function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label 
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyDown={handleSearchKeyDown}
           placeholder="Rechercher une ville..."
-          className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+          className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
         />
       </div>
 
       {/* Search Results Dropdown */}
       {searchQuery && filteredCities.length > 0 && (
-        <div className="mb-3 p-2 bg-cream-white border border-cream-white rounded-xl shadow-lg max-h-40 overflow-y-auto">
+        <div className="mb-3 p-2 bg-cream-white border border-cream-border rounded-xl shadow-lg max-h-40 overflow-y-auto">
           {filteredCities.slice(0, 5).map(city => (
             <button
               key={city}
@@ -82,7 +85,7 @@ function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label 
       {/* Common Cities Chips */}
       <div className="flex flex-wrap gap-2 mb-3">
         {commonCities.map(city => {
-          const isSelected = selectedCities.includes(city)
+          const isSelected = citiesArray.includes(city)
           return (
             <button
               key={city}
@@ -100,9 +103,9 @@ function CitySelector({ selectedCities, onCityToggle, multiSelect = true, label 
       </div>
 
       {/* Selected Cities */}
-      {selectedCities.length > 0 && (
+      {citiesArray.length > 0 && (
         <div className="flex flex-wrap gap-2">
-          {selectedCities.map(city => (
+          {citiesArray.map(city => (
             <span
               key={city}
               className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-sm"

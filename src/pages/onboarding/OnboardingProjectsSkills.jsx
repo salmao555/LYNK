@@ -82,7 +82,7 @@ function OnboardingProjectsSkills() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -93,7 +93,7 @@ function OnboardingProjectsSkills() {
           <Stepper steps={studentSteps} currentStep={4} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Projets & Compétences</h1>
             <p className="text-slate-500 mb-8">Mettez en valeur vos projets et vos compétences techniques.</p>
 
@@ -106,7 +106,7 @@ function OnboardingProjectsSkills() {
 
               <div className="space-y-4">
                 {projects.map((project, index) => (
-                  <div key={project.id} className="border border-cream-white rounded-xl p-6 relative">
+                  <div key={project.id} className="border border-cream-border rounded-xl p-6 relative">
                     {projects.length > 1 && (
                       <button
                         onClick={() => removeProject(project.id)}
@@ -124,7 +124,7 @@ function OnboardingProjectsSkills() {
                         value={project.title}
                         onChange={(e) => updateProject(project.id, 'title', e.target.value)}
                         placeholder="Ex: Application e-commerce"
-                        className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                       />
                     </div>
 
@@ -135,7 +135,7 @@ function OnboardingProjectsSkills() {
                         onChange={(e) => updateProject(project.id, 'description', e.target.value)}
                         placeholder="Décrivez le projet, votre rôle et les technologies utilisées..."
                         rows={3}
-                        className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all resize-none"
+                        className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all resize-none"
                       />
                     </div>
 
@@ -146,7 +146,7 @@ function OnboardingProjectsSkills() {
                         value={project.link}
                         onChange={(e) => updateProject(project.id, 'link', e.target.value)}
                         placeholder="https://github.com/..."
-                        className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                       />
                     </div>
                   </div>
@@ -154,7 +154,7 @@ function OnboardingProjectsSkills() {
 
                 <button
                   onClick={addProject}
-                  className="flex items-center gap-2 w-full py-3 border-2 border-dashed border-cream-white rounded-xl text-slate-600 hover:border-brand-primary hover:text-brand-primary transition-colors"
+                  className="flex items-center gap-2 w-full py-3 border-2 border-dashed border-cream-border rounded-xl text-slate-600 hover:border-brand-primary hover:text-brand-primary transition-colors"
                 >
                   <Plus className="h-4 w-4" aria-hidden="true" />
                   Ajouter un projet
@@ -177,7 +177,7 @@ function OnboardingProjectsSkills() {
                     onChange={(e) => setNewSkill(e.target.value)}
                     onKeyDown={handleSkillKeyDown}
                     placeholder="Ex: React, Python, Communication..."
-                    className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                    className="flex-1 px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                   />
                   <button
                     onClick={addSkill}

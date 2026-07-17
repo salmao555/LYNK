@@ -45,7 +45,7 @@ function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-cream px-4">
-      <div className="bg-cream-white rounded-3xl p-10 w-full max-w-md border border-cream-white shadow-sm">
+      <div className="bg-cream-white rounded-3xl p-10 w-full max-w-md border border-cream-border shadow-sm">
         <p className="text-2xl font-bold text-brand-orange text-center mb-8">Lynk</p>
 
         <div className="text-center mb-6">
@@ -61,11 +61,11 @@ function Signup() {
         </div>
 
         <div className="flex flex-col gap-3 mb-6">
-          <button type="button" className="flex items-center justify-center gap-2 border border-cream-white rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-cream transition-colors">
+          <button type="button" className="flex items-center justify-center gap-2 border border-cream-border rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-cream transition-colors">
             <span>💼</span> Continuer avec LinkedIn
           </button>
           {estEtudiant && (
-            <button type="button" className="flex items-center justify-center gap-2 border border-cream-white rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-cream transition-colors">
+            <button type="button" className="flex items-center justify-center gap-2 border border-cream-border rounded-full py-3 text-sm font-medium text-slate-700 hover:bg-cream transition-colors">
               <span>🐙</span> Continuer avec GitHub
             </button>
           )}
@@ -86,10 +86,10 @@ function Signup() {
               estEtudiant ? 'Nom complet' : estUniversite ? "Nom de l'établissement" : "Nom de l'entreprise"
             }
             required
-            className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all"
+            className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-border transition-all"
           />
-          <input type="email" placeholder="Email" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all" />
-          <input type="password" placeholder="Mot de passe" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all" />
+          <input type="email" placeholder="Email" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-border transition-all" />
+          <input type="password" placeholder="Mot de passe" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-border transition-all" />
 
           <button
             type="submit"

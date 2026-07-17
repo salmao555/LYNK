@@ -120,7 +120,7 @@ function OnboardingEntrepriseMatching() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -148,7 +148,7 @@ function OnboardingEntrepriseMatching() {
                 className={`bg-cream-white rounded-2xl border-2 p-6 cursor-pointer transition-all hover:shadow-lg ${
                   selectedInterns.includes(intern.id)
                     ? 'border-brand-primary shadow-md'
-                    : 'border-cream-white'
+                    : 'border-cream-border'
                 }`}
                 onClick={() => toggleIntern(intern.id)}
               >
@@ -157,7 +157,7 @@ function OnboardingEntrepriseMatching() {
                   <img
                     src={intern.photo}
                     alt={intern.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-cream-white"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-cream-border"
                   />
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
@@ -212,7 +212,7 @@ function OnboardingEntrepriseMatching() {
                 </div>
 
                 {/* Match Score */}
-                <div className="flex items-center justify-between pt-4 border-t border-cream-white">
+                <div className="flex items-center justify-between pt-4 border-t border-cream-border">
                   <span className="text-sm text-slate-500">Score de compatibilité</span>
                   <span className="text-lg font-bold text-brand-primary">{intern.match}%</span>
                 </div>

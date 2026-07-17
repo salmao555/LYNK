@@ -26,7 +26,7 @@ export default function OnboardingConfirmation() {
 
   return (
     <OnboardingLayout step={3}>
-      <div className="bg-cream-white rounded-3xl border border-cream-white shadow-sm p-8 md:p-10 text-center">
+      <div className="bg-cream-white rounded-3xl border border-cream-border shadow-sm p-8 md:p-10 text-center">
         <div className="w-16 h-16 rounded-full bg-brand-primary/10 flex items-center justify-center mx-auto mb-6">
           <Mail className="h-8 w-8 text-brand-primary" />
         </div>
@@ -58,7 +58,7 @@ export default function OnboardingConfirmation() {
           type="button"
           onClick={handleResend}
           disabled={resending || !pendingEmail}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-cream-white text-slate-600 hover:bg-cream text-sm font-medium transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-cream-border text-slate-600 hover:bg-cream text-sm font-medium transition-colors disabled:opacity-50"
         >
           {resending ? (
             <>

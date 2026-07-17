@@ -42,7 +42,7 @@ export default function OnboardingUpload() {
 
   return (
     <OnboardingLayout step={1}>
-      <div className="bg-cream-white rounded-3xl border border-cream-white shadow-sm p-8 md:p-10">
+      <div className="bg-cream-white rounded-3xl border border-cream-border shadow-sm p-8 md:p-10">
         <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">
           Commençons par votre CV
         </h1>

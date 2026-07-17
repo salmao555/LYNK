@@ -81,7 +81,7 @@ function EtablissementEtudiants() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
               <Users className="h-5 w-5 text-brand-primary" aria-hidden="true" />
@@ -90,7 +90,7 @@ function EtablissementEtudiants() {
           </div>
           <p className="text-sm text-slate-500">Total étudiants</p>
         </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center">
               <Search className="h-5 w-5 text-amber-600" aria-hidden="true" />
@@ -99,7 +99,7 @@ function EtablissementEtudiants() {
           </div>
           <p className="text-sm text-slate-500">En recherche</p>
         </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
               <Briefcase className="h-5 w-5 text-emerald-600" aria-hidden="true" />
@@ -108,7 +108,7 @@ function EtablissementEtudiants() {
           </div>
           <p className="text-sm text-slate-500">Stage trouvé</p>
         </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center">
               <GraduationCap className="h-5 w-5 text-brand-orange" aria-hidden="true" />
@@ -120,24 +120,24 @@ function EtablissementEtudiants() {
       </div>
 
       {/* Filters */}
-      <div className="bg-cream-white rounded-xl p-4 border border-cream-white shadow-sm mb-6">
+      <div className="bg-cream-white rounded-xl p-4 border border-cream-border shadow-sm mb-6">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-cream-white" aria-hidden="true" />
             <input
               type="text"
               placeholder="Rechercher un étudiant..."
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm"
+              className="w-full pl-10 pr-4 py-2 rounded-lg border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm"
             />
           </div>
-          <select className="px-4 py-2 rounded-lg border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm bg-cream-white">
+          <select className="px-4 py-2 rounded-lg border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm bg-cream-white">
             <option value="">Toutes les filières</option>
             <option value="informatique">Informatique</option>
             <option value="marketing">Marketing</option>
             <option value="design">Design</option>
             <option value="data">Data Science</option>
           </select>
-          <select className="px-4 py-2 rounded-lg border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm bg-cream-white">
+          <select className="px-4 py-2 rounded-lg border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange text-sm bg-cream-white">
             <option value="">Tous les statuts</option>
             <option value="en_recherche">En recherche</option>
             <option value="stage_trouve">Stage trouvé</option>
@@ -146,10 +146,10 @@ function EtablissementEtudiants() {
       </div>
 
       {/* Students List */}
-      <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm overflow-hidden">
+      <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-cream border-b border-cream-white">
+            <thead className="bg-cream border-b border-cream-border">
               <tr>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-slate-600">Étudiant</th>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-slate-600">Contact</th>
@@ -162,7 +162,7 @@ function EtablissementEtudiants() {
               {etudiants.map((etudiant) => {
                 const config = statutConfig[etudiant.statut]
                 return (
-                  <tr key={etudiant.id} className="border-b border-cream-white hover:bg-cream transition-colors">
+                  <tr key={etudiant.id} className="border-b border-cream-border hover:bg-cream transition-colors">
                     <td className="px-6 py-4">
                       <p className="font-medium text-slate-900">{etudiant.nom}</p>
                       <p className="text-sm text-slate-500">{etudiant.annee}</p>

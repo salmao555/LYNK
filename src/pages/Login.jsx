@@ -20,13 +20,13 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-cream px-4">
-      <div className="bg-cream-white rounded-3xl p-10 w-full max-w-md border border-cream-white shadow-sm">
+      <div className="bg-cream-white rounded-3xl p-10 w-full max-w-md border border-cream-border shadow-sm">
         <p className="text-2xl font-bold text-brand-orange text-center mb-8">Lynk</p>
         <h1 className="text-xl font-bold text-slate-900 text-center mb-6">Se connecter</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input type="email" placeholder="Email" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all" />
-          <input type="password" placeholder="Mot de passe" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-white transition-all" />
+          <input type="email" placeholder="Email" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-border transition-all" />
+          <input type="password" placeholder="Mot de passe" required className="w-full bg-cream rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange border border-cream-border transition-all" />
           <p className="text-right text-sm text-brand-orange cursor-pointer hover:text-brand-orange-dark transition-colors">Mot de passe oublié ?</p>
           <button type="submit" className="bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold py-3 rounded-full transition-colors">
             Se connecter

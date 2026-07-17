@@ -95,7 +95,7 @@ function OnboardingEtablissementFilieres() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-brand-primary/10 via-brand-primary/5 to-transparent pointer-events-none" />
       
       {/* Header */}
-      <div className="bg-cream-white border-b border-cream-white px-6 py-4 relative z-10">
+      <div className="bg-cream-white border-b border-cream-border px-6 py-4 relative z-10">
         <Link to="/" className="text-2xl font-bold text-brand-primary">Lynk</Link>
       </div>
 
@@ -106,7 +106,7 @@ function OnboardingEtablissementFilieres() {
           <Stepper steps={etablissementSteps} currentStep={2} onStepClick={handleStepClick} />
 
           {/* Main Card */}
-          <div className="bg-cream-white rounded-2xl border border-cream-white shadow-sm p-8">
+          <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Quelles filières proposez-vous ?</h1>
             <p className="text-slate-500 mb-8">Ça nous aide à orienter les bonnes offres vers vos étudiants.</p>
 
@@ -144,7 +144,7 @@ function OnboardingEtablissementFilieres() {
                   onChange={(e) => setNewFiliere(e.target.value)}
                   onKeyDown={handleFiliereKeyDown}
                   placeholder="Ex: Génie Mécanique, Chimie..."
-                  className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
+                  className="flex-1 px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
                 />
                 <button
                   onClick={addCustomFiliere}

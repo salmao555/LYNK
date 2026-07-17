@@ -20,7 +20,7 @@ function DashboardEntreprise() {
       {/* Stats */}
       <div className="grid grid-cols-4 gap-5 mb-8">
         {stats.map((s) => (
-          <div key={s.label} className="bg-cream-white border border-cream-white rounded-2xl p-5">
+          <div key={s.label} className="bg-cream-white border border-cream-border rounded-2xl p-5">
             <div className="flex justify-between items-start mb-4">
               <span className="text-lg">{s.icone}</span>
               <span className="text-xs text-cream-white">{s.delta}</span>
@@ -32,7 +32,7 @@ function DashboardEntreprise() {
       </div>
 
       {/* Pipeline */}
-      <div className="bg-cream-white border border-cream-white rounded-2xl p-6 mb-8">
+      <div className="bg-cream-white border border-cream-border rounded-2xl p-6 mb-8">
         <h2 className="text-lg font-bold text-slate-900 mb-6">Pipeline des candidatures</h2>
 
         <div className="grid grid-cols-4 gap-6">
@@ -48,7 +48,7 @@ function DashboardEntreprise() {
       </div>
 
       {/* Mes offres */}
-      <div className="bg-cream-white border border-cream-white rounded-2xl p-6">
+      <div className="bg-cream-white border border-cream-border rounded-2xl p-6">
         <div className="flex justify-between items-center mb-5">
           <h2 className="text-lg font-bold text-slate-900">Mes offres</h2>
           <span className="text-sm text-cream-white cursor-pointer">Voir tout</span>
@@ -88,7 +88,7 @@ function DashboardEntreprise() {
                   <p className="text-cream-white text-xs">réponse</p>
                 </div>
                 {!offre.booste && offre.statut === 'Actif' && (
-                  <button className="border border-cream-white rounded-full px-4 py-1.5 text-sm text-slate-600 hover:bg-cream">
+                  <button className="border border-cream-border rounded-full px-4 py-1.5 text-sm text-slate-600 hover:bg-cream">
                     ⚡ Booster
                   </button>
                 )}

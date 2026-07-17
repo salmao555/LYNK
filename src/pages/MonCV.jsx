@@ -49,7 +49,7 @@ function MonCV() {
       <div className="flex justify-between items-center mb-6">
         <h1 className="font-display text-2xl font-bold text-slate-900">Mon CV</h1>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 border border-cream-white bg-cream-white px-4 py-2 rounded-full text-sm text-slate-600 hover:bg-cream">
+          <button className="flex items-center gap-2 border border-cream-border bg-cream-white px-4 py-2 rounded-full text-sm text-slate-600 hover:bg-cream">
             ⬇ CV PDF
           </button>
           <button
@@ -63,7 +63,7 @@ function MonCV() {
 
       <div className="flex gap-6">
         <div className="flex-1">
-          <div className="bg-cream-white border border-cream-white rounded-2xl p-6 mb-5 flex justify-between items-start">
+          <div className="bg-cream-white border border-cream-border rounded-2xl p-6 mb-5 flex justify-between items-start">
             <div className="flex gap-4">
               <div className="w-16 h-16 rounded-full bg-brand-primary text-white text-xl font-medium flex items-center justify-center">
                 {(prenom[0] || '?')}{(nom[0] || '?')}
@@ -102,7 +102,7 @@ function MonCV() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   ongletActif === onglet
                     ? 'bg-brand-primary text-white'
-                    : 'bg-cream-white border border-cream-white text-slate-600 hover:bg-cream'
+                    : 'bg-cream-white border border-cream-border text-slate-600 hover:bg-cream'
                 }`}
               >
                 {onglet}
@@ -111,7 +111,7 @@ function MonCV() {
           </div>
 
           {ongletActif === 'Profil' && (
-            <div className="bg-cream-white border border-cream-white rounded-2xl p-6">
+            <div className="bg-cream-white border border-cream-border rounded-2xl p-6">
               <p className="text-xs font-semibold text-cream-white tracking-wide mb-4">
                 INFORMATIONS PERSONNELLES
               </p>
@@ -122,7 +122,7 @@ function MonCV() {
                   <input
                     value={prenom}
                     onChange={(e) => setPrenom(e.target.value)}
-                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-white ${inputFocus}`}
+                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-border ${inputFocus}`}
                   />
                 </div>
                 <div>
@@ -130,7 +130,7 @@ function MonCV() {
                   <input
                     value={nom}
                     onChange={(e) => setNom(e.target.value)}
-                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-white ${inputFocus}`}
+                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-border ${inputFocus}`}
                   />
                 </div>
               </div>
@@ -141,7 +141,7 @@ function MonCV() {
                   <input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-white ${inputFocus}`}
+                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-border ${inputFocus}`}
                   />
                 </div>
                 <div>
@@ -149,7 +149,7 @@ function MonCV() {
                   <input
                     value={telephone}
                     onChange={(e) => setTelephone(e.target.value)}
-                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-white ${inputFocus}`}
+                    className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-border ${inputFocus}`}
                   />
                 </div>
               </div>
@@ -159,7 +159,7 @@ function MonCV() {
                 <input
                   value={titre}
                   onChange={(e) => setTitre(e.target.value)}
-                  className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-white ${inputFocus}`}
+                  className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-border ${inputFocus}`}
                 />
               </div>
 
@@ -169,7 +169,7 @@ function MonCV() {
                   value={apropos}
                   onChange={(e) => setApropos(e.target.value)}
                   rows={3}
-                  className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-white resize-none ${inputFocus}`}
+                  className={`w-full bg-cream rounded-lg px-4 py-2.5 text-sm outline-none border border-cream-border resize-none ${inputFocus}`}
                 />
               </div>
             </div>
@@ -177,8 +177,8 @@ function MonCV() {
         </div>
 
         <div className="w-96 shrink-0">
-          <div className="bg-cream-white border border-cream-white rounded-2xl overflow-hidden sticky top-24">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-cream-white">
+          <div className="bg-cream-white border border-cream-border rounded-2xl overflow-hidden sticky top-24">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-cream-border">
               <span className="w-3 h-3 rounded-full bg-red-400"></span>
               <span className="w-3 h-3 rounded-full bg-amber-400"></span>
               <span className="w-3 h-3 rounded-full bg-emerald-400"></span>

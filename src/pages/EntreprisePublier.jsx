@@ -53,7 +53,7 @@ function EntreprisePublier() {
           {/* Main Form */}
           <div className="lg:col-span-2 space-y-6">
             {/* Informations générales */}
-            <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+            <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
                   <Briefcase className="h-5 w-5 text-brand-primary" aria-hidden="true" />
@@ -72,7 +72,7 @@ function EntreprisePublier() {
                     onChange={(e) => setFormData({ ...formData, titre: e.target.value })}
                     placeholder="Ex: Développeur Web Full Stack"
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                   />
                 </div>
 
@@ -86,7 +86,7 @@ function EntreprisePublier() {
                     placeholder="Décrivez les missions et responsabilités du stagiaire..."
                     rows={4}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none"
                   />
                 </div>
 
@@ -101,7 +101,7 @@ function EntreprisePublier() {
                       placeholder="Décrivez le projet spécifique sur lequel le stagiaire travaillera..."
                       rows={3}
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none pr-10"
+                      className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all resize-none pr-10"
                     />
                     <div className="absolute right-3 top-3">
                       <Info className="h-4 w-4 text-cream-white" aria-hidden="true" />
@@ -115,7 +115,7 @@ function EntreprisePublier() {
             </div>
 
             {/* Détails du stage */}
-            <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+            <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center">
                   <Calendar className="h-5 w-5 text-brand-orange" aria-hidden="true" />
@@ -132,7 +132,7 @@ function EntreprisePublier() {
                     value={formData.duree}
                     onChange={(e) => setFormData({ ...formData, duree: e.target.value })}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all bg-cream-white"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all bg-cream-white"
                   >
                     <option value="">Sélectionner</option>
                     <option value="2 mois">2 mois</option>
@@ -152,7 +152,7 @@ function EntreprisePublier() {
                     value={formData.dateDebut}
                     onChange={(e) => setFormData({ ...formData, dateDebut: e.target.value })}
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                    className="w-full px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                   />
                 </div>
 
@@ -168,7 +168,7 @@ function EntreprisePublier() {
                       onChange={(e) => setFormData({ ...formData, lieu: e.target.value })}
                       placeholder="Ex: Paris, Télétravail possible"
                       required
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                 </div>
@@ -186,7 +186,7 @@ function EntreprisePublier() {
                       placeholder="Ex: 800"
                       required
                       min="0"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                   </div>
                   <p className="text-xs text-slate-500 mt-1">
@@ -197,7 +197,7 @@ function EntreprisePublier() {
             </div>
 
             {/* Compétences */}
-            <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+            <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
                   <Building2 className="h-5 w-5 text-emerald-600" aria-hidden="true" />
@@ -213,13 +213,13 @@ function EntreprisePublier() {
                       value={comp}
                       onChange={(e) => updateCompetence(index, e.target.value)}
                       placeholder="Ex: React, Python, Communication..."
-                      className="flex-1 px-4 py-3 rounded-xl border border-cream-white focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
+                      className="flex-1 px-4 py-3 rounded-xl border border-cream-border focus:outline-none focus:ring-2 focus:ring-brand-orange/20 focus:border-brand-orange transition-all"
                     />
                     {competences.length > 1 && (
                       <button
                         type="button"
                         onClick={() => removeCompetence(index)}
-                        className="p-3 rounded-xl border border-cream-white hover:bg-red-50 hover:border-red-200 text-cream-white hover:text-red-600 transition-colors"
+                        className="p-3 rounded-xl border border-cream-border hover:bg-red-50 hover:border-red-200 text-cream-white hover:text-red-600 transition-colors"
                         aria-label="Supprimer"
                       >
                         <X className="h-4 w-4" aria-hidden="true" />
@@ -263,7 +263,7 @@ function EntreprisePublier() {
               </ul>
             </div>
 
-            <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+            <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
               <h3 className="font-semibold text-slate-900 mb-4">Résumé</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">

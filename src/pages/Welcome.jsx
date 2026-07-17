@@ -108,7 +108,7 @@ function Welcome() {
             <Link
               key={carte.titre}
               to={carte.lien}
-              className="group flex flex-col bg-cream-white rounded-2xl p-8 border border-cream-white shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col bg-cream-white rounded-2xl p-8 border border-cream-border shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
               <div className="h-12 w-12 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center mb-6">
                 <carte.icone className="h-6 w-6" aria-hidden="true" />

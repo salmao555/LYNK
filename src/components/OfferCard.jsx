@@ -2,7 +2,7 @@ import { MapPin, Clock, Building2, DollarSign, Eye, Bookmark, Briefcase } from '
 
 function OfferCard({ offre }) {
   return (
-    <div className="bg-cream-white border border-cream-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <div className="bg-cream-white border border-cream-border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-brand-navy text-white font-medium flex items-center justify-center">
@@ -56,7 +56,7 @@ function OfferCard({ offre }) {
         ))}
       </div>
 
-      <div className="flex items-center justify-between pt-3 border-t border-cream-white">
+      <div className="flex items-center justify-between pt-3 border-t border-cream-border">
         <div className="flex items-center gap-3">
           <span className="text-brand-orange font-semibold">{offre.salaire}</span>
           {offre.prime && (

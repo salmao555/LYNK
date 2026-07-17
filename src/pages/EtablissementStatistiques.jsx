@@ -66,7 +66,7 @@ function EtablissementStatistiques() {
 
       {/* Key Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
               <TrendingUp className="h-6 w-6 text-brand-orange" aria-hidden="true" />
@@ -86,7 +86,7 @@ function EtablissementStatistiques() {
           <p className="text-sm text-slate-500">Taux de placement</p>
         </div>
 
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
               <Users className="h-6 w-6 text-brand-primary" aria-hidden="true" />
@@ -106,7 +106,7 @@ function EtablissementStatistiques() {
           <p className="text-sm text-slate-500">Étudiants actifs</p>
         </div>
 
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center">
               <Briefcase className="h-6 w-6 text-emerald-600" aria-hidden="true" />
@@ -126,7 +126,7 @@ function EtablissementStatistiques() {
           <p className="text-sm text-slate-500">Entreprises partenaires</p>
         </div>
 
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center">
               <Calendar className="h-6 w-6 text-amber-600" aria-hidden="true" />
@@ -149,7 +149,7 @@ function EtablissementStatistiques() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {/* Par Filière */}
-        <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
               <GraduationCap className="h-5 w-5 text-brand-primary" aria-hidden="true" />
@@ -175,7 +175,7 @@ function EtablissementStatistiques() {
         </div>
 
         {/* Top Entreprises */}
-        <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+        <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center">
               <BarChart3 className="h-5 w-5 text-brand-orange" aria-hidden="true" />
@@ -205,7 +205,7 @@ function EtablissementStatistiques() {
       </div>
 
       {/* Évolution mensuelle */}
-      <div className="bg-cream-white rounded-2xl p-6 border border-cream-white shadow-sm">
+      <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
             <TrendingUp className="h-5 w-5 text-emerald-600" aria-hidden="true" />

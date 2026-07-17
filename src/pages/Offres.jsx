@@ -70,7 +70,7 @@ function Offres() {
               <div className="flex gap-4 mt-6">
                 <button
                   onClick={() => setIndexActuel(Math.max(0, indexActuel - 1))}
-                  className="w-12 h-12 rounded-full bg-cream-white border border-cream-white flex items-center justify-center hover:bg-cream"
+                  className="w-12 h-12 rounded-full bg-cream-white border border-cream-border flex items-center justify-center hover:bg-cream"
                 >
                   ✕
                 </button>
@@ -79,7 +79,7 @@ function Offres() {
                 </button>
                 <button
                   onClick={() => setIndexActuel(Math.min(offres.length - 1, indexActuel + 1))}
-                  className="w-12 h-12 rounded-full bg-cream-white border border-cream-white flex items-center justify-center hover:bg-cream"
+                  className="w-12 h-12 rounded-full bg-cream-white border border-cream-border flex items-center justify-center hover:bg-cream"
                 >
                   →
                 </button>
