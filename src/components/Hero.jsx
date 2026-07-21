@@ -12,12 +12,12 @@ export default function Hero() {
       {/* Bloc 1 : Académique (fond orange, pas de toggle) */}
       <section className="flex flex-col justify-center gap-6 px-10 py-16 md:py-0 bg-brand-primary text-white rounded-3xl">
         <span className="inline-flex w-fit items-center gap-2 rounded-full bg-cream-white/10 px-3 py-1 text-sm font-semibold text-white/90">
-          📋 Académique
+          📋 Pour les étudiants
         </span>
         <h1 className="font-display text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
-          Votre parcours commence
+         Trouvez le stage qui vous correspond
           <br />
-          ici.
+          vraiment.
         </h1>
         <p className="text-white/80 max-w-md font-light">
           Que vous cherchiez un stage ou que vous pilotiez les stages de votre établissement, tout se passe ici.
@@ -33,12 +33,12 @@ export default function Hero() {
       {/* Bloc 2 : Entreprise (direct, pas de toggle) */}
       <section className="flex flex-col justify-center gap-6 px-10 py-16 md:py-0 bg-cream-white rounded-3xl">
         <span className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-primary/10 px-3 py-1 text-sm font-semibold text-brand-primary">
-          🏢 Entreprise
+          🏢 Pour les entreprises
         </span>
         <h1 className="font-display text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
-          Recrutez les meilleurs
+          Recrutez les meilleurs stagiaires
           <br />
-          stagiaires, <span className="font-extralight text-cream-white">sans friction.</span>
+          sans friction. <span className="font-extralight text-cream-white">sans friction.</span>
         </h1>
         <p className="text-slate-500 max-w-md font-light">
           Publiez vos offres, recevez uniquement les profils compatibles,

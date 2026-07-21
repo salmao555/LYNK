@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Briefcase, MapPin, Calendar, DollarSign, Building2, Plus, X, Info } from 'lucide-react'
+import { Briefcase, MapPin, Calendar, DollarSign, Building2, Plus, X, Info, ArrowLeft, ArrowRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 function EntreprisePublier() {
   const navigate = useNavigate()
+  const [currentStep, setCurrentStep] = useState(1)
   const [competences, setCompetences] = useState([''])
   const [formData, setFormData] = useState({
     titre: '',
@@ -35,6 +36,18 @@ function EntreprisePublier() {
     // Handle form submission
     console.log({ ...formData, competences })
     navigate('/entreprise')
+  }
+
+  const handleNextStep = () => {
+    if (currentStep < 3) {
+      setCurrentStep(currentStep + 1)
+    }
+  }
+
+  const handlePreviousStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1)
+    }
   }
 
   return (
@@ -241,27 +254,29 @@ function EntreprisePublier() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <div className="bg-brand-primary rounded-2xl p-6 text-white">
-              <h3 className="font-semibold mb-4">Conseils pour attirer les meilleurs profils</h3>
-              <ul className="space-y-3 text-sm text-white/80">
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-orange">•</span>
-                  Soyez précis sur le projet et les livrables attendus
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-orange">•</span>
-                  Mentionnez les technologies ou outils utilisés
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-orange">•</span>
-                  Décrivez l'équipe et l'environnement de travail
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand-orange">•</span>
-                  Une prime attractive augmente la qualité des candidatures
-                </li>
-              </ul>
-            </div>
+            {currentStep === 1 && (
+              <div className="bg-brand-primary rounded-2xl p-6 text-white">
+                <h3 className="font-semibold mb-4">Conseils pour attirer les meilleurs profils</h3>
+                <ul className="space-y-3 text-sm text-white/80">
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange">•</span>
+                    Soyez précis sur le projet et les livrables attendus
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange">•</span>
+                    Mentionnez les technologies ou outils utilisés
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange">•</span>
+                    Décrivez l'équipe et l'environnement de travail
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-orange">•</span>
+                    Une prime attractive augmente la qualité des candidatures
+                  </li>
+                </ul>
+              </div>
+            )}
 
             <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
               <h3 className="font-semibold text-slate-900 mb-4">Résumé</h3>
@@ -281,12 +296,35 @@ function EntreprisePublier() {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-4 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold rounded-xl transition-colors"
-            >
-              Publier l'offre
-            </button>
+            <div className="flex gap-2">
+              {currentStep > 1 && (
+                <button
+                  type="button"
+                  onClick={handlePreviousStep}
+                  className="flex-1 py-4 bg-cream hover:bg-cream-white border border-cream-border text-slate-700 font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                >
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                  Précédent
+                </button>
+              )}
+              {currentStep < 3 ? (
+                <button
+                  type="button"
+                  onClick={handleNextStep}
+                  className="flex-1 py-4 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                >
+                  Suivant
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="flex-1 py-4 bg-brand-orange hover:bg-brand-orange-dark text-white font-semibold rounded-xl transition-colors"
+                >
+                  Publier l'offre
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </form>

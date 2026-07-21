@@ -13,7 +13,6 @@ function OnboardingEtablissementInfo() {
   const etablissementSteps = [
     { label: 'Infos', path: '/onboarding/etablissement/info' },
     { label: 'Filières', path: '/onboarding/etablissement/filieres' },
-    { label: 'Étudiants', path: '/onboarding/etablissement/etudiants' },
     { label: 'Contact', path: '/onboarding/etablissement/contact' },
     { label: 'Découverte', path: '/onboarding/etablissement/discovery' },
     { label: 'Connexion', path: '/onboarding/etablissement/auth' },

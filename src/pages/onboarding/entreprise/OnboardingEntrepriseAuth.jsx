@@ -41,8 +41,8 @@ function OnboardingEntrepriseAuth() {
     // Clear onboarding data from localStorage
     localStorage.removeItem('lynk_entreprise_onboarding_data')
 
-    // Redirect to enterprise dashboard
-    navigate('/entreprise')
+    // Redirect to enterprise offers page
+    navigate('/entreprise/offres')
   }
 
   return (
@@ -67,7 +67,7 @@ function OnboardingEntrepriseAuth() {
             </div>
 
             <h1 className="font-display text-2xl font-bold text-slate-900 mb-2">Finalisez votre compte entreprise</h1>
-            <p className="text-slate-500 mb-8">Connectez-vous pour publier votre offre et accéder à votre tableau de bord.</p>
+            <p className="text-slate-500 mb-8">Connectez-vous pour publier votre offre et accéder à vos offres.</p>
 
             {/* OAuth Buttons */}
             <div className="space-y-3">

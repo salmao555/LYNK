@@ -11,14 +11,13 @@ function OnboardingEtablissementContact() {
   const etablissementSteps = [
     { label: 'Infos', path: '/onboarding/etablissement/info' },
     { label: 'Filières', path: '/onboarding/etablissement/filieres' },
-    { label: 'Étudiants', path: '/onboarding/etablissement/etudiants' },
     { label: 'Contact', path: '/onboarding/etablissement/contact' },
     { label: 'Découverte', path: '/onboarding/etablissement/discovery' },
     { label: 'Connexion', path: '/onboarding/etablissement/auth' },
   ]
 
   useEffect(() => {
-    markStepVisited(4)
+    markStepVisited(3)
   }, [])
 
   const handleChange = (e) => {
@@ -68,12 +67,12 @@ function OnboardingEtablissementContact() {
       <div className="flex-1 px-6 py-12">
         <div className="max-w-2xl mx-auto">
           {/* Stepper */}
-          <Stepper steps={etablissementSteps} currentStep={4} onStepClick={handleStepClick} />
+          <Stepper steps={etablissementSteps} currentStep={3} onStepClick={handleStepClick} />
 
           {/* Main Card */}
           <div className="bg-cream-white rounded-2xl border border-cream-border shadow-sm p-8">
-            <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Qui gère ce compte ?</h1>
-            <p className="text-slate-500 mb-8">Les informations du contact principal pour la gestion des stages.</p>
+            <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Contact principal du compte Lynk</h1>
+            <p className="text-slate-500 mb-8">Les informations du contact principal pour la gestion de votre compte.</p>
 
             <div className="space-y-6">
               {/* Name Fields */}
@@ -162,7 +161,7 @@ function OnboardingEtablissementContact() {
             {/* Navigation */}
             <div className="mt-8 flex justify-between">
               <Link
-                to="/onboarding/etablissement/etudiants"
+                to="/onboarding/etablissement/filieres"
                 className="flex items-center gap-2 px-6 py-3 rounded-full font-medium text-slate-600 hover:bg-cream-white transition-colors"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />

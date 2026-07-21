@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import PublicNavbar from './components/PublicNavbar'
 import Hero from './components/Hero'
 import Logos from './components/Logos'
 import StatsBar from './components/StatsBar'
@@ -11,10 +12,13 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Offres from './pages/Offres'
 import MonCV from './pages/MonCV'
-import EntrepriseDashboard from './pages/EntrepriseDashboard'
 import EntreprisePublier from './pages/EntreprisePublier'
 import EntrepriseProfil from './pages/EntrepriseProfil'
 import EntrepriseOffres from './pages/EntrepriseOffres'
+import EntrepriseOffreDetail from './pages/EntrepriseOffreDetail'
+import EntrepriseCandidatures from './pages/EntrepriseCandidatures'
+import EntrepriseMatches from './pages/EntrepriseMatches'
+import EntrepriseReseau from './pages/EntrepriseReseau'
 import Welcome from './pages/Welcome'
 import MonGuide from './pages/MonGuide'
 import Messages from './pages/Messages'
@@ -37,19 +41,20 @@ import OnboardingEntrepriseMatching from './pages/onboarding/entreprise/Onboardi
 import OnboardingEntrepriseAuth from './pages/onboarding/entreprise/OnboardingEntrepriseAuth'
 import OnboardingEtablissementInfo from './pages/onboarding/etablissement/OnboardingEtablissementInfo'
 import OnboardingEtablissementFilieres from './pages/onboarding/etablissement/OnboardingEtablissementFilieres'
-import OnboardingEtablissementEtudiants from './pages/onboarding/etablissement/OnboardingEtablissementEtudiants'
 import OnboardingEtablissementContact from './pages/onboarding/etablissement/OnboardingEtablissementContact'
 import OnboardingEtablissementDiscovery from './pages/onboarding/etablissement/OnboardingEtablissementDiscovery'
 import OnboardingEtablissementAuth from './pages/onboarding/etablissement/OnboardingEtablissementAuth'
 import EtablissementDashboard from './pages/EtablissementDashboard'
 import EtudiantDashboard from './pages/etudiant/EtudiantDashboard'
+import EtudiantCandidatures from './pages/etudiant/EtudiantCandidatures'
+import EtudiantOffreDetail from './pages/etudiant/EtudiantOffreDetail'
 import { OnboardingEtablissementProvider } from './context/OnboardingEtablissementContext'
 import { useAuth } from './context/AuthContext'
 
 function LandingPage() {
   return (
     <div>
-      <Navbar />
+      <PublicNavbar />
       <Hero />
       <Logos />
       <StatsBar />
@@ -69,6 +74,15 @@ function PageAvecNavbar({ children }) {
   )
 }
 
+function PageAvecPublicNavbar({ children }) {
+  return (
+    <div>
+      <PublicNavbar />
+      {children}
+    </div>
+  )
+}
+
 function EtudiantRoute({ children }) {
   const { user } = useAuth()
   if (!user || user.role !== 'etudiant' || !user.verified) {
@@ -82,52 +96,58 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/academique/choix" element={<AcademiqueChoix />} />
-        <Route path="/login/:role" element={<Login />} />
-        <Route path="/signup/:role" element={<Signup />} />
+        <Route path="/academique/choix" element={<PageAvecPublicNavbar><AcademiqueChoix /></PageAvecPublicNavbar>} />
+        <Route path="/login/:role" element={<PageAvecPublicNavbar><Login /></PageAvecPublicNavbar>} />
+        <Route path="/signup/:role" element={<PageAvecPublicNavbar><Signup /></PageAvecPublicNavbar>} />
 
         {/* New onboarding flow - OAuth based */}
-        <Route path="/onboarding/cv-upload" element={<OnboardingCVUpload />} />
-        <Route path="/onboarding/personal-info" element={<OnboardingPersonalInfo />} />
-        <Route path="/onboarding/experience" element={<OnboardingExperience />} />
-        <Route path="/onboarding/projects-skills" element={<OnboardingProjectsSkills />} />
-        <Route path="/onboarding/preferences" element={<OnboardingPreferences />} />
-        <Route path="/onboarding/matching-preview" element={<OnboardingMatchingPreview />} />
-        <Route path="/onboarding/auth" element={<OnboardingAuth />} />
+        <Route path="/onboarding/cv-upload" element={<PageAvecPublicNavbar><OnboardingCVUpload /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/personal-info" element={<PageAvecPublicNavbar><OnboardingPersonalInfo /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/experience" element={<PageAvecPublicNavbar><OnboardingExperience /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/projects-skills" element={<PageAvecPublicNavbar><OnboardingProjectsSkills /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/preferences" element={<PageAvecPublicNavbar><OnboardingPreferences /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/matching-preview" element={<PageAvecPublicNavbar><OnboardingMatchingPreview /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/auth" element={<PageAvecPublicNavbar><OnboardingAuth /></PageAvecPublicNavbar>} />
 
         {/* Enterprise onboarding flow */}
-        <Route path="/onboarding/entreprise/info" element={<OnboardingEntrepriseInfo />} />
-        <Route path="/onboarding/entreprise/offer-info" element={<OnboardingEntrepriseOfferInfo />} />
-        <Route path="/onboarding/entreprise/requirements" element={<OnboardingEntrepriseRequirements />} />
-        <Route path="/onboarding/entreprise/compensation" element={<OnboardingEntrepriseCompensation />} />
-        <Route path="/onboarding/entreprise/matching" element={<OnboardingEntrepriseMatching />} />
-        <Route path="/onboarding/entreprise/auth" element={<OnboardingEntrepriseAuth />} />
+        <Route path="/onboarding/entreprise/info" element={<PageAvecPublicNavbar><OnboardingEntrepriseInfo /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/entreprise/offer-info" element={<PageAvecPublicNavbar><OnboardingEntrepriseOfferInfo /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/entreprise/requirements" element={<PageAvecPublicNavbar><OnboardingEntrepriseRequirements /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/entreprise/compensation" element={<PageAvecPublicNavbar><OnboardingEntrepriseCompensation /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/entreprise/matching" element={<PageAvecPublicNavbar><OnboardingEntrepriseMatching /></PageAvecPublicNavbar>} />
+        <Route path="/onboarding/entreprise/auth" element={<PageAvecPublicNavbar><OnboardingEntrepriseAuth /></PageAvecPublicNavbar>} />
 
         {/* Establishment onboarding flow */}
         <Route path="/onboarding/etablissement/*" element={
           <OnboardingEtablissementProvider>
-            <Routes>
-              <Route path="info" element={<OnboardingEtablissementInfo />} />
-              <Route path="filieres" element={<OnboardingEtablissementFilieres />} />
-              <Route path="etudiants" element={<OnboardingEtablissementEtudiants />} />
-              <Route path="contact" element={<OnboardingEtablissementContact />} />
-              <Route path="discovery" element={<OnboardingEtablissementDiscovery />} />
-              <Route path="auth" element={<OnboardingEtablissementAuth />} />
-            </Routes>
+            <PageAvecPublicNavbar>
+              <Routes>
+                <Route path="info" element={<OnboardingEtablissementInfo />} />
+                <Route path="filieres" element={<OnboardingEtablissementFilieres />} />
+                <Route path="contact" element={<OnboardingEtablissementContact />} />
+                <Route path="discovery" element={<OnboardingEtablissementDiscovery />} />
+                <Route path="auth" element={<OnboardingEtablissementAuth />} />
+              </Routes>
+            </PageAvecPublicNavbar>
           </OnboardingEtablissementProvider>
         } />
 
         <Route path="/bienvenue" element={<PageAvecNavbar><Welcome /></PageAvecNavbar>} />
-        <Route path="/etudiant" element={<EtudiantRoute><PageAvecNavbar><EtudiantDashboard /></PageAvecNavbar></EtudiantRoute>} />
-
+        <Route path="/etudiant" element={<Navigate to="/offres" replace />} />
         <Route path="/offres" element={<PageAvecNavbar><Offres /></PageAvecNavbar>} />
+        <Route path="/offres/:id" element={<PageAvecNavbar><EtudiantOffreDetail /></PageAvecNavbar>} />
+        <Route path="/etudiant/candidatures" element={<PageAvecNavbar><EtudiantCandidatures /></PageAvecNavbar>} />
         <Route path="/mon-cv" element={<PageAvecNavbar><MonCV /></PageAvecNavbar>} />
         <Route path="/mon-guide" element={<PageAvecNavbar><MonGuide /></PageAvecNavbar>} />
         <Route path="/messages" element={<PageAvecNavbar><Messages /></PageAvecNavbar>} />
-        <Route path="/entreprise" element={<PageAvecNavbar><EntrepriseDashboard /></PageAvecNavbar>} />
+        <Route path="/entreprise" element={<Navigate to="/entreprise/offres" replace />} />
         <Route path="/entreprise/publier" element={<PageAvecNavbar><EntreprisePublier /></PageAvecNavbar>} />
         <Route path="/entreprise/profil" element={<PageAvecNavbar><EntrepriseProfil /></PageAvecNavbar>} />
         <Route path="/entreprise/offres" element={<PageAvecNavbar><EntrepriseOffres /></PageAvecNavbar>} />
+        <Route path="/entreprise/offres/:id" element={<PageAvecNavbar><EntrepriseOffreDetail /></PageAvecNavbar>} />
+        <Route path="/entreprise/candidatures" element={<PageAvecNavbar><EntrepriseCandidatures /></PageAvecNavbar>} />
+        <Route path="/entreprise/matches" element={<PageAvecNavbar><EntrepriseMatches /></PageAvecNavbar>} />
+        <Route path="/entreprise/reseau" element={<PageAvecNavbar><EntrepriseReseau /></PageAvecNavbar>} />
         <Route path="/etablissement" element={<PageAvecNavbar><EtablissementDashboard /></PageAvecNavbar>} />
         <Route path="/etablissement/conventions" element={<PageAvecNavbar><EtablissementConventions /></PageAvecNavbar>} />
         <Route path="/etablissement/etudiants" element={<PageAvecNavbar><EtablissementEtudiants /></PageAvecNavbar>} />

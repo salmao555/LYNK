@@ -7,13 +7,12 @@ import { useOnboardingEtablissement } from '../../../context/OnboardingEtablisse
 function OnboardingEtablissementFilieres() {
   const navigate = useNavigate()
   const { formData, updateFormData, markStepVisited, canNavigateToStep } = useOnboardingEtablissement()
-  
+
   const [newFiliere, setNewFiliere] = useState('')
 
   const etablissementSteps = [
     { label: 'Infos', path: '/onboarding/etablissement/info' },
     { label: 'Filières', path: '/onboarding/etablissement/filieres' },
-    { label: 'Étudiants', path: '/onboarding/etablissement/etudiants' },
     { label: 'Contact', path: '/onboarding/etablissement/contact' },
     { label: 'Découverte', path: '/onboarding/etablissement/discovery' },
     { label: 'Connexion', path: '/onboarding/etablissement/auth' },
@@ -43,7 +42,7 @@ function OnboardingEtablissementFilieres() {
   ]
 
   const toggleFiliere = (filiere) => {
-    if (formData.filieres.includes(filiere)) {
+    if (formData.filieres?.includes(filiere)) {
       updateFormData({
         filieres: formData.filieres.filter(f => f !== filiere)
       })
@@ -77,7 +76,7 @@ function OnboardingEtablissementFilieres() {
   }
 
   const handleNext = () => {
-    navigate('/onboarding/etablissement/etudiants')
+    navigate('/onboarding/etablissement/contact')
   }
 
   const handleStepClick = (stepNumber) => {
@@ -157,24 +156,25 @@ function OnboardingEtablissementFilieres() {
 
             {/* Selected Filières Summary */}
             {formData.filieres.length > 0 && (
-              <div className="mt-6 p-4 bg-brand-primary/5 rounded-xl border border-brand-primary/20">
-                <p className="text-sm text-slate-600 mb-3">
+              <div className="mt-6 space-y-4">
+                <p className="text-sm text-slate-600">
                   <span className="font-semibold text-brand-primary">{formData.filieres.length}</span> filière(s) sélectionnée(s)
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {formData.filieres.map(filiere => (
-                    <span
+                  {formData.filieres.map((filiere) => (
+                    <div
                       key={filiere}
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-sm"
+                      className="flex items-center gap-2 px-4 py-2 bg-brand-primary text-white rounded-full text-sm font-medium"
                     >
+                      <GraduationCap className="h-4 w-4" aria-hidden="true" />
                       {filiere}
                       <button
                         onClick={() => removeFiliere(filiere)}
-                        className="hover:text-brand-primary-dark"
+                        className="hover:text-cream-white transition-colors"
                       >
-                        <X className="h-3 w-3" aria-hidden="true" />
+                        <X className="h-4 w-4" aria-hidden="true" />
                       </button>
-                    </span>
+                    </div>
                   ))}
                 </div>
               </div>

@@ -7,16 +7,18 @@ function Navbar() {
   const location = useLocation()
 
   const liensEtudiant = [
-    { label: 'Accueil', to: '/etudiant' },
     { label: 'Offres', to: '/offres' },
+    { label: 'Mes candidatures', to: '/etudiant/candidatures' },
     { label: 'Mon CV', to: '/mon-cv' },
     { label: 'Mon Guide', to: '/mon-guide' },
     { label: 'Messages', to: '/messages' },
   ]
 
   const liensEntreprise = [
-    { label: 'Entreprise', to: '/entreprise' },
     { label: 'Mes offres', to: '/entreprise/offres' },
+    { label: 'Candidatures', to: '/entreprise/candidatures' },
+    { label: 'Mes Matches', to: '/entreprise/matches' },
+    { label: 'Mon Réseau', to: '/entreprise/reseau' },
     { label: 'Messages', to: '/messages' },
   ]
 

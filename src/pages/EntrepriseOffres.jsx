@@ -111,46 +111,6 @@ function EntrepriseOffres() {
         </Link>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
-              <Briefcase className="h-5 w-5 text-brand-primary" aria-hidden="true" />
-            </div>
-            <span className="text-2xl font-bold text-slate-900">{offres.length}</span>
-          </div>
-          <p className="text-sm text-slate-500">Total offres</p>
-        </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center">
-              <Briefcase className="h-5 w-5 text-emerald-600" aria-hidden="true" />
-            </div>
-            <span className="text-2xl font-bold text-slate-900">{offres.filter(o => o.statut === 'active').length}</span>
-          </div>
-          <p className="text-sm text-slate-500">Actives</p>
-        </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center">
-              <Users className="h-5 w-5 text-brand-orange" aria-hidden="true" />
-            </div>
-            <span className="text-2xl font-bold text-slate-900">{offres.reduce((acc, o) => acc + o.candidatures, 0)}</span>
-          </div>
-          <p className="text-sm text-slate-500">Candidatures</p>
-        </div>
-        <div className="bg-cream-white rounded-xl p-6 border border-cream-border shadow-sm">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center">
-              <Calendar className="h-5 w-5 text-amber-600" aria-hidden="true" />
-            </div>
-            <span className="text-2xl font-bold text-slate-900">{offres.reduce((acc, o) => acc + o.entretiens, 0)}</span>
-          </div>
-          <p className="text-sm text-slate-500">Entretiens</p>
-        </div>
-      </div>
-
       {/* Filters */}
       <div className="bg-cream-white rounded-xl p-4 border border-cream-border shadow-sm mb-6">
         <div className="flex flex-col sm:flex-row gap-4">
@@ -171,7 +131,7 @@ function EntrepriseOffres() {
                 filter === 'all' ? 'bg-brand-navy text-white' : 'bg-cream-white text-slate-600 hover:bg-cream-white'
               }`}
             >
-              Toutes
+              Toutes ({offres.length})
             </button>
             <button
               onClick={() => setFilter('active')}
@@ -179,7 +139,7 @@ function EntrepriseOffres() {
                 filter === 'active' ? 'bg-brand-navy text-white' : 'bg-cream-white text-slate-600 hover:bg-cream-white'
               }`}
             >
-              Actives
+              Actives ({offres.filter(o => o.statut === 'active').length})
             </button>
             <button
               onClick={() => setFilter('closed')}
@@ -187,7 +147,7 @@ function EntrepriseOffres() {
                 filter === 'closed' ? 'bg-brand-navy text-white' : 'bg-cream-white text-slate-600 hover:bg-cream-white'
               }`}
             >
-              Clôturées
+              Clôturées ({offres.filter(o => o.statut === 'closed').length})
             </button>
             <button
               onClick={() => setFilter('draft')}
@@ -195,7 +155,7 @@ function EntrepriseOffres() {
                 filter === 'draft' ? 'bg-brand-navy text-white' : 'bg-cream-white text-slate-600 hover:bg-cream-white'
               }`}
             >
-              Brouillons
+              Brouillons ({offres.filter(o => o.statut === 'draft').length})
             </button>
           </div>
         </div>
@@ -245,10 +205,13 @@ function EntrepriseOffres() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-4">
-                        <div>
+                        <Link
+                          to={`/entreprise/candidatures?offre=${offre.id}`}
+                          className="hover:text-brand-primary transition-colors"
+                        >
                           <p className="font-semibold text-slate-900">{offre.candidatures}</p>
                           <p className="text-xs text-slate-500">candidatures</p>
-                        </div>
+                        </Link>
                         <div>
                           <p className="font-semibold text-slate-900">{offre.entretiens}</p>
                           <p className="text-xs text-slate-500">entretiens</p>
@@ -262,9 +225,13 @@ function EntrepriseOffres() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
-                        <button className="p-2 rounded-lg hover:bg-cream-white text-slate-600 transition-colors" aria-label="Voir">
+                        <Link
+                          to={`/entreprise/offres/${offre.id}`}
+                          className="p-2 rounded-lg hover:bg-cream-white text-slate-600 transition-colors"
+                          aria-label="Voir"
+                        >
                           <Eye className="h-4 w-4" aria-hidden="true" />
-                        </button>
+                        </Link>
                         <button className="p-2 rounded-lg hover:bg-cream-white text-slate-600 transition-colors" aria-label="Modifier">
                           <Edit className="h-4 w-4" aria-hidden="true" />
                         </button>

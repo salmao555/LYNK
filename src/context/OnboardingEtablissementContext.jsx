@@ -12,18 +12,11 @@ export function OnboardingEtablissementProvider({ children }) {
     etablissementType: '',
     cities: [],
     website: '',
-    
+
     // Step 2: Filières
     filieres: [],
-    
-    // Step 3: Student import (optional)
-    studentImport: {
-      csvFile: null,
-      csvPreview: null,
-      emailDomain: '',
-    },
-    
-    // Step 4: Contact person
+
+    // Step 3: Contact person
     contact: {
       firstName: '',
       lastName: '',
@@ -31,10 +24,11 @@ export function OnboardingEtablissementProvider({ children }) {
       email: '',
       phone: '',
     },
-    
-    // Step 5: Discovery (no data needed, just display)
-    
-    // Step 6: Auth (handled by OAuth)
+
+    // Step 4: Discovery (liked enterprises)
+    likedEnterprises: [],
+
+    // Step 5: Auth (handled by OAuth)
   })
 
   const [visitedSteps, setVisitedSteps] = useState([1])
@@ -82,11 +76,6 @@ export function OnboardingEtablissementProvider({ children }) {
       cities: [],
       website: '',
       filieres: [],
-      studentImport: {
-        csvFile: null,
-        csvPreview: null,
-        emailDomain: '',
-      },
       contact: {
         firstName: '',
         lastName: '',
@@ -94,6 +83,7 @@ export function OnboardingEtablissementProvider({ children }) {
         email: '',
         phone: '',
       },
+      likedEnterprises: [],
     })
     setVisitedSteps([1])
     localStorage.removeItem(STORAGE_KEY)

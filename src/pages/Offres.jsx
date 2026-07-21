@@ -6,8 +6,17 @@ import { offres } from '../data/offres'
 function Offres() {
   const [vue, setVue] = useState('grille')
   const [indexActuel, setIndexActuel] = useState(0)
+  const [bookmarkedOffers, setBookmarkedOffers] = useState([])
 
   const offreActuelle = offres[indexActuel]
+
+  const toggleBookmark = (offreId) => {
+    if (bookmarkedOffers.includes(offreId)) {
+      setBookmarkedOffers(bookmarkedOffers.filter(id => id !== offreId))
+    } else {
+      setBookmarkedOffers([...bookmarkedOffers, offreId])
+    }
+  }
 
   return (
     <div className="px-16 py-8">
@@ -53,7 +62,12 @@ function Offres() {
 
               <div className="grid grid-cols-2 gap-5">
                 {offres.map((offre) => (
-                  <OfferCard key={offre.id} offre={offre} />
+                  <OfferCard
+                    key={offre.id}
+                    offre={offre}
+                    isBookmarked={bookmarkedOffers.includes(offre.id)}
+                    onBookmarkToggle={toggleBookmark}
+                  />
                 ))}
               </div>
             </>
@@ -64,7 +78,11 @@ function Offres() {
               </p>
 
               <div className="w-full max-w-md">
-                <OfferCard offre={offreActuelle} />
+                <OfferCard
+                  offre={offreActuelle}
+                  isBookmarked={bookmarkedOffers.includes(offreActuelle.id)}
+                  onBookmarkToggle={toggleBookmark}
+                />
               </div>
 
               <div className="flex gap-4 mt-6">

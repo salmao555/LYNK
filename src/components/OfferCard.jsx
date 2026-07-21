@@ -1,8 +1,25 @@
 import { MapPin, Clock, Building2, DollarSign, Eye, Bookmark, Briefcase } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
-function OfferCard({ offre }) {
+function OfferCard({ offre, isBookmarked = false, onBookmarkToggle, onClick }) {
+  const handleBookmarkClick = (e) => {
+    e.stopPropagation()
+    if (onBookmarkToggle) {
+      onBookmarkToggle(offre.id)
+    }
+  }
+
+  const handleCardClick = () => {
+    if (onClick) {
+      onClick(offre.id)
+    }
+  }
+
   return (
-    <div className="bg-cream-white border border-cream-border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <Link
+      to={`/offres/${offre.id}`}
+      className="block bg-cream-white border border-cream-border rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+    >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-brand-navy text-white font-medium flex items-center justify-center">
@@ -18,8 +35,16 @@ function OfferCard({ offre }) {
           <div className="w-11 h-11 rounded-full border-2 border-emerald-400 flex items-center justify-center text-xs font-semibold text-emerald-600">
             {offre.score}%
           </div>
-          <button className="p-2 rounded-lg hover:bg-cream-white text-cream-white hover:text-brand-orange transition-colors" aria-label="Sauvegarder">
-            <Bookmark className="h-4 w-4" aria-hidden="true" />
+          <button
+            onClick={handleBookmarkClick}
+            className={`p-2 rounded-lg transition-colors ${
+              isBookmarked
+                ? 'text-brand-primary bg-brand-primary/10'
+                : 'text-slate-400 hover:text-brand-primary hover:bg-brand-primary/10'
+            }`}
+            aria-label={isBookmarked ? "Retirer des sauvegardés" : "Sauvegarder"}
+          >
+            <Bookmark className={`h-4 w-4 ${isBookmarked ? 'fill-current' : ''}`} aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -71,7 +96,7 @@ function OfferCard({ offre }) {
           {offre.vues}
         </span>
       </div>
-    </div>
+    </Link>
   )
 }
 

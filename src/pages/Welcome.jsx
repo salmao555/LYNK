@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { FileText, Target, Compass, Megaphone, Building2, BarChart3, ClipboardList, Users, TrendingUp } from 'lucide-react'
+import { FileText, Target, Compass, Megaphone, Building2, Briefcase, ClipboardList, Users, TrendingUp } from 'lucide-react'
 
 function Welcome() {
   const { user } = useAuth()
@@ -47,11 +47,11 @@ function Welcome() {
       cta: 'Compléter le profil',
     },
     {
-      icone: BarChart3,
-      titre: 'Ton tableau de bord',
-      texte: 'Suis tes candidatures, ton pipeline et tes statistiques de recrutement.',
-      lien: '/entreprise',
-      cta: 'Voir le dashboard',
+      icone: Briefcase,
+      titre: 'Gère tes offres',
+      texte: 'Consulte tes offres publiées, tes candidatures et tes statistiques de recrutement.',
+      lien: '/entreprise/offres',
+      cta: 'Voir mes offres',
     },
   ]
 

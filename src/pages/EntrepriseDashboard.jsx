@@ -1,4 +1,4 @@
-import { BarChart3, Users, Briefcase, TrendingUp, Plus, ArrowRight, Calendar, DollarSign } from 'lucide-react'
+import { BarChart3, Users, Briefcase, TrendingUp, Plus, ArrowRight, Calendar, DollarSign, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 function EntrepriseDashboard() {
@@ -24,6 +24,25 @@ function EntrepriseDashboard() {
       trend: 'up',
     },
   }
+
+  const recommendedMatches = [
+    {
+      id: 1,
+      nom: 'Ahmed Benali',
+      ecole: 'ENSA Marrakech',
+      niveau: '5ème année',
+      score: 95,
+      competences: ['React', 'Node.js', 'MongoDB'],
+    },
+    {
+      id: 2,
+      nom: 'Fatima Zahra',
+      ecole: 'EMI Casablanca',
+      niveau: '4ème année',
+      score: 92,
+      competences: ['Python', 'Machine Learning', 'SQL'],
+    },
+  ]
 
   const recentOffers = [
     {
@@ -149,7 +168,7 @@ function EntrepriseDashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent Offers */}
         <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
           <div className="flex items-center justify-between mb-6">
@@ -165,7 +184,7 @@ function EntrepriseDashboard() {
             </Link>
           </div>
           <div className="space-y-4">
-            {recentOffers.map((offer) => (
+            {recentOffers.slice(0, 3).map((offer) => (
               <div key={offer.id} className="flex items-center justify-between p-4 rounded-xl border border-cream-border hover:border-cream-border transition-colors">
                 <div className="flex-1">
                   <p className="font-medium text-slate-900 mb-1">{offer.titre}</p>
@@ -198,10 +217,13 @@ function EntrepriseDashboard() {
               </div>
               <h2 className="text-lg font-semibold text-slate-900">Candidatures récentes</h2>
             </div>
-            <span className="text-sm font-medium text-emerald-600">3 nouvelles</span>
+            <Link to="/entreprise/candidatures" className="text-sm font-medium text-brand-orange hover:text-brand-orange-dark flex items-center gap-1">
+              Voir tout
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
           <div className="space-y-4">
-            {recentApplications.map((app) => (
+            {recentApplications.slice(0, 3).map((app) => (
               <div key={app.id} className="flex items-center justify-between p-4 rounded-xl border border-cream-border hover:border-cream-border transition-colors">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
@@ -219,6 +241,40 @@ function EntrepriseDashboard() {
                     <span className="text-xs text-cream-white">%</span>
                   </div>
                   <p className="text-xs text-slate-500">score</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Recommended Matches */}
+        <div className="bg-cream-white rounded-2xl p-6 border border-cream-border shadow-sm">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                <Sparkles className="h-5 w-5 text-brand-primary" aria-hidden="true" />
+              </div>
+              <h2 className="text-lg font-semibold text-slate-900">Matches recommandés</h2>
+            </div>
+            <Link to="/entreprise/matches" className="text-sm font-medium text-brand-orange hover:text-brand-orange-dark flex items-center gap-1">
+              Voir tout
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="space-y-4">
+            {recommendedMatches.map((match) => (
+              <div key={match.id} className="p-4 rounded-xl border border-cream-border hover:border-cream-border transition-colors">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="font-medium text-slate-900">{match.nom}</p>
+                  <span className="text-sm font-semibold text-brand-primary">{match.score}%</span>
+                </div>
+                <p className="text-sm text-slate-500 mb-2">{match.ecole} • {match.niveau}</p>
+                <div className="flex flex-wrap gap-1">
+                  {match.competences.map((comp) => (
+                    <span key={comp} className="text-xs px-2 py-1 rounded-full bg-brand-primary/10 text-brand-primary">
+                      {comp}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}

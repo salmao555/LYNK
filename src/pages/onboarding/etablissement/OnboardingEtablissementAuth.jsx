@@ -6,7 +6,7 @@ import { useOnboardingEtablissement } from '../../../context/OnboardingEtablisse
 function OnboardingEtablissementAuth() {
   const navigate = useNavigate()
   const { login } = useAuth()
-  const { formData, reset } = useOnboardingEtablissement()
+  const { formData, reset, updateFormData } = useOnboardingEtablissement()
 
   const handleOAuth = (provider) => {
     // Simulate OAuth success - in production this would be real OAuth
@@ -24,8 +24,8 @@ function OnboardingEtablissementAuth() {
         cities: formData.cities || [],
         website: formData.website || '',
         filieres: formData.filieres || [],
-        studentImport: formData.studentImport || {},
         contact: formData.contact || {},
+        likedEnterprises: formData.likedEnterprises || [],
       },
       provider, // 'google' or 'linkedin'
     }

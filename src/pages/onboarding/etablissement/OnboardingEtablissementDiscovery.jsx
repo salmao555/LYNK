@@ -1,24 +1,23 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Building2, MapPin, Briefcase } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Building2, MapPin, Briefcase, Heart } from 'lucide-react'
 import Stepper from '../../../components/Stepper'
 import { useOnboardingEtablissement } from '../../../context/OnboardingEtablissementContext'
 
 function OnboardingEtablissementDiscovery() {
   const navigate = useNavigate()
-  const { formData, markStepVisited, canNavigateToStep } = useOnboardingEtablissement()
+  const { formData, updateFormData, markStepVisited, canNavigateToStep } = useOnboardingEtablissement()
 
   const etablissementSteps = [
     { label: 'Infos', path: '/onboarding/etablissement/info' },
     { label: 'Filières', path: '/onboarding/etablissement/filieres' },
-    { label: 'Étudiants', path: '/onboarding/etablissement/etudiants' },
     { label: 'Contact', path: '/onboarding/etablissement/contact' },
     { label: 'Découverte', path: '/onboarding/etablissement/discovery' },
     { label: 'Connexion', path: '/onboarding/etablissement/auth' },
   ]
 
   useEffect(() => {
-    markStepVisited(5)
+    markStepVisited(4)
   }, [])
 
   // Sample enterprises - filtered based on filieres
@@ -91,6 +90,18 @@ function OnboardingEtablissementDiscovery() {
       )
     : sampleEnterprises
 
+  const toggleLike = (enterpriseId) => {
+    if (formData.likedEnterprises.includes(enterpriseId)) {
+      updateFormData({
+        likedEnterprises: formData.likedEnterprises.filter(id => id !== enterpriseId)
+      })
+    } else {
+      updateFormData({
+        likedEnterprises: [...formData.likedEnterprises, enterpriseId]
+      })
+    }
+  }
+
   const handleNext = () => {
     navigate('/onboarding/etablissement/auth')
   }
@@ -118,12 +129,12 @@ function OnboardingEtablissementDiscovery() {
       <div className="flex-1 px-6 py-12">
         <div className="max-w-5xl mx-auto">
           {/* Stepper */}
-          <Stepper steps={etablissementSteps} currentStep={5} onStepClick={handleStepClick} />
+          <Stepper steps={etablissementSteps} currentStep={4} onStepClick={handleStepClick} />
 
           {/* Title */}
           <div className="mb-8">
             <h1 className="font-display text-3xl font-bold text-slate-900 mb-2">Des entreprises actives dans vos secteurs</h1>
-            <p className="text-slate-500">Aperçu des opportunités déjà disponibles pour vos étudiants.</p>
+            <p className="text-slate-500">Aperçu des opportunités déjà disponibles pour vos étudiants. Suivez les entreprises qui vous intéressent, vous les retrouverez dans votre espace.</p>
           </div>
 
           {/* Enterprise Cards Grid */}
@@ -142,6 +153,17 @@ function OnboardingEtablissementDiscovery() {
                     <h3 className="font-semibold text-slate-900 mb-1">{enterprise.name}</h3>
                     <p className="text-sm text-slate-500">{enterprise.sector}</p>
                   </div>
+                  <button
+                    onClick={() => toggleLike(enterprise.id)}
+                    className={`p-2 rounded-lg transition-colors ${
+                      formData.likedEnterprises.includes(enterprise.id)
+                        ? 'text-red-500 bg-red-50'
+                        : 'text-slate-400 hover:text-red-500 hover:bg-red-50'
+                    }`}
+                    title={formData.likedEnterprises.includes(enterprise.id) ? "Retirer des favoris" : "Ajouter aux favoris"}
+                  >
+                    <Heart className={`h-5 w-5 ${formData.likedEnterprises.includes(enterprise.id) ? 'fill-current' : ''}`} aria-hidden="true" />
+                  </button>
                 </div>
 
                 {/* Cities */}
@@ -167,6 +189,15 @@ function OnboardingEtablissementDiscovery() {
               <span className="font-semibold">💡 Astuce :</span> Ces entreprises sont déjà actives sur Lynk et publient régulièrement des offres de stage. Une fois votre compte créé, vous pourrez voir toutes les opportunités correspondant aux filières de votre établissement.
             </p>
           </div>
+
+          {/* Liked Enterprises Summary */}
+          {formData.likedEnterprises.length > 0 && (
+            <div className="mb-8 p-4 bg-brand-primary/5 rounded-xl border border-brand-primary/20">
+              <p className="text-sm text-slate-700">
+                <span className="font-semibold text-brand-primary">{formData.likedEnterprises.length}</span> entreprise(s) suivie(s) — vous les retrouverez dans votre espace.
+              </p>
+            </div>
+          )}
 
           {/* Navigation */}
           <div className="flex justify-between">
